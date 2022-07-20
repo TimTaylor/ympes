@@ -1,5 +1,14 @@
 # ympes 0.0.0.9000
 
-* Minimal implementation of scalar assertions for integer, double, numeric,
-  logical, boolean and character (string) values.
+- Scalar assertions for integer, double, numeric, logical, bool and
+  character (string) values
+    - `imp_assert_scalar_int()`
+    - `imp_assert_scalar_dbl()`
+    - `imp_assert_scalar_num()`
+    - `imp_assert_scalar_lgl()`
+    - `imp_assert_bool()`
+    - `imp_assert_scalar_chr()`
+    - `imp_assert_string()`
+
+- `cc()` function for the interactive quoting of comma separated names.
 
