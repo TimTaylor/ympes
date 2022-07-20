@@ -17,8 +17,6 @@
 #' fun <- function(i, d, l, chr, b) {
 #'     imp_assert_scalar_int(i)
 #'     imp_assert_scalar_dbl(d)
-#'     imp_assert_scalar_num(i)
-#'     imp_assert_scalar_num(d)
 #'     imp_assert_scalar_lgl(l)
 #'     imp_assert_string(chr)
 #'     imp_assert_bool(b)
@@ -32,8 +30,6 @@
 #' internal_fun <- function(i, d, l, chr, b) {
 #'     imp_assert_scalar_int(i, arg = deparse(substitute(i)), call = sys.call(-1L))
 #'     imp_assert_scalar_dbl(d, arg = deparse(substitute(d)), call = sys.call(-1L))
-#'     imp_assert_scalar_num(i, arg = deparse(substitute(i)), call = sys.call(-1L))
-#'     imp_assert_scalar_num(d, arg = deparse(substitute(d)), call = sys.call(-1L))
 #'     imp_assert_scalar_lgl(l, arg = deparse(substitute(l)), call = sys.call(-1L))
 #'     imp_assert_string(chr, arg = deparse(substitute(chr)), call = sys.call(-1L))
 #'     imp_assert_bool(b, arg = deparse(substitute(b)), call = sys.call(-1L))

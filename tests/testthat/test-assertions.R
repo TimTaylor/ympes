@@ -3,8 +3,6 @@ test_that("assertions work - one layer deep", {
     fun <- function(i, d, l, chr, b) {
         imp_assert_scalar_int(i)
         imp_assert_scalar_dbl(d)
-        imp_assert_scalar_num(i)
-        imp_assert_scalar_num(d)
         imp_assert_scalar_lgl(l)
         imp_assert_string(chr)
         imp_assert_bool(b)
@@ -122,8 +120,6 @@ test_that("assertions work - nested_functions", {
     internal_fun <- function(ii, dd, ll, chrchr, bb) {
         imp_assert_scalar_int(ii, arg = deparse(substitute(ii)), call = sys.call(-1L))
         imp_assert_scalar_dbl(dd, arg = deparse(substitute(dd)), call = sys.call(-1L))
-        imp_assert_scalar_num(ii, arg = deparse(substitute(ii)), call = sys.call(-1L))
-        imp_assert_scalar_num(dd, arg = deparse(substitute(dd)), call = sys.call(-1L))
         imp_assert_scalar_lgl(ll, arg = deparse(substitute(ll)), call = sys.call(-1L))
         imp_assert_string(chrchr, arg = deparse(substitute(chrchr)), call = sys.call(-1L))
         imp_assert_bool(bb, arg = deparse(substitute(bb)), call = sys.call(-1L))
@@ -239,3 +235,32 @@ test_that("assertions work - nested_functions", {
 
 })
 
+test_that("numeric assertions work", {
+    x <- 1
+    y <- 1L
+    z <- "cat"
+    w <- 1:10
+
+    expect_identical(imp_assert_scalar_num(x), x)
+
+    expect_identical(imp_assert_scalar_num(y), y)
+
+    expect_error(
+        imp_assert_scalar_num(z),
+        "`z` must be a numeric vector of length 1.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_scalar_num(w),
+        "`w` must be a numeric vector of length 1.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_scalar_num(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
