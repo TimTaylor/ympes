@@ -10,5 +10,6 @@
     - `imp_assert_scalar_chr()`
     - `imp_assert_string()`
 
-- `cc()` function for the interactive quoting of comma separated names.
+- `imp_c` (and alias `cc()`) function for the interactive quoting of comma
+  separated names.
 
