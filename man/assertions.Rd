@@ -38,34 +38,42 @@ otherwise).
 }
 \description{
 Minimal overhead assertions for checking. Motivated by \code{vctrs::vec_assert()}
-but with lower overhead at a cost of less informative error messaging.
+but with lower overhead at a cost of slightly less informative error
+messages.
 }
 \examples{
-a <- "apple"
-i <- 1L
-d <- 1.0
-l <- NA
 
-imp_assert_scalar_int(i)
-try(imp_assert_scalar_int(a))
+# Use in a user facing function
+fun <- function(i, d, l, chr, b) {
+    imp_assert_scalar_int(i)
+    imp_assert_scalar_dbl(d)
+    imp_assert_scalar_num(i)
+    imp_assert_scalar_num(d)
+    imp_assert_scalar_lgl(l)
+    imp_assert_string(chr)
+    imp_assert_bool(b)
+    TRUE
+}
+fun(i=1L, d=1, l=NA, chr="cat", b=TRUE)
+try(fun(d=1, l=NA, chr="cat", b=TRUE))
+try(fun(i=1L, d=1, l=NA, chr=letters))
 
-imp_assert_scalar_dbl(d)
-try(imp_assert_scalar_dbl(i))
-
-imp_assert_scalar_num(i)
-imp_assert_scalar_num(d)
-try(imp_assert_scalar_num(a))
-
-imp_assert_scalar_lgl(l)
-try(imp_assert_scalar_lgl(a))
-
-imp_assert_bool(TRUE)
-try(imp_assert_bool(NA))
-
-imp_assert_scalar_chr(a)
-try(imp_assert_scalar_chr(letters))
-
-imp_assert_string(a)
-try(imp_assert_string(letters))
+# Use in an internal function
+internal_fun <- function(i, d, l, chr, b) {
+    imp_assert_scalar_int(i, arg = deparse(substitute(i)), call = sys.call(-1L))
+    imp_assert_scalar_dbl(d, arg = deparse(substitute(d)), call = sys.call(-1L))
+    imp_assert_scalar_num(i, arg = deparse(substitute(i)), call = sys.call(-1L))
+    imp_assert_scalar_num(d, arg = deparse(substitute(d)), call = sys.call(-1L))
+    imp_assert_scalar_lgl(l, arg = deparse(substitute(l)), call = sys.call(-1L))
+    imp_assert_string(chr, arg = deparse(substitute(chr)), call = sys.call(-1L))
+    imp_assert_bool(b, arg = deparse(substitute(b)), call = sys.call(-1L))
+    TRUE
+}
+external_fun <- function(ii, dd, ll, chrchr, bb) {
+    internal_fun(i=ii, d=dd, l=ll, chr=chrchr,b=bb)
+}
+external_fun(ii=1L, dd=1, ll=NA, chrchr="cat", bb=TRUE)
+try(external_fun(dd=1, ll=NA, chrchr="cat", bb=TRUE))
+try(external_fun(ii=1L, dd=1, ll=NA, chrchr=letters, bb=TRUE))
 
 }
