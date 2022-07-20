@@ -10,6 +10,8 @@
     - `imp_assert_scalar_chr()`
     - `imp_assert_string()`
 
-- `imp_c` (and alias `cc()`) function for the interactive quoting of comma
+- `imp_c()` (and alias `cc()`) function for the interactive quoting of comma
   separated names.
+  
+- `imp_palette()` function for visualising colour palettes.
 
