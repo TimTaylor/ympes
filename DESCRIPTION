@@ -1,6 +1,6 @@
 Package: ympes
 Type: Package
-Title: Collection of utility functions.
+Title: Collection of utility functions
 Version: 0.0.0.9000
 Author: Tim Taylor
 Maintainer: Tim Taylor<tim.taylor@hiddenelephants.co.uk>
