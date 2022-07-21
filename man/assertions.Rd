@@ -38,8 +38,7 @@ otherwise).
 }
 \description{
 Minimal overhead assertions for checking. Motivated by \code{vctrs::vec_assert()}
-but with lower overhead at a cost of slightly less informative error
-messages.
+but with lower overhead at a cost of less informative error messages.
 }
 \examples{
 

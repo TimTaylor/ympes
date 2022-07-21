@@ -1,8 +1,7 @@
 #' Function input assertions
 #'
 #' Minimal overhead assertions for checking. Motivated by `vctrs::vec_assert()`
-#' but with lower overhead at a cost of slightly less informative error
-#' messages.
+#' but with lower overhead at a cost of less informative error messages.
 #'
 #' @param x Argument to check.
 #' @param arg Name of argument being checked (used in error message).
