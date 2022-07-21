@@ -1,6 +1,6 @@
 #' Plot a colour palette
 #'
-#' `imp_palette()` plots a palette from a vector of colour values (name or hex).
+#' `plot_palette()` plots a palette from a vector of colour values (name or hex).
 #'
 #' @param values character vector of named or hex colours.
 #' @param label boolean. Do you want to label the plot or not? If `values` is
@@ -14,13 +14,13 @@
 #' @return The input `values` invisibly.
 #'
 #' @examples
-#' imp_palette(c("#5FE756", "red", "black"))
-#' imp_palette(c("#5FE756", "red", "black"), square=TRUE)
+#' plot_palette(c("#5FE756", "red", "black"))
+#' plot_palette(c("#5FE756", "red", "black"), square=TRUE)
 #'
 #' @importFrom graphics axis image text
 #' @importFrom grDevices col2rgb
 #' @export
-imp_palette <- function(values, label = TRUE, square = FALSE) {
+plot_palette <- function(values, label = TRUE, square = FALSE) {
 
     n <- length(values)
     lbls <- if (is.null(names(values))) values else names(values)

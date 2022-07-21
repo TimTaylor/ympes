@@ -1,7 +1,7 @@
 #' Quote names
 #'
-#' `imp_c()` (and alias `cc()`) quote comma separated names trimming outer
-#'   whitespace. It is intended for interactive use only.
+#' `cc()` quotes comma separated names whilst trimming outer whitespace. It is
+#'   intended for interactive use only.
 #'
 #' @param ... Unquoted names (separated by commas) that you wish to quote;
 #'   empty arguments (e.g. third item in `one,two,,four`) will be returned as
@@ -21,7 +21,7 @@
 #' @importFrom utils capture.output
 #'
 #' @export
-imp_c <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
+cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     res <- substitute(list(...))
     # we use as.character rather than deparse as we simply want quoted names
     res <- as.character(res[-1])
@@ -36,7 +36,3 @@ imp_c <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     }
     res
 }
-
-#' @rdname imp_c
-#' @export
-cc <- imp_c
