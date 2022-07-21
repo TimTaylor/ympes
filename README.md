@@ -7,7 +7,8 @@
 
 ------------------------------------------------------------------------
 
-Image from Le grand Etteilla, ou, l’art de tirer les cartes. Author
-Simon Blocquel (1780–1863, under the pseudonym Julia Orsini). Obtained
-from
+Image from [Le grand Etteilla, ou, l’art de tirer les
+cartes](https://archive.org/details/b29321220/page/192/mode/2up). Author
+Simon Blocquel (1780–1863, under the pseudonym Julia Orsini). B+W
+version (and details) obtained from
 [wikipedia](https://commons.wikimedia.org/wiki/File:Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg).
