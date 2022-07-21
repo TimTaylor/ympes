@@ -7,10 +7,6 @@
 #'   a named vector the names are used for labels, otherwise, the values.
 #' @param square boolean. Display palette as square?
 #'
-#' @references Code inspired by https://stackoverflow.com/a/25726442
-#'   (h/t hrbrmstr) with the algorithm for text contrast coming from
-#'   https://stackoverflow.com/a/3943023.
-#'
 #' @return The input (invisibly).
 #'
 #' @examples
@@ -60,6 +56,7 @@ plot_palette <- function(values, label = TRUE, square = FALSE) {
         }
 
     } else {
+        # h/t hrbrmstr https://stackoverflow.com/a/25726442
         image(
             1:n, 1, as.matrix(1:n), col = values,
             xlab = "", ylab = "", xaxt = "n", yaxt = "n", bty = "n"

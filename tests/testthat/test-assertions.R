@@ -1,4 +1,4 @@
-test_that("assertions work - one layer deep", {
+test_that("scalar assertions work - one layer deep", {
 
     fun <- function(i, d, l, chr, b) {
         imp_assert_scalar_int(i)
@@ -115,7 +115,7 @@ test_that("assertions work - one layer deep", {
 })
 
 
-test_that("assertions work - nested_functions", {
+test_that("scalar assertions work - nested_functions", {
 
     internal_fun <- function(ii, dd, ll, chrchr, bb) {
         imp_assert_scalar_int(ii, arg = deparse(substitute(ii)), call = sys.call(-1L))
@@ -235,6 +235,106 @@ test_that("assertions work - nested_functions", {
 
 })
 
+test_that("integer assertions work", {
+    x <- 1
+    y <- 1L
+
+    expect_identical(imp_assert_int(y), y)
+
+    expect_error(
+        imp_assert_int(x),
+        "`x` must be an integer vector.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_int(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+
+test_that("double assertions work", {
+    x <- 1
+    y <- 1L
+
+    expect_identical(imp_assert_dbl(x), x)
+
+    expect_error(
+        imp_assert_dbl(y),
+        "`y` must be a double vector.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_dbl(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+
+test_that("numeric assertions work", {
+    x <- 1
+    y <- "cat"
+
+    expect_identical(imp_assert_num(x), x)
+
+    expect_error(
+        imp_assert_num(y),
+        "`y` must be a numeric vector.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_num(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+
+test_that("character assertions work", {
+    x <- 1
+    y <- "cat"
+
+    expect_identical(imp_assert_chr(y), y)
+
+    expect_error(
+        imp_assert_chr(x),
+        "`x` must be a character vector.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_chr(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+
+test_that("logical assertions work", {
+    x <- 1
+    y <- NA
+
+    expect_identical(imp_assert_lgl(y), y)
+
+    expect_error(
+        imp_assert_lgl(x),
+        "`x` must be a logical vector.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_lgl(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+
 test_that("numeric assertions work", {
     x <- 1
     y <- 1L
@@ -259,6 +359,20 @@ test_that("numeric assertions work", {
 
     expect_error(
         imp_assert_scalar_num(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+    expect_identical(imp_assert_num(w), w)
+
+    expect_error(
+        imp_assert_num(z),
+        "`z` must be a numeric vector.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_num(arg="TEST"),
         "argument `TEST` is missing, with no default.",
         fixed = TRUE
     )

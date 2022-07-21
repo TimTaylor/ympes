@@ -25,8 +25,3 @@ plot_palette(c("#5FE756", "red", "black"))
 plot_palette(c("#5FE756", "red", "black"), square=TRUE)
 
 }
-\references{
-Code inspired by https://stackoverflow.com/a/25726442
-(h/t hrbrmstr) with the algorithm for text contrast coming from
-https://stackoverflow.com/a/3943023.
-}
