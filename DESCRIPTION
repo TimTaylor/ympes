@@ -5,7 +5,7 @@ Version: 0.0.0.9000
 Author: Tim Taylor
 Maintainer: Tim Taylor<tim.taylor@hiddenelephants.co.uk>
 Description: Provides convenience functions for interactive use as well as
-  helper functions for use in other packages.
+  minimal utility functions for use in other packages.
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
