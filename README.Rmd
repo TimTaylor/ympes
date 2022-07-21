@@ -1,0 +1,27 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+```{r, fig.alt = "Illustration of an imp looking at a hand of playing cards. Published on page 193 of Le grand Etteilla, ou, l'art de tirer les cartes.", out.width="100%", echo=FALSE}
+knitr::include_graphics("artwork/750px-Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg")
+```
+
+___
+
+Image from Le grand Etteilla, ou, l'art de tirer les cartes. Author Simon Blocquel 
+(1780–1863, under the pseudonym Julia Orsini). Obtained from
+[wikipedia](https://commons.wikimedia.org/wiki/File:Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg).
