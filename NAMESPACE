@@ -2,6 +2,8 @@
 
 export(cc)
 export(imp_assert_bool)
+export(imp_assert_data_frame)
+export(imp_assert_list)
 export(imp_assert_scalar_chr)
 export(imp_assert_scalar_dbl)
 export(imp_assert_scalar_int)

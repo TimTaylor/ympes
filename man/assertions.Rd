@@ -9,6 +9,8 @@
 \alias{imp_assert_bool}
 \alias{imp_assert_scalar_chr}
 \alias{imp_assert_string}
+\alias{imp_assert_data_frame}
+\alias{imp_assert_list}
 \title{Function input assertions}
 \usage{
 imp_assert_scalar_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
@@ -24,6 +26,10 @@ imp_assert_bool(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 imp_assert_scalar_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 imp_assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+imp_assert_data_frame(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+imp_assert_list(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 }
 \arguments{
 \item{x}{Argument to check.}

@@ -264,3 +264,41 @@ test_that("numeric assertions work", {
     )
 
 })
+
+test_that("data frame assertions work", {
+    l <- .subset(mtcars)
+    expect_identical(imp_assert_data_frame(mtcars), mtcars)
+
+    expect_error(
+        imp_assert_data_frame(l),
+        "`l` must be a data frame.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_data_frame(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+
+test_that("list assertions work", {
+    l <- list(1,b=2)
+    b <- "bat"
+    expect_identical(imp_assert_list(l), l)
+
+    expect_error(
+        imp_assert_list(b),
+        "`b` must be a list.",
+        fixed = TRUE
+    )
+
+    expect_error(
+        imp_assert_list(arg="TEST"),
+        "argument `TEST` is missing, with no default.",
+        fixed = TRUE
+    )
+
+})
+

@@ -134,5 +134,32 @@ imp_assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-
     imp_assert_scalar_chr(x = x, arg = arg, call = call)
 }
 
+#' @rdname assertions
+#' @export
+imp_assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    if (missing(x)) {
+        msg <- sprintf("argument `%s` is missing, with no default.", arg)
+        stop(simpleError(msg, call[1L]))
+    }
+    if (!is.data.frame(x)) {
+        msg <- sprintf("`%s` must be a data frame.", arg)
+        stop(simpleError(msg, call[1L]))
+    }
+    invisible(x)
+}
+
+#' @rdname assertions
+#' @export
+imp_assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    if (missing(x)) {
+        msg <- sprintf("argument `%s` is missing, with no default.", arg)
+        stop(simpleError(msg, call[1L]))
+    }
+    if (!is.list(x)) {
+        msg <- sprintf("`%s` must be a list.", arg)
+        stop(simpleError(msg, call[1L]))
+    }
+    invisible(x)
+}
 
 
