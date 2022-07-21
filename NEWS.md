@@ -1,7 +1,12 @@
-# ympes 0.0.0.9000
+# ympes 0.1.0
 
-- Scalar assertions for integer, double, numeric, logical, bool and
-  character (string) values
+Initial release of `ympes` which provides utility functions both for interactive
+use and for inclusion in other packages.
+
+## Functions
+
+- Scalar assertions for integer, double, numeric, logical, bool,
+  character (string), list and data frame values.
     - `imp_assert_scalar_int()`
     - `imp_assert_scalar_dbl()`
     - `imp_assert_scalar_num()`
@@ -9,9 +14,10 @@
     - `imp_assert_bool()`
     - `imp_assert_scalar_chr()`
     - `imp_assert_string()`
+    - `imp_assert_list()`
+    - `imp_assert_data_frame()`
 
-- `imp_c()` (and alias `cc()`) function for the interactive quoting of comma
-  separated names.
+- `cc()` for interactive quoting of comma separated names.
   
-- `imp_palette()` function for visualising colour palettes.
+- `plot_palette()` for visualising colour palettes.
 

@@ -19,7 +19,6 @@
 #' cc(dale, audrey, laura, hawk)
 #'
 #' @importFrom utils capture.output
-#'
 #' @export
 cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     res <- substitute(list(...))

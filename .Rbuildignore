@@ -5,3 +5,4 @@
 ^README\.Rmd$
 artwork/*
 ^\.github$
+^cran-comments\.md$

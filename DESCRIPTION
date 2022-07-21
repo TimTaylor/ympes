@@ -1,11 +1,11 @@
 Package: ympes
 Type: Package
-Title: Collection of utility functions
-Version: 0.0.0.9000
+Title: Collection of Utility Functions
+Version: 0.1.0
 Author: Tim Taylor
-Maintainer: Tim Taylor<tim.taylor@hiddenelephants.co.uk>
-Description: Provides convenience functions for interactive use as well as
-  minimal utility functions for use in other packages.
+Maintainer: Tim Taylor <tim.taylor@hiddenelephants.co.uk>
+Description: Provides utility functions both for interactive use and for
+  inclusion in other packages.
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -11,7 +11,7 @@
 #'   (h/t hrbrmstr) with the algorithm for text contrast coming from
 #'   https://stackoverflow.com/a/3943023.
 #'
-#' @return The input `values` invisibly.
+#' @return The input (invisibly).
 #'
 #' @examples
 #' plot_palette(c("#5FE756", "red", "black"))

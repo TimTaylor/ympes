@@ -15,7 +15,7 @@ a named vector the names are used for labels, otherwise, the values.}
 \item{square}{boolean. Display palette as square?}
 }
 \value{
-The input \code{values} invisibly.
+The input (invisibly).
 }
 \description{
 \code{plot_palette()} plots a palette from a vector of colour values (name or hex).
