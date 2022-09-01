@@ -1,5 +1,9 @@
 # ympes (development version)
 
+## New function
+
+- `imp_aggregate_age_counts()` for the fast aggregation of counts across ages.
+
 # ympes 0.1.1
 
 Initial release of `ympes` which provides a collection of lightweight helper
