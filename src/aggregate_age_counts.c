@@ -78,8 +78,7 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
     // allocate output and initialise to 0
     SEXP group_counts = PROTECT(allocVector(REALSXP, n_groups));
     double* p_groups = REAL(group_counts);
-    for (int i = 0; i < n_groups; ++i)
-        p_groups[i] = 0;
+    Memzero(p_groups, n_groups);
 
     // calculate the counts
     int group_index = 0;
@@ -165,8 +164,7 @@ SEXP c_internal_aggregate_age_counts_unsafe(SEXP counts, SEXP ages, SEXP breaks)
     // allocate output and initialise to 0
     SEXP group_counts = PROTECT(allocVector(REALSXP, n_groups));
     double* p_groups = REAL(group_counts);
-    for (int i = 0; i < n_groups; ++i)
-        p_groups[i] = 0;
+    Memzero(p_groups, n_groups);
 
     // calculate the counts
     int group_index = 0;
