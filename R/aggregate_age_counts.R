@@ -6,8 +6,10 @@
 #'
 #' @param counts `[numeric]`. Vector of counts to be aggregated.
 #' @param ages `[numeric]`. Age in years corresponding to `counts`. Defaults to
-#'   0:(N-1) where `N` is the number of counts present.
-#' @param limits `[numeric]`. 1 or more unique and positive cut points.
+#'   0:(N-1) where `N` is the number of counts present. Values will
+#'   be coerced to integer (to avoid ambiguity integer input is preferred).
+#' @param limits `[numeric]`. 1 or more unique and positive cut points. Values
+#'   will be coerced to integer (to avoid ambiguity integer input is preferred).
 #'
 #' The resultant groupings will span the natural numbers (from 0) and will
 #' always be closed on the left and open on the right. To clarify, if
