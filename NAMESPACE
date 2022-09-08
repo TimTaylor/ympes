@@ -2,6 +2,7 @@
 
 export(cc)
 export(imp_aggregate_age_counts)
+export(imp_aggregate_age_counts_c)
 export(imp_assert_bool)
 export(imp_assert_boolean)
 export(imp_assert_character)

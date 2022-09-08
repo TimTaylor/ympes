@@ -1,9 +1,7 @@
 #include <R.h>
 #include <Rinternals.h>
 
-SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
-
-    // TODO - document
+SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
 
     // check and coerce counts input
     if (!isNumeric(counts))
@@ -33,26 +31,37 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
     if (n_ages != n_counts)
         error("`counts` and `ages` must be the same length.");
 
-    // check and coerce breaks input
-    if (!isNumeric(breaks))
-        error("`breaks` must be numeric.");
-    SEXP int_breaks = PROTECT(coerceVector(breaks, INTSXP));
-    int n_breaks = LENGTH(breaks);
-    int* p_breaks = INTEGER(int_breaks);
+    // check and coerce limits input to integer
+    // we have to duplicate when integer as we will later be sorting and do not
+    // want to accidentally sort the user input
+    SEXP int_limits;
+    switch (TYPEOF(limits)) {
+        case INTSXP:
+            int_limits = PROTECT(duplicate(limits));
+            break;
+        case REALSXP:
+            int_limits = PROTECT(coerceVector(limits, INTSXP));
+            break;
+        default:
+            error("`limits` must be numeric.");
+    }
+
+    // check limits contains no NA and are all strictly positive
+    int n_limits = LENGTH(limits);
+    int* p_limits = INTEGER(int_limits);
     int limit;
-    for (int i = 0; i < n_breaks; ++i) {
-        limit = p_breaks[i];
+    for (int i = 0; i < n_limits; ++i) {
+        limit = p_limits[i];
         if (limit == NA_INTEGER)
-            error("`breaks` must not contain missing (NA) values.");
+            error("`limits` must not contain missing (NA) values.");
         if (limit <= 0) {
-            error("`breaks` must be positive.");
+            error("`limits` must be strictly positive.");
         }
     }
-    if (any_duplicated(int_breaks, FALSE))
-        error("`breaks` must be unique.");
 
-    // number of groups (allowing for an NA group)
-    int n_groups = LENGTH(breaks) + 2;
+    // check limits are not duplicated
+    if (any_duplicated(int_limits, FALSE))
+        error("`limits` must be unique.");
 
     // order by age
     int* ind;
@@ -72,8 +81,11 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
         out_counts[i] = p_counts[ind[i]];
     }
 
-    // sort breaks
-    R_isort(p_breaks, n_groups - 2);
+    // sort limits
+    R_isort(p_limits, n_limits);
+
+    // number of groups (allowing for an NA group)
+    int n_groups = n_limits + 2;
 
     // allocate output and initialise to 0
     SEXP group_counts = PROTECT(allocVector(REALSXP, n_groups));
@@ -89,7 +101,7 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
             if (current_age == NA_INTEGER) {
                 p_groups[n_groups-1] += tmp;
             } else {
-                while (group_index < n_groups - 2 && current_age >= p_breaks[group_index])
+                while (group_index < n_groups - 2 && current_age >= p_limits[group_index])
                     ++group_index;
                 p_groups[group_index] += tmp;
             }
@@ -98,7 +110,7 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
         }
     } else {
         for (int i = 0; i < n_ages; ++i) {
-            while (group_index < n_groups - 2 && current_age >= p_breaks[group_index])
+            while (group_index < n_groups - 2 && current_age >= p_limits[group_index])
                 ++group_index;
             p_groups[group_index] += tmp;
             current_age = out_ages[i+1];
@@ -106,29 +118,32 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
         }
     }
 
+    // sort limits
+    R_isort(p_limits, n_limits);
+
     // allocate space for the names
     SEXP names = PROTECT(allocVector(STRSXP, n_groups));
 
-    // first name
-    int bufsz = snprintf(NULL, 0, "[0,%d)", p_breaks[0]);
+    // create first name "[0,%d)"
+    int bufsz = snprintf(NULL, 0, "[0,%d)", p_limits[0]);
     char* buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[0,%d)", p_breaks[0]);
+    snprintf(buf, bufsz + 1, "[0,%d)", p_limits[0]);
     SET_STRING_ELT(names, 0, mkChar(buf));
     R_Free(buf);
 
-    // middle names
-    for (int i = 0; i < n_groups-3; ++i) {
-        bufsz = snprintf(NULL, 0, "[%d,%d)", p_breaks[i], p_breaks[i+1]);
+    // create middle names "[%d,%d)"
+    for (int i = 0; i < n_groups-2; ++i) {
+        bufsz = snprintf(NULL, 0, "[%d,%d)", p_limits[i], p_limits[i+1]);
         buf = R_Calloc(bufsz + 1, char);
-        snprintf(buf, bufsz + 1, "[%d,%d)", p_breaks[i], p_breaks[i+1]);
+        snprintf(buf, bufsz + 1, "[%d,%d)", p_limits[i], p_limits[i+1]);
         SET_STRING_ELT(names, i+1, mkChar(buf));
         R_Free(buf);
     }
 
-    // last names
-    bufsz = snprintf(NULL, 0, "[%d,Inf)", p_breaks[n_groups-3]);
+    // create last name "[%d,Inf)"
+    bufsz = snprintf(NULL, 0, "[%d,Inf)", p_limits[n_groups-3]);
     buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[%d,Inf)", p_breaks[n_groups-3]);
+    snprintf(buf, bufsz + 1, "[%d,Inf)", p_limits[n_groups-3]);
     SET_STRING_ELT(names, n_groups-2, mkChar(buf));
     R_Free(buf);
     SET_STRING_ELT(names, n_groups-1, mkChar("NA"));
@@ -142,80 +157,3 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
     return group_counts;
 
 }
-
-
-SEXP c_internal_aggregate_age_counts_unsafe(SEXP counts, SEXP ages, SEXP breaks) {
-
-    // TODO - document coercion
-    SEXP dbl_counts = PROTECT(coerceVector(counts, REALSXP));
-    int n_counts = LENGTH(dbl_counts);
-    double* p_counts = REAL(dbl_counts);
-
-    SEXP int_ages = PROTECT(coerceVector(ages, INTSXP));
-    int n_ages = LENGTH(int_ages);
-    int* p_ages = INTEGER(int_ages);
-
-    SEXP int_breaks = PROTECT(coerceVector(breaks, INTSXP));
-    int n_breaks = LENGTH(breaks);
-    int* p_breaks = INTEGER(int_breaks);
-
-    int n_groups = LENGTH(breaks) + 2;
-
-    // allocate output and initialise to 0
-    SEXP group_counts = PROTECT(allocVector(REALSXP, n_groups));
-    double* p_groups = REAL(group_counts);
-    Memzero(p_groups, n_groups);
-
-    // calculate the counts
-    int group_index = 0;
-    int current_age = p_ages[0];
-    double tmp = p_counts[0];
-    for (int i = 0; i < n_ages; ++i) {
-        if (current_age == NA_INTEGER) {
-            p_groups[n_groups-1] += tmp;
-        } else {
-            while (group_index < n_groups - 2 && current_age >= p_breaks[group_index])
-                ++group_index;
-            p_groups[group_index] += tmp;
-        }
-        current_age = p_ages[i+1];
-        tmp = p_counts[i+1];
-    }
-
-    // allocate space for the names
-    SEXP names = PROTECT(allocVector(STRSXP, n_groups));
-
-    // first name
-    int bufsz = snprintf(NULL, 0, "[0,%d)", p_breaks[0]);
-    char* buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[0,%d)", p_breaks[0]);
-    SET_STRING_ELT(names, 0, mkChar(buf));
-    R_Free(buf);
-
-    // middle names
-    for (int i = 0; i < n_groups-3; ++i) {
-        bufsz = snprintf(NULL, 0, "[%d,%d)", p_breaks[i], p_breaks[i+1]);
-        buf = R_Calloc(bufsz + 1, char);
-        snprintf(buf, bufsz + 1, "[%d,%d)", p_breaks[i], p_breaks[i+1]);
-        SET_STRING_ELT(names, i+1, mkChar(buf));
-        R_Free(buf);
-    }
-
-    // last names
-    bufsz = snprintf(NULL, 0, "[%d,Inf)", p_breaks[n_groups-3]);
-    buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[%d,Inf)", p_breaks[n_groups-3]);
-    SET_STRING_ELT(names, n_groups-2, mkChar(buf));
-    R_Free(buf);
-    SET_STRING_ELT(names, n_groups-1, mkChar("NA"));
-
-    // set names attribute
-    setAttrib(group_counts, R_NamesSymbol, names);
-
-    // cleanup
-    UNPROTECT(5);
-
-    return group_counts;
-
-}
-
