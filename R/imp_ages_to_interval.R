@@ -23,30 +23,39 @@
 imp_ages_to_interval <- function(ages, limits = c(1L,5L,15L,25L,45L,65L)) {
 
     # input checks
-    if (!is.numeric(ages) || isTRUE(any(ages < 0 )))
-        stop("`ages` must be numeric and non-negative")
+    imp_assert_numeric(ages)
+    na_ages <- is.na(ages)
+    if (any(ages < 0 && !na_ages))
+        stop("`ages` must be non-negative or NA")
     ages <- as.integer(ages)
 
     if (!is.numeric(limits) || anyNA(limits) || any(limits <=0) || anyDuplicated.default(limits))
-        stop("`limits` must be unique and all positive.")
+        stop("`limits` must be unique and positive.")
     limits <- as.integer(limits)
 
     # ensure limits are sorted
     limits <- sort(limits)
 
     # create bounds
-    max_age <- max(ages)
-    upper <- c(limits, max_age + 1L)
-    lower <- c(0L, limits)
-    reps <- upper - lower
-
-    # create levels and intervals
-    upper[length(upper)] <- "Inf"
-    levels <- sprintf("[%d,%s)", lower, upper)
-    intervals <- rep.int(seq_along(levels), times = reps)
+    if (all(na_ages)) {
+        limits <- as.character(limits)
+        upper <- c(limits, "Inf")
+        lower <- c("0", limits)
+        levels <- sprintf("[%d,%s)", lower, upper)
+        out <- ages
+    } else {
+        max_age <- max(ages, na.rm = TRUE)
+        upper <- c(limits, max_age + 1L)
+        lower <- c(0L, limits)
+        reps <- upper - lower
+        reps[reps<0] <- 0
+        upper[length(upper)] <- "Inf"
+        levels <- sprintf("[%d,%s)", lower, upper)
+        intervals <- rep.int(seq_along(levels), times = reps)
+        out <- intervals[ages+1L]
+    }
 
     # return as factor
-    out <- intervals[ages+1L]
     class(out) <- "factor"
     `levels<-`(out, levels)
 }
