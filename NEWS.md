@@ -1,8 +1,13 @@
 # ympes (development version)
 
-## New function
+## New functions
 
-- `imp_aggregate_age_counts()` for the fast aggregation of counts across ages.
+- `imp_ages_to_interval()` provides fast categorisation of ages based on
+  specified limits. 
+
+- `imp_aggregate_age_counts()` and `imp_aggregate_age_counts_c()` for the
+  aggregation of counts across ages.
+
 
 # ympes 0.1.1
 
