@@ -5,14 +5,14 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
 
     // check and coerce counts input
     if (!isNumeric(counts))
-        error("`counts` must be numeric.");
+        error("`counts` must be a numeric vector.");
     SEXP dbl_counts = PROTECT(coerceVector(counts, REALSXP));
     int n_counts = LENGTH(dbl_counts);
     double* p_counts = REAL(dbl_counts);
 
     // check and coerce ages input
     if (!isNumeric(ages))
-        error("`ages` must be numeric.");
+        error("`ages` must be a numeric vector.");
     SEXP int_ages = PROTECT(coerceVector(ages, INTSXP));
     int n_ages = LENGTH(int_ages);
     int* p_ages = INTEGER(int_ages);
@@ -23,7 +23,7 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
         if (age == NA_INTEGER) {
             flag_na = 1;
         } else if (age < 0) {
-            error("`ages` must be non-negative");
+            error("`ages` must be nonnegative or NA.");
         }
     }
 
@@ -43,7 +43,7 @@ SEXP c_internal_aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
             int_limits = PROTECT(coerceVector(limits, INTSXP));
             break;
         default:
-            error("`limits` must be numeric.");
+            error("`limits` must be a numeric vector.");
     }
 
     // check limits contains no NA and are all strictly positive

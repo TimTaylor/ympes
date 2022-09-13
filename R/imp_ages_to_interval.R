@@ -25,8 +25,8 @@ imp_ages_to_interval <- function(ages, limits = c(1L,5L,15L,25L,45L,65L)) {
     # input checks
     imp_assert_numeric(ages)
     na_ages <- is.na(ages)
-    if (any(ages < 0 && !na_ages))
-        stop("`ages` must be non-negative or NA")
+    if (any(ages < 0 & !na_ages))
+        stop("`ages` must be nonnegative or NA.")
     ages <- as.integer(ages)
 
     if (!is.numeric(limits) || anyNA(limits) || any(limits <=0) || anyDuplicated.default(limits))
@@ -41,7 +41,7 @@ imp_ages_to_interval <- function(ages, limits = c(1L,5L,15L,25L,45L,65L)) {
         limits <- as.character(limits)
         upper <- c(limits, "Inf")
         lower <- c("0", limits)
-        levels <- sprintf("[%d,%s)", lower, upper)
+        levels <- sprintf("[%s,%s)", lower, upper)
         out <- ages
     } else {
         max_age <- max(ages, na.rm = TRUE)
