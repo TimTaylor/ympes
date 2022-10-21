@@ -1,5 +1,7 @@
 # ympes (development version)
 
+The testing framework used by `ympes` has changed from `testhat` to `tinytest`.
+
 # ympes 0.1.1
 
 Initial release of `ympes` which provides a collection of lightweight helper
