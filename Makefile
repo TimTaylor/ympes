@@ -13,11 +13,11 @@ check: pkg
 cran: pkg
 	R CMD check --as-cran *.tar.gz
 
-#test: doc
-#	R -s -e "tinytest::build_install_test('.')"
-
 test: doc
-	R -s -e "devtools::test('.')"
+	R -s -e "tinytest::build_install_test('.')"
+
+#test: doc
+#	R -s -e "devtools::test('.')"
 
 manual: doc
 	R CMD Rd2pdf --force -o manual.pdf .
