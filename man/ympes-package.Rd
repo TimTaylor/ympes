@@ -12,6 +12,7 @@ Provides a collection of lightweight helper functions (imps) both for interactiv
 Useful links:
 \itemize{
   \item \url{https://timtaylor.github.io/ympes/}
+  \item Report bugs at \url{https://github.com/TimTaylor/ympes/issues}
 }
 
 }

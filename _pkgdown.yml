@@ -1,4 +1,28 @@
 url: https://timtaylor.github.io/ympes/
 template:
   bootstrap: 5
+development:
+  mode: auto
 
+reference:
+- title: "Plotting"
+  desc: "Plot a palette from a vector of colour values"
+  contents:
+  - plot_palette
+- title: "Quote input"
+  desc: "Quotes comma separated names"
+  contents:
+  - cc
+- title: "Age interval utilities"
+  contents:
+  - ages_to_interval
+  - split_interval_counts
+  - aggregate_age_counts
+  - reaggregate_interval_counts
+- title: "Input assertions"
+  desc: "Minimal input assertions for both internal and external facing functions"
+  contents:
+  - starts_with("imp_assert")
+- title: "Data sets"
+  contents:
+  - pop_dat

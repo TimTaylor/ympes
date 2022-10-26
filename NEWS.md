@@ -1,8 +1,8 @@
 # ympes (development version)
 
-## New functions
+## Functions
 
-For working with age intervals:
+- New functions for working with age intervals:
 
     - `ages_to_interval()` provides categorisation of ages based on specified
       right-hand interval limits.
@@ -13,11 +13,10 @@ For working with age intervals:
     - `aggregate_age_counts()` provides aggregation of counts across ages (in
       years).
     
-    - `reaggregate_interval_counts()` which is equivalent to, but more efficient
-      than, calling `split_interval_counts()` follower by
-      `aggregate_age_counts()`.
+    - `reaggregate_interval_counts()` which is equivalent to calling
+      `split_interval_counts()` followed by `aggregate_age_counts()`.
 
-## Changes
+## Other
 
 The testing framework used by `ympes` has migrated from `testhat` to `tinytest`.
 
