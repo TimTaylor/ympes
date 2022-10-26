@@ -6,7 +6,7 @@
 \alias{ympes-package}
 \title{ympes: Collection of Helper Functions}
 \description{
-Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include minimal assertion functions with a focus on informative error messaging for both missing and incorrect function arguments as well as other functions for visualising colour palettes and quoting user input.
+Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include minimal assertion functions with a focus on informative error messaging for both missing and incorrect function arguments as well as other functions for visualising colour palettes, quoting user input and working with age intervals.
 }
 \author{
 \strong{Maintainer}: Tim Taylor \email{tim.taylor@hiddenelephants.co.uk} (\href{https://orcid.org/0000-0002-8587-7113}{ORCID}) [copyright holder]

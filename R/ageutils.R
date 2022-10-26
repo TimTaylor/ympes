@@ -1,6 +1,3 @@
-#' @useDynLib ympes, .registration = TRUE, .fixes = "C_"
-NULL
-
 #' Utilities for Age Intervals
 #'
 #' @description

@@ -51,3 +51,4 @@ rsconnect/
 # src stuff
 *.o
 *.so
+inst/doc

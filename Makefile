@@ -32,4 +32,4 @@ clean:
 	rm -rf *.Rcheck
 	rm -rf revdep
 	rm -f *.tar.gz
-	rm manual.pdf
+	rm -f manual.pdf
