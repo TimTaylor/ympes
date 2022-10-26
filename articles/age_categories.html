@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ympes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,14 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/TimTaylor/ympes/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -67,49 +74,35 @@
       <img src="" class="logo" alt=""><h1>Utilities for Working with Age Categories</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/TimTaylor/ympes/blob/HEAD/vignettes/age_categories.Rmd" class="external-link"><code>vignettes/age_categories.Rmd</code></a></small>
       <div class="d-none name"><code>age_categories.Rmd</code></div>
     </div>
 
     
     
 <p>ympes provides a collection of functions for working with age
-intervals that have been optimised for performance:</p>
-<ul>
-<li><p><code><a href="../reference/ageutils.html">ages_to_interval()</a></code> provides categorisation of ages
-based on specified right-hand interval limits. The resultant groupings
-will span the natural numbers (from 0) and will always be closed on the
-left and open on the right. For example, if
-<code>limits = c(1,10,30)</code> the possible groupings will be “[0,
-1)”, “[1, 10)”, “[10, 30)” and “[30, Inf)”. This is roughly comparable
-to a call of
+intervals with underlying implementations that have been optimised for
+performance.</p>
+<div class="section level2">
+<h2 id="ages_to_interval">
+<code>ages_to_interval()</code><a class="anchor" aria-label="anchor" href="#ages_to_interval"></a>
+</h2>
+<p><code><a href="../reference/ageutils.html">ages_to_interval()</a></code> provides categorisation of ages based
+on specified right-hand interval limits. The resultant groupings will
+span the natural numbers (from 0) and will always be closed on the left
+and open on the right. For example, if <code>limits = c(1,10,30)</code>
+the possible groupings will be “[0, 1)”, “[1, 10)”, “[10, 30)” and “[30,
+Inf)”. This is roughly comparable to a call of
 <code>cut(ages, right = FALSE, breaks = c(0, limits))</code> but with
 the start and end points of the interval returned as entries in a
-list.</p></li>
-<li><p><code><a href="../reference/ageutils.html">split_interval_counts()</a></code> splits counts within a age
-interval in to counts for individuals years based on a given weighting.
-Age intervals are specified by their lower (closed) and upper (open)
-bounds, i.e. intervals of the form [lower, upper).</p></li>
-<li><p><code><a href="../reference/ageutils.html">aggregate_age_counts()</a></code> provides aggregation of
-counts across ages (in years). It is similar to a <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> and
-<code><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply()</a></code> pattern but optimised for speed over flexibility.
-Groupings are the same as in <code><a href="../reference/ageutils.html">ages_to_interval()</a></code> and counts
-will be provided across all natural numbers as well as for missing
-values.</p></li>
-<li><p><code><a href="../reference/ageutils.html">reaggregate_interval_counts()</a></code> is equivalent to, but
-more efficient than, calling <code><a href="../reference/ageutils.html">split_interval_counts()</a></code> and
-then <code><a href="../reference/ageutils.html">aggregate_age_counts()</a></code>.</p></li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://timtaylor.github.io/ympes/">ympes</a></span><span class="op">)</span></span></code></pre></div>
+list.</p>
 <p>Note that the default <code>limits</code> argument in all functions
-is set to limits = c(1L, 5L, 15L, 25L, 45L, 65L). We explicitly set this
-in the examples below for clarity.</p>
-<div class="section level2">
-<h2 id="examples-for-ages_to_interval">Examples for <code>ages_to_interval()</code><a class="anchor" aria-label="anchor" href="#examples-for-ages_to_interval"></a>
-</h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ageutils.html">ages_to_interval</a></span><span class="op">(</span>ages <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">5L</span>, <span class="fl">15L</span>, <span class="fl">25L</span>, <span class="fl">45L</span>, <span class="fl">65L</span><span class="op">)</span><span class="op">)</span></span>
+is set to <code>limits = c(1L, 5L, 15L, 25L, 45L, 65L)</code> but for
+clarity in examples we will explicitly set this value where used.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://timtaylor.github.io/ympes/">ympes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ageutils.html">ages_to_interval</a></span><span class="op">(</span>ages <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">5L</span>, <span class="fl">15L</span>, <span class="fl">25L</span>, <span class="fl">45L</span>, <span class="fl">65L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    interval lower_bound upper_bound</span></span>
 <span><span class="co">#&gt; 1    [0, 1)           0           1</span></span>
 <span><span class="co">#&gt; 2    [1, 5)           1           5</span></span>
@@ -146,9 +139,14 @@ in the examples below for clarity.</p>
 <span><span class="co">#&gt; 7 Levels: [0, 1) &lt; [1, 5) &lt; [5, 15) &lt; [15, 25) &lt; [25, 45) &lt; ... &lt; [65, Inf)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="examples-for-split_interval_counts">Examples for <code>split_interval_counts()</code><a class="anchor" aria-label="anchor" href="#examples-for-split_interval_counts"></a>
+<h2 id="split_interval_counts">
+<code>split_interval_counts()</code><a class="anchor" aria-label="anchor" href="#split_interval_counts"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p><code><a href="../reference/ageutils.html">split_interval_counts()</a></code> splits counts within a age
+interval in to counts for individuals years based on a given weighting.
+Age intervals are specified by their lower (closed) and upper (open)
+bounds, i.e. intervals of the form [lower, upper).</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># by default counts are split equally across ages within intervals</span></span>
 <span><span class="fu"><a href="../reference/ageutils.html">split_interval_counts</a></span><span class="op">(</span></span>
 <span>    lower_bounds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">5L</span>, <span class="fl">10L</span><span class="op">)</span>,</span>
@@ -213,9 +211,16 @@ in the examples below for clarity.</p>
 <span><span class="co">#&gt; 20  19 0.000000</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="examples-for-aggregate_age_counts">Examples for <code>aggregate_age_counts()</code><a class="anchor" aria-label="anchor" href="#examples-for-aggregate_age_counts"></a>
+<h2 id="aggregate_age_counts">
+<code>aggregate_age_counts()</code><a class="anchor" aria-label="anchor" href="#aggregate_age_counts"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p><code><a href="../reference/ageutils.html">aggregate_age_counts()</a></code> provides aggregation of counts
+across ages (in years). It is similar to a <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> and
+<code><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply()</a></code> pattern but optimised for speed over flexibility.
+Groupings are the same as in <code><a href="../reference/ageutils.html">ages_to_interval()</a></code> and counts
+will be provided across all natural numbers as well as for missing
+values.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># default ages generated as 0:(length(counts) - 1L) if only counts provided.</span></span>
 <span><span class="fu"><a href="../reference/ageutils.html">aggregate_age_counts</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">65</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">5L</span>, <span class="fl">15L</span>, <span class="fl">25L</span>, <span class="fl">45L</span>, <span class="fl">65L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    interval lower_bound upper_bound count</span></span>
@@ -253,16 +258,17 @@ in the examples below for clarity.</p>
 <span><span class="co">#&gt; 8      &lt;NA&gt;          NA          NA   990</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example-for-reaggregate_interval_counts">Example for <code>reaggregate_interval_counts()</code><a class="anchor" aria-label="anchor" href="#example-for-reaggregate_interval_counts"></a>
+<h2 id="reaggregate_interval_counts">
+<code>reaggregate_interval_counts()</code><a class="anchor" aria-label="anchor" href="#reaggregate_interval_counts"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem
-of distributing counts in to a different set of age intervals from what
-you have been given. We use some output obtained from the 2021 census
-and modify based on our desired interval limits. Note that
-<code>reaggregate_age_counts()</code> is equivalent to applying
-<code><a href="../reference/ageutils.html">split_interval_counts()</a></code> followed by a a called to
+<p><code><a href="../reference/ageutils.html">reaggregate_interval_counts()</a></code> is equivalent to, but more
+efficient than, calling <code><a href="../reference/ageutils.html">split_interval_counts()</a></code> and then
 <code><a href="../reference/ageutils.html">aggregate_age_counts()</a></code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>The example below shows how it can be used to redistribute counts
+across a desired set of age intervals. We use data included in the
+package that has been obtained from the 2021 census and modify this
+based on our desired interval limits.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># census data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">pop_dat</span><span class="op">)</span></span>
 <span><span class="va">pop_dat</span></span>
