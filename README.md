@@ -5,7 +5,7 @@
 [![R-CMD-check](https://github.com/TimTaylor/ympes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TimTaylor/ympes/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-<img src="artwork/750px-Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg" title="Illustration of an imp looking at a hand of playing cards. Published on page 193 of Le grand Etteilla, ou, l'art de tirer les cartes." alt="Illustration of an imp looking at a hand of playing cards. Published on page 193 of Le grand Etteilla, ou, l'art de tirer les cartes." width="100%" />
+<img src="man/figures/750px-Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg" alt="Illustration of an imp looking at a hand of playing cards. Published on page 193 of Le grand Etteilla, ou, l'art de tirer les cartes." width="100%" />
 
 ------------------------------------------------------------------------
 

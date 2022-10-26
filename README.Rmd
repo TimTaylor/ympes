@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 ```{r, fig.alt = "Illustration of an imp looking at a hand of playing cards. Published on page 193 of Le grand Etteilla, ou, l'art de tirer les cartes.", out.width="100%", echo=FALSE}
-knitr::include_graphics("artwork/750px-Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg")
+knitr::include_graphics("man/figures/750px-Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg")
 ```
 
 ___
