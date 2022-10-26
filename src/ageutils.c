@@ -11,9 +11,9 @@
 SEXP ages_to_interval(SEXP ages, SEXP limits) {
 
     // ensure numeric input
-    if (!isNumeric(ages))
+    if (!isReal(ages) && !isInteger(ages))
         error("`ages` must be integer(ish).");
-    if (!isNumeric(limits))
+    if (!isReal(limits) && !isInteger(limits))
         error("`limits` must be integer(ish).");
 
     // coerce to integer
@@ -141,20 +141,20 @@ SEXP ages_to_interval(SEXP ages, SEXP limits) {
 SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SEXP max_upper, SEXP weights) {
 
     // ensure numeric bounds, counts, max_upper and weights
-    if (!isNumeric(lower_bounds))
+    if (!isReal(lower_bounds) && !isInteger(lower_bounds))
         error("`lower_bounds` must be integer(ish).");
-    if (!isNumeric(upper_bounds))
+    if (!isReal(upper_bounds) && !isInteger(upper_bounds))
         error("`upper_bounds` must be integer(ish).");
     if (!isNumeric(counts))
         error("`counts` must be numeric.");
-    if (!isNumeric(max_upper) || LENGTH(max_upper) != 1)
+    if ((!isReal(max_upper) && !isInteger(max_upper)) || LENGTH(max_upper) != 1)
         error("`max_upper` must be an integer of length 1.");
 
     // check max_upper
     max_upper = PROTECT(coerceVector(max_upper, INTSXP));
     int max = INTEGER(max_upper)[0];
     if (max > MAXBOUND || max == NA_INTEGER)
-        error("`max_upper` must be less than %d.", MAXBOUND);
+        error("`max_upper` must be less than or equal to %d.", MAXBOUND);
 
     // check bounds have compatible lengths
     int n_lower_bounds = LENGTH(lower_bounds);
@@ -201,7 +201,7 @@ SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SE
         weights = PROTECT(coerceVector(weights, REALSXP));
         int n_weights = LENGTH(weights);
         if (n_weights != max)
-            error("`weights must be a vector of length %d (`max_upper`) representing ages 0:%d", max, max - 1);
+            error("`weights` must be a vector of length %d (`max_upper`) representing ages 0:%d", max, max - 1);
         p_weights = REAL(weights);
         for (int i = 0; i < n_weights; i++) {
             if (ISNA(p_weights[i]) || p_weights[i] < 0)
@@ -293,9 +293,9 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
     // ensure numeric input
     if (!isNumeric(counts))
         error("`counts` must be numeric.");
-    if (!isNumeric(ages))
+    if (!isReal(ages) && !isInteger(ages))
         error("`ages` must be integer(ish).");
-    if (!isNumeric(limits))
+    if (!isReal(limits) && !isInteger(limits))
         error("`limits` must be integer(ish).");
 
     // coerce input
