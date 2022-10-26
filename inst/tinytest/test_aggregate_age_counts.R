@@ -66,6 +66,18 @@ expect_error(
 )
 
 expect_error(
+    aggregate_age_counts(1:10, as.character(1:10), 5L),
+    "`ages` must be integer(ish).",
+    fixed = TRUE
+)
+
+expect_error(
+    aggregate_age_counts(1:10, 1:9, 5L),
+    "`ages` and `counts` must be the same length.",
+    fixed = TRUE
+)
+
+expect_error(
     aggregate_age_counts("bob"),
     "`counts` must be numeric.",
     fixed = TRUE
@@ -95,4 +107,20 @@ expect_error(
     fixed = TRUE
 )
 
+expect_error(
+    aggregate_age_counts(1:10, limits = "5"),
+    "`limits` must be integer(ish).",
+    fixed = TRUE
+)
 
+ages <- 1:10
+ages[1] <- -1L
+counts <- 1:10
+expect_error(
+    aggregate_age_counts(counts, ages),
+    "`ages` must be in the interval `[0, 200)` or NA.",
+    fixed = TRUE
+)
+
+# success
+expect_silent(aggregate_age_counts(1:10, rep.int(NA_integer_,10L)))

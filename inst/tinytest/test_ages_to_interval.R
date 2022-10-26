@@ -92,6 +92,12 @@ expect_error(
 )
 
 expect_error(
+    ages_to_interval(1:10, limits = "5L"),
+    "`limits` must be integer(ish).",
+    fixed = TRUE
+)
+
+expect_error(
     ages_to_interval(-1:10),
     "`ages` must be in the interval `[0, 200)` or NA.",
     fixed = TRUE

@@ -52,5 +52,3 @@ expect_equal(
     ),
     expected
 )
-
-
