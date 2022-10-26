@@ -204,7 +204,7 @@ SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SE
             error("`weights must be a vector of length %d (`max_upper`) representing ages 0:%d", max, max - 1);
         p_weights = REAL(weights);
         for (int i = 0; i < n_weights; i++) {
-            if (ISNA(p_weights[i]) || weights < 0)
+            if (ISNA(p_weights[i]) || p_weights[i] < 0)
                 error("`weights` must be positive and not missing (NA).");
         }
     }
