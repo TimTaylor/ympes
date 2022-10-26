@@ -1,4 +1,4 @@
-# ympes (development version)
+# ympes 0.2.0
 
 ## Functions
 
