@@ -14,42 +14,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-ympes provides a collection of functions for working with age intervals that
-have been optimised for performance:
+ympes provides a collection of functions for working with age intervals with
+underlying implementations that have been optimised for performance.
 
-- `ages_to_interval()` provides categorisation of ages based on specified
-  right-hand interval limits. The resultant groupings will span the natural
-  numbers (from 0) and will always be closed on the left and open on the
-  right. For example, if `limits = c(1,10,30)` the possible groupings will be
-  "[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
-  to a call of `cut(ages, right = FALSE, breaks = c(0, limits))` but with the
-  start and end points of the interval returned as entries in a list.
+## `ages_to_interval()`
 
-- `split_interval_counts()` splits counts within a age interval in to counts
-  for individuals years based on a given weighting. Age intervals are
-  specified by their lower (closed) and upper (open) bounds, i.e. intervals
-  of the form [lower, upper).
+`ages_to_interval()` provides categorisation of ages based on specified 
+right-hand interval limits. The resultant groupings will span the natural 
+numbers (from 0) and will always be closed on the left and open on the right.
+For example, if `limits = c(1,10,30)` the possible groupings will be "[0, 1)",
+"[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable to a call of
+`cut(ages, right = FALSE, breaks = c(0, limits))` but with the start and end
+points of the interval returned as entries in a list.
 
-- `aggregate_age_counts()` provides aggregation of counts across ages (in
-  years). It is similar to a `cut()` and `tapply()` pattern but optimised for
-  speed over flexibility. Groupings are the same as in `ages_to_interval()`
-  and counts will be provided across all natural numbers as well as for
-  missing values.
-
-- `reaggregate_interval_counts()` is equivalent to, but more efficient than,
-  calling `split_interval_counts()` and then `aggregate_age_counts()`.
+Note that the default `limits` argument in all functions is set to
+`limits = c(1L, 5L, 15L, 25L, 45L, 65L)` but for clarity in examples we
+will explicitly set this value where used.
 
 ```{r}
 library(ympes)
-```
 
-Note that the default `limits` argument in all functions is set to 
-limits = c(1L, 5L, 15L, 25L, 45L, 65L). We explicitly set this in the examples
-below for clarity.
-
-## Examples for `ages_to_interval()`
-
-```{r}
 ages_to_interval(ages = 0:9, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
 
 ages_to_interval(1:10, limits = 6L)
@@ -59,7 +43,12 @@ str(x <- ages_to_interval(1:100))
 head(x$interval)
 ```
 
-## Examples for `split_interval_counts()`
+## `split_interval_counts()`
+
+`split_interval_counts()` splits counts within a age interval in to counts for
+individuals years based on a given weighting. Age intervals are specified by
+their lower (closed) and upper (open) bounds, i.e. intervals of the form
+[lower, upper).
 
 ```{r}
 # by default counts are split equally across ages within intervals
@@ -84,7 +73,12 @@ split_interval_counts(
 )
 ```
 
-## Examples for `aggregate_age_counts()`
+## `aggregate_age_counts()`
+
+`aggregate_age_counts()` provides aggregation of counts across ages (in years).
+It is similar to a `cut()` and `tapply()` pattern but optimised for speed over
+flexibility. Groupings are the same as in `ages_to_interval()` and counts will
+be provided across all natural numbers as well as for missing values.
 
 ```{r}
 # default ages generated as 0:(length(counts) - 1L) if only counts provided.
@@ -102,14 +96,15 @@ aggregate_age_counts(
 )
 ```
 
-## Example for `reaggregate_interval_counts()`
+## `reaggregate_interval_counts()`
 
-This is a basic example which shows you how to solve a common problem of
-distributing counts in to a different set of age intervals from what you have
-been given. We use some output obtained from the 2021 census and modify 
-based on our desired interval limits. Note that `reaggregate_age_counts()` is
-equivalent to applying `split_interval_counts()` followed by a a called to 
-`aggregate_age_counts()`.
+`reaggregate_interval_counts()` is equivalent to, but more efficient than,
+calling `split_interval_counts()` and then `aggregate_age_counts()`.
+
+The example below shows how it can be used to redistribute counts across a
+desired set of age intervals. We use data included in the package that has been
+obtained from the 2021 census and modify this based on our desired interval
+limits. 
 
 ```{r}
 # census data
