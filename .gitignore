@@ -52,3 +52,4 @@ rsconnect/
 *.o
 *.so
 inst/doc
+docs
