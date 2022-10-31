@@ -1,3 +1,8 @@
+# ympes 0.2.1
+
+Fixes a memory bug in ages_to_interval() that was highlighted via CRAN's
+Valgrind checks.
+
 # ympes 0.2.0
 
 ## Functions

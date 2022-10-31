@@ -90,8 +90,8 @@ SEXP ages_to_interval(SEXP ages, SEXP limits) {
     R_Free(buf);
 
     // create middle names "[%d,%d)"
-    for (int i = 0; i < n_limits; ++i) {
-        bufsz = snprintf(NULL, 0, "[%d, %d)", p_limits[i], p_limits[i+1]);
+    for (int i = 0; i < n_limits - 1; ++i) {
+        bufsz = snprintf(NULL, 0, "[%d, %d)", (int) p_limits[i], (int) p_limits[i+1]);
         buf = R_Calloc(bufsz + 1, char);
         snprintf(buf, bufsz + 1, "[%d, %d)", (int) p_limits[i], (int) p_limits[i+1]);
         SET_STRING_ELT(lvls, i+1, mkChar(buf));
@@ -99,9 +99,9 @@ SEXP ages_to_interval(SEXP ages, SEXP limits) {
     }
 
     // create last name "[%d, Inf)"
-    bufsz = snprintf(NULL, 0, "[%d, Inf)", p_limits[n_limits - 1]);
+    bufsz = snprintf(NULL, 0, "[%d, Inf)", (int) p_limits[n_limits - 1]);
     buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[%d, Inf)", p_limits[n_limits - 1]);
+    snprintf(buf, bufsz + 1, "[%d, Inf)", (int) p_limits[n_limits - 1]);
     SET_STRING_ELT(lvls, n_limits, mkChar(buf));
     R_Free(buf);
 
