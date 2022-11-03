@@ -65,7 +65,7 @@ expect_error(
 )
 
 expect_error(
-    fun(i=1L, d=c(1,1), l=NA, chr="cat", b=TRUE),
+    fun(i=1L, d=c(1, 1), l=NA, chr="cat", b=TRUE),
     "`d` must be a double vector of length 1.",
     fixed = TRUE
 )
@@ -77,7 +77,7 @@ expect_error(
 )
 
 expect_error(
-    fun(i=1L, d=1, l=c(NA,NA), chr="cat", b=TRUE),
+    fun(i=1L, d=1, l=c(NA, NA), chr="cat", b=TRUE),
     "`l` must be a logical vector of length 1.",
     fixed = TRUE
 )
@@ -107,7 +107,7 @@ expect_error(
 )
 
 expect_error(
-    fun(i=1L, d=1, l=NA, chr="cat", b=c(TRUE,TRUE)),
+    fun(i=1L, d=1, l=NA, chr="cat", b=c(TRUE, TRUE)),
     "`b` must be boolean (TRUE/FALSE).",
     fixed = TRUE
 )
@@ -125,7 +125,7 @@ internal_fun <- function(ii, dd, ll, chrchr, bb) {
 }
 
 external_fun <- function(i, d, l, chr, b) {
-    internal_fun(ii=i, dd=d, ll=l, chrchr=chr,bb=b)
+    internal_fun(ii=i, dd=d, ll=l, chrchr=chr, bb=b)
 }
 
 # all arguments correc
@@ -184,7 +184,7 @@ expect_error(
 )
 
 expect_error(
-    external_fun(i=1L, d=c(1,1), l=NA, chr="cat", b=TRUE),
+    external_fun(i=1L, d=c(1, 1), l=NA, chr="cat", b=TRUE),
     "`d` must be a double vector of length 1.",
     fixed = TRUE
 )
@@ -196,7 +196,7 @@ expect_error(
 )
 
 expect_error(
-    external_fun(i=1L, d=1, l=c(NA,NA), chr="cat", b=TRUE),
+    external_fun(i=1L, d=1, l=c(NA, NA), chr="cat", b=TRUE),
     "`l` must be a logical vector of length 1.",
     fixed = TRUE
 )
@@ -226,7 +226,7 @@ expect_error(
 )
 
 expect_error(
-    external_fun(i=1L, d=1, l=NA, chr="cat", b=c(TRUE,TRUE)),
+    external_fun(i=1L, d=1, l=NA, chr="cat", b=c(TRUE, TRUE)),
     "`b` must be boolean (TRUE/FALSE).",
     fixed = TRUE
 )
@@ -387,7 +387,7 @@ expect_error(
 
 
 # list assertions
-l <- list(1,b=2)
+l <- list(1, b=2)
 b <- "bat"
 expect_identical(imp_assert_list(l), l)
 
@@ -402,6 +402,3 @@ expect_error(
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
-
-
-

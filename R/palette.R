@@ -39,7 +39,7 @@ plot_palette <- function(values, label = TRUE, square = FALSE) {
         remainder <- total - n
         cols <- c(values, rep("white", remainder))
         lbls <- c(lbls, rep("", remainder))
-        x = apply(matrix(total:1, dimension), 2, rev)
+        x <- apply(matrix(total:1, dimension), 2, rev)
         if (n == 1) {
             image(matrix(1), col = values, axes = FALSE, lab.breaks = NULL)
             if (label)

@@ -87,7 +87,7 @@ aggregate_age_counts(counts = 1:65, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
 aggregate_age_counts(counts = 1:65, limits = 50)
 
 # NA ages are handled with their own grouping
-ages <- 1:65;
+ages <- 1:65
 ages[1:44] <- NA
 aggregate_age_counts(
     counts = 1:65,
@@ -121,11 +121,11 @@ dat <- transform(
     upper_bound = as.numeric(sub(".+, (.+))", "\\1", age_category))
 )
 
-head(dat, n =10)
+head(dat, n=10)
 
 # recategorise based on ages
 with(
-    dat, 
+    dat,
     reaggregate_interval_counts(
         lower_bounds = lower_bound,
         upper_bounds = upper_bound,
