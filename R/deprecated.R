@@ -20,6 +20,7 @@
 #' otherwise).
 #'
 #' @name ympes-deprecated
+#' @keywords internal
 NULL
 
 # -------------------------------------------------------------------------
