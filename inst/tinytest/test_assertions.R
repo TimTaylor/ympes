@@ -235,7 +235,7 @@ expect_error(
 x <- 1
 y <- 1L
 
-expect_identical(assert_int(y), y)
+expect_null(assert_int(y))
 
 expect_error(
     assert_int(x),
@@ -254,7 +254,7 @@ expect_error(
 x <- 1
 y <- 1L
 
-expect_identical(assert_dbl(x), x)
+expect_null(assert_dbl(x))
 
 expect_error(
     assert_dbl(y),
@@ -273,7 +273,7 @@ expect_error(
 x <- 1
 y <- "cat"
 
-expect_identical(assert_num(x), x)
+expect_null(assert_num(x))
 
 expect_error(
     assert_num(y),
@@ -292,7 +292,7 @@ expect_error(
 x <- 1
 y <- "cat"
 
-expect_identical(assert_chr(y), y)
+expect_null(assert_chr(y))
 
 expect_error(
     assert_chr(x),
@@ -311,7 +311,7 @@ expect_error(
 x <- 1
 y <- NA
 
-expect_identical(assert_lgl(y), y)
+expect_null(assert_lgl(y))
 
 expect_error(
     assert_lgl(x),
@@ -331,9 +331,9 @@ y <- 1L
 z <- "cat"
 w <- 1:10
 
-expect_identical(assert_scalar_num(x), x)
+expect_null(assert_scalar_num(x))
 
-expect_identical(assert_scalar_num(y), y)
+expect_null(assert_scalar_num(y))
 
 expect_error(
     assert_scalar_num(z),
@@ -353,7 +353,7 @@ expect_error(
     fixed = TRUE
 )
 
-expect_identical(assert_num(w), w)
+expect_null(assert_num(w))
 
 expect_error(
     assert_num(z),
@@ -370,7 +370,7 @@ expect_error(
 
 # data frame assertions
 l <- .subset(mtcars)
-expect_identical(assert_data_frame(mtcars), mtcars)
+expect_null(assert_data_frame(mtcars))
 
 expect_error(
     assert_data_frame(l),
@@ -389,7 +389,7 @@ expect_error(
 # list assertions
 l <- list(1, b=2)
 b <- "bat"
-expect_identical(assert_list(l), l)
+expect_null(assert_list(l))
 
 expect_error(
     assert_list(b),

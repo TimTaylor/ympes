@@ -87,8 +87,7 @@ assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 \item{call}{Call to use in error message.}
 }
 \value{
-The input argument (invisibly) if the assertion succeeds (error
-otherwise).
+NULL if the assertion succeeds (error otherwise).
 }
 \description{
 Assertions for function arguments. Motivated by \code{vctrs::vec_assert()} but

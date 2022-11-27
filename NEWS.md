@@ -1,8 +1,14 @@
 # ympes (development version)
 
-- Assertion functions no longer require the `imp_` prefix (e.g.
-  `imp_assert_int()` can now be called as `assert_int()`. The old versions are
-  now deprecated and will be removed in a future release.
+## Functions
+
+- New assertion functions that do not require the `imp_` prefix and return NULL
+  on success. Note that returning NULL means the new assertions are not pipe
+  friendly but the implementation is slightly more efficient.
+  
+- The old format for assertions (with the `imp_` prefix;
+  e.g. `imp_assert_int()`) are now deprecated and will be removed in a future
+  release.
 
 # ympes 0.2.1
 
