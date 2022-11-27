@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ympes</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,16 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="ympes-development-version">ympes (development version)<a class="anchor" aria-label="anchor" href="#ympes-development-version"></a></h2>
+<ul><li>Assertion functions no longer require the <code>imp_</code> prefix (e.g. <code><a href="../reference/ympes-deprecated.html">imp_assert_int()</a></code> can now be called as <code><a href="../reference/assertions.html">assert_int()</a></code>. The old versions are now deprecated and will be removed in a future release.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.1" id="ympes-021">ympes 0.2.1<a class="anchor" aria-label="anchor" href="#ympes-021"></a></h2><p class="text-muted">CRAN release: 2022-11-01</p>
+<p>Fixes a memory bug in ages_to_interval() that was highlighted via CRAN’s Valgrind checks.</p>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="ympes-020">ympes 0.2.0<a class="anchor" aria-label="anchor" href="#ympes-020"></a></h2><p class="text-muted">CRAN release: 2022-10-26</p>
 <div class="section level3">
-<h3 id="functions-development-version">Functions<a class="anchor" aria-label="anchor" href="#functions-development-version"></a></h3>
+<h3 id="functions-0-2-0">Functions<a class="anchor" aria-label="anchor" href="#functions-0-2-0"></a></h3>
 <ul><li>
 <p>New functions for working with age intervals:</p>
 <ul><li><p><code><a href="../reference/ageutils.html">ages_to_interval()</a></code> provides categorisation of ages based on specified right-hand interval limits.</p></li>
@@ -63,7 +71,7 @@
 </ul></li>
 </ul></div>
 <div class="section level3">
-<h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
+<h3 id="other-0-2-0">Other<a class="anchor" aria-label="anchor" href="#other-0-2-0"></a></h3>
 <p>The testing framework used by <code>ympes</code> has migrated from <code>testhat</code> to <code>tinytest</code>.</p>
 </div>
 </div>
@@ -74,19 +82,19 @@
 <h3 id="functions-0-1-1">Functions<a class="anchor" aria-label="anchor" href="#functions-0-1-1"></a></h3>
 <ul><li>
 <p>assertions for integer, double, numeric, logical, bool, character (string), list and data frame values</p>
-<ul><li><p><code><a href="../reference/assertions.html">imp_assert_integer()</a></code>, <code><a href="../reference/assertions.html">imp_assert_int()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_double()</a></code> , <code><a href="../reference/assertions.html">imp_assert_dbl()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_numeric()</a></code>, <code><a href="../reference/assertions.html">imp_assert_num()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_logical()</a></code>, <code><a href="../reference/assertions.html">imp_assert_lgl()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_character()</a></code>, <code><a href="../reference/assertions.html">imp_assert_chr()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_list()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_data_frame()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_scalar_integer()</a></code>, <code><a href="../reference/assertions.html">imp_assert_scalar_int()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_scalar_double()</a></code>, <code><a href="../reference/assertions.html">imp_assert_scalar_dbl()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_scalar_numeric()</a></code>, <code><a href="../reference/assertions.html">imp_assert_scalar_num()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_scalar_logical()</a></code>, <code><a href="../reference/assertions.html">imp_assert_scalar_lgl()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_boolean()</a></code>, <code><a href="../reference/assertions.html">imp_assert_bool()</a></code></p></li>
-<li><p><code><a href="../reference/assertions.html">imp_assert_scalar_character()</a></code>, <code><a href="../reference/assertions.html">imp_assert_scalar_chr()</a></code>, <code><a href="../reference/assertions.html">imp_assert_string()</a></code></p></li>
+<ul><li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_integer()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_int()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_double()</a></code> , <code><a href="../reference/ympes-deprecated.html">imp_assert_dbl()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_numeric()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_num()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_logical()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_lgl()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_character()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_chr()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_list()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_data_frame()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_integer()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_int()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_double()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_dbl()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_numeric()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_num()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_logical()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_lgl()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_boolean()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_bool()</a></code></p></li>
+<li><p><code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_character()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_scalar_chr()</a></code>, <code><a href="../reference/ympes-deprecated.html">imp_assert_string()</a></code></p></li>
 </ul></li>
 <li><p><code><a href="../reference/cc.html">cc()</a></code> for interactive quoting of comma separated names.</p></li>
 <li><p><code><a href="../reference/plot_palette.html">plot_palette()</a></code> for visualising colour palettes.</p></li>
