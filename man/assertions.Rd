@@ -2,98 +2,82 @@
 % Please edit documentation in R/imp_assert.R
 \name{assertions}
 \alias{assertions}
-\alias{imp_assert_integer}
-\alias{imp_assert_int}
-\alias{imp_assert_double}
-\alias{imp_assert_dbl}
-\alias{imp_assert_numeric}
-\alias{imp_assert_num}
-\alias{imp_assert_logical}
-\alias{imp_assert_lgl}
-\alias{imp_assert_character}
-\alias{imp_assert_chr}
-\alias{imp_assert_data_frame}
-\alias{imp_assert_list}
-\alias{imp_assert_scalar_integer}
-\alias{imp_assert_scalar_int}
-\alias{imp_assert_scalar_double}
-\alias{imp_assert_scalar_dbl}
-\alias{imp_assert_scalar_numeric}
-\alias{imp_assert_scalar_num}
-\alias{imp_assert_scalar_logical}
-\alias{imp_assert_scalar_lgl}
-\alias{imp_assert_bool}
-\alias{imp_assert_boolean}
-\alias{imp_assert_scalar_character}
-\alias{imp_assert_scalar_chr}
-\alias{imp_assert_string}
+\alias{assert_integer}
+\alias{assert_int}
+\alias{assert_double}
+\alias{assert_dbl}
+\alias{assert_numeric}
+\alias{assert_num}
+\alias{assert_logical}
+\alias{assert_lgl}
+\alias{assert_character}
+\alias{assert_chr}
+\alias{assert_data_frame}
+\alias{assert_list}
+\alias{assert_scalar_integer}
+\alias{assert_scalar_int}
+\alias{assert_scalar_double}
+\alias{assert_scalar_dbl}
+\alias{assert_scalar_numeric}
+\alias{assert_scalar_num}
+\alias{assert_scalar_logical}
+\alias{assert_scalar_lgl}
+\alias{assert_bool}
+\alias{assert_boolean}
+\alias{assert_scalar_character}
+\alias{assert_scalar_chr}
+\alias{assert_string}
 \title{Argument assertions}
 \usage{
-imp_assert_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_numeric(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_numeric(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_logical(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_logical(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_lgl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_lgl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_character(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_character(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_data_frame(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_data_frame(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_list(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_list(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_integer(
-  x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
-)
+assert_scalar_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_numeric(
-  x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
-)
+assert_scalar_numeric(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_logical(
-  x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
-)
+assert_scalar_logical(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_lgl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_lgl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_bool(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_bool(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_boolean(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_boolean(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_character(
-  x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
-)
+assert_scalar_character(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_scalar_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
-imp_assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 }
 \arguments{
 \item{x}{Argument to check.}
@@ -116,7 +100,7 @@ user facing function or internally.
 
 # Use in a user facing function
 fun <- function(i, d, l, chr, b) {
-    imp_assert_scalar_int(i)
+    assert_scalar_int(i)
     TRUE
 }
 fun(i=1L)
@@ -125,7 +109,7 @@ try(fun(i="cat"))
 
 # Use in an internal function
 internal_fun <- function(a) {
-    imp_assert_string(a, arg = deparse(substitute(a)), call = sys.call(-1L))
+    assert_string(a, arg = deparse(substitute(a)), call = sys.call(-1L))
     TRUE
 }
 external_fun <- function(b) {

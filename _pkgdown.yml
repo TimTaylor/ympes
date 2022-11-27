@@ -19,7 +19,7 @@ reference:
   - reaggregate_interval_counts
 - title: "Input assertions"
   contents:
-  - starts_with("imp_assert")
+  - starts_with("assert")
 - title: "Data sets"
   contents:
   - pop_dat

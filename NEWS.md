@@ -1,3 +1,9 @@
+# ympes (development version)
+
+- Assertion functions no longer require the `imp_` prefix (e.g.
+  `imp_assert_int()` can now be called as `assert_int()`. The old versions are
+  now deprecated and will be removed in a future release.
+
 # ympes 0.2.1
 
 Fixes a memory bug in ages_to_interval() that was highlighted via CRAN's

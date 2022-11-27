@@ -16,7 +16,7 @@
 #'
 #' # Use in a user facing function
 #' fun <- function(i, d, l, chr, b) {
-#'     imp_assert_scalar_int(i)
+#'     assert_scalar_int(i)
 #'     TRUE
 #' }
 #' fun(i=1L)
@@ -25,7 +25,7 @@
 #'
 #' # Use in an internal function
 #' internal_fun <- function(a) {
-#'     imp_assert_string(a, arg = deparse(substitute(a)), call = sys.call(-1L))
+#'     assert_string(a, arg = deparse(substitute(a)), call = sys.call(-1L))
 #'     TRUE
 #' }
 #' external_fun <- function(b) {
@@ -44,7 +44,7 @@ NULL
 
 #' @rdname assertions
 #' @export
-imp_assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -58,11 +58,11 @@ imp_assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(
 
 #' @rdname assertions
 #' @export
-imp_assert_int <- imp_assert_integer
+assert_int <- assert_integer
 
 #' @rdname assertions
 #' @export
-imp_assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -76,11 +76,11 @@ imp_assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-
 
 #' @rdname assertions
 #' @export
-imp_assert_dbl <- imp_assert_double
+assert_dbl <- assert_double
 
 #' @rdname assertions
 #' @export
-imp_assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -94,11 +94,11 @@ imp_assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(
 
 #' @rdname assertions
 #' @export
-imp_assert_num <- imp_assert_numeric
+assert_num <- assert_numeric
 
 #' @rdname assertions
 #' @export
-imp_assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -112,11 +112,11 @@ imp_assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(
 
 #' @rdname assertions
 #' @export
-imp_assert_lgl <- imp_assert_logical
+assert_lgl <- assert_logical
 
 #' @rdname assertions
 #' @export
-imp_assert_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -130,11 +130,11 @@ imp_assert_character <- function(x, arg = deparse(substitute(x)), call = sys.cal
 
 #' @rdname assertions
 #' @export
-imp_assert_chr <- imp_assert_character
+assert_chr <- assert_character
 
 #' @rdname assertions
 #' @export
-imp_assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -148,7 +148,7 @@ imp_assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.ca
 
 #' @rdname assertions
 #' @export
-imp_assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -166,7 +166,7 @@ imp_assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -180,12 +180,12 @@ imp_assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sy
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_int <- imp_assert_scalar_integer
+assert_scalar_int <- assert_scalar_integer
 
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -199,11 +199,11 @@ imp_assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_dbl <- imp_assert_scalar_double
+assert_scalar_dbl <- assert_scalar_double
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -217,11 +217,11 @@ imp_assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sy
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_num <- imp_assert_scalar_numeric
+assert_scalar_num <- assert_scalar_numeric
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -235,11 +235,11 @@ imp_assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sy
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_lgl <- imp_assert_scalar_logical
+assert_scalar_lgl <- assert_scalar_logical
 
 #' @rdname assertions
 #' @export
-imp_assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -253,11 +253,11 @@ imp_assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L
 
 #' @rdname assertions
 #' @export
-imp_assert_boolean <- imp_assert_bool
+assert_boolean <- assert_bool
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -271,10 +271,10 @@ imp_assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = 
 
 #' @rdname assertions
 #' @export
-imp_assert_scalar_chr <- imp_assert_scalar_character
+assert_scalar_chr <- assert_scalar_character
 
 #' @rdname assertions
 #' @export
-imp_assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
-    imp_assert_scalar_chr(x = x, arg = arg, call = call)
+assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    assert_scalar_chr(x = x, arg = arg, call = call)
 }

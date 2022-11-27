@@ -1,11 +1,11 @@
 #  scalar assertions one layer deep
 
 fun <- function(i, d, l, chr, b) {
-    imp_assert_scalar_int(i)
-    imp_assert_scalar_dbl(d)
-    imp_assert_scalar_lgl(l)
-    imp_assert_string(chr)
-    imp_assert_bool(b)
+    assert_scalar_int(i)
+    assert_scalar_dbl(d)
+    assert_scalar_lgl(l)
+    assert_string(chr)
+    assert_bool(b)
     TRUE
 }
 
@@ -116,11 +116,11 @@ expect_error(
 
 # scalar assertions work nested_functions"
 internal_fun <- function(ii, dd, ll, chrchr, bb) {
-    imp_assert_scalar_int(ii, arg = deparse(substitute(ii)), call = sys.call(-1L))
-    imp_assert_scalar_dbl(dd, arg = deparse(substitute(dd)), call = sys.call(-1L))
-    imp_assert_scalar_lgl(ll, arg = deparse(substitute(ll)), call = sys.call(-1L))
-    imp_assert_string(chrchr, arg = deparse(substitute(chrchr)), call = sys.call(-1L))
-    imp_assert_bool(bb, arg = deparse(substitute(bb)), call = sys.call(-1L))
+    assert_scalar_int(ii, arg = deparse(substitute(ii)), call = sys.call(-1L))
+    assert_scalar_dbl(dd, arg = deparse(substitute(dd)), call = sys.call(-1L))
+    assert_scalar_lgl(ll, arg = deparse(substitute(ll)), call = sys.call(-1L))
+    assert_string(chrchr, arg = deparse(substitute(chrchr)), call = sys.call(-1L))
+    assert_bool(bb, arg = deparse(substitute(bb)), call = sys.call(-1L))
     TRUE
 }
 
@@ -235,16 +235,16 @@ expect_error(
 x <- 1
 y <- 1L
 
-expect_identical(imp_assert_int(y), y)
+expect_identical(assert_int(y), y)
 
 expect_error(
-    imp_assert_int(x),
+    assert_int(x),
     "`x` must be an integer vector.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_int(arg="TEST"),
+    assert_int(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -254,16 +254,16 @@ expect_error(
 x <- 1
 y <- 1L
 
-expect_identical(imp_assert_dbl(x), x)
+expect_identical(assert_dbl(x), x)
 
 expect_error(
-    imp_assert_dbl(y),
+    assert_dbl(y),
     "`y` must be a double vector.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_dbl(arg="TEST"),
+    assert_dbl(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -273,16 +273,16 @@ expect_error(
 x <- 1
 y <- "cat"
 
-expect_identical(imp_assert_num(x), x)
+expect_identical(assert_num(x), x)
 
 expect_error(
-    imp_assert_num(y),
+    assert_num(y),
     "`y` must be a numeric vector.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_num(arg="TEST"),
+    assert_num(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -292,16 +292,16 @@ expect_error(
 x <- 1
 y <- "cat"
 
-expect_identical(imp_assert_chr(y), y)
+expect_identical(assert_chr(y), y)
 
 expect_error(
-    imp_assert_chr(x),
+    assert_chr(x),
     "`x` must be a character vector.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_chr(arg="TEST"),
+    assert_chr(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -311,16 +311,16 @@ expect_error(
 x <- 1
 y <- NA
 
-expect_identical(imp_assert_lgl(y), y)
+expect_identical(assert_lgl(y), y)
 
 expect_error(
-    imp_assert_lgl(x),
+    assert_lgl(x),
     "`x` must be a logical vector.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_lgl(arg="TEST"),
+    assert_lgl(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -331,38 +331,38 @@ y <- 1L
 z <- "cat"
 w <- 1:10
 
-expect_identical(imp_assert_scalar_num(x), x)
+expect_identical(assert_scalar_num(x), x)
 
-expect_identical(imp_assert_scalar_num(y), y)
+expect_identical(assert_scalar_num(y), y)
 
 expect_error(
-    imp_assert_scalar_num(z),
+    assert_scalar_num(z),
     "`z` must be a numeric vector of length 1.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_scalar_num(w),
+    assert_scalar_num(w),
     "`w` must be a numeric vector of length 1.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_scalar_num(arg="TEST"),
+    assert_scalar_num(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
 
-expect_identical(imp_assert_num(w), w)
+expect_identical(assert_num(w), w)
 
 expect_error(
-    imp_assert_num(z),
+    assert_num(z),
     "`z` must be a numeric vector.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_num(arg="TEST"),
+    assert_num(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -370,16 +370,16 @@ expect_error(
 
 # data frame assertions
 l <- .subset(mtcars)
-expect_identical(imp_assert_data_frame(mtcars), mtcars)
+expect_identical(assert_data_frame(mtcars), mtcars)
 
 expect_error(
-    imp_assert_data_frame(l),
+    assert_data_frame(l),
     "`l` must be a data frame.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_data_frame(arg="TEST"),
+    assert_data_frame(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
@@ -389,16 +389,16 @@ expect_error(
 # list assertions
 l <- list(1, b=2)
 b <- "bat"
-expect_identical(imp_assert_list(l), l)
+expect_identical(assert_list(l), l)
 
 expect_error(
-    imp_assert_list(b),
+    assert_list(b),
     "`b` must be a list.",
     fixed = TRUE
 )
 
 expect_error(
-    imp_assert_list(arg="TEST"),
+    assert_list(arg="TEST"),
     "argument `TEST` is missing, with no default.",
     fixed = TRUE
 )
