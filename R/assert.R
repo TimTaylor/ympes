@@ -32,7 +32,7 @@
 #' }
 #' external_fun(b="cat")
 #' try(external_fun())
-#' try(external_fun(a = letters))
+#' try(external_fun(b = letters))
 #'
 #' @name assertions
 NULL
