@@ -53,7 +53,7 @@ user facing function or internally."><meta name="robots" content="noindex"><!-- 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Argument assertions</h1>
-      <small class="dont-index">Source: <a href="https://github.com/TimTaylor/ympes/blob/HEAD/R/imp_assert.R" class="external-link"><code>R/imp_assert.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/TimTaylor/ympes/blob/HEAD/R/assert.R" class="external-link"><code>R/assert.R</code></a></small>
       <div class="d-none name"><code>assertions.Rd</code></div>
     </div>
 
@@ -165,8 +165,8 @@ user facing function or internally.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in external_fun() : argument `b` is missing, with no default.</span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span>a <span class="op">=</span> <span class="va">letters</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in external_fun(a = letters) : unused argument (a = letters)</span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span>b <span class="op">=</span> <span class="va">letters</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in external_fun() : `b` must be a character vector of length 1.</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
