@@ -52,8 +52,12 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="ympes-development-version">ympes (development version)<a class="anchor" aria-label="anchor" href="#ympes-development-version"></a></h2>
-<ul><li>Assertion functions no longer require the <code>imp_</code> prefix (e.g. <code><a href="../reference/ympes-deprecated.html">imp_assert_int()</a></code> can now be called as <code><a href="../reference/assertions.html">assert_int()</a></code>. The old versions are now deprecated and will be removed in a future release.</li>
+<div class="section level3">
+<h3 id="functions-development-version">Functions<a class="anchor" aria-label="anchor" href="#functions-development-version"></a></h3>
+<ul><li><p>New assertion functions that do not require the <code>imp_</code> prefix and return NULL on success. Note that returning NULL means the new assertions are not pipe friendly but the implementation is slightly more efficient.</p></li>
+<li><p>The old format for assertions (with the <code>imp_</code> prefix; e.g. <code><a href="../reference/ympes-deprecated.html">imp_assert_int()</a></code>) are now deprecated and will be removed in a future release.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="ympes-021">ympes 0.2.1<a class="anchor" aria-label="anchor" href="#ympes-021"></a></h2><p class="text-muted">CRAN release: 2022-11-01</p>
 <p>Fixes a memory bug in ages_to_interval() that was highlighted via CRAN’s Valgrind checks.</p>
