@@ -44,7 +44,7 @@ assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.integer(x))
-        stopf("`%s` must be an integer vector.", arg, call = call)
+        stopf("`%s` must be an integer vector.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -59,7 +59,7 @@ assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L))
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.double(x))
-        stopf("`%s` must be a double vector.", arg, call = call)
+        stopf("`%s` must be a double vector.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -74,7 +74,7 @@ assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.numeric(x))
-        stopf("`%s` must be a numeric vector.", arg, call = call)
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -89,7 +89,7 @@ assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.logical(x))
-        stopf("`%s` must be a logical vector.", arg, call = call)
+        stopf("`%s` must be a logical vector.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -104,7 +104,7 @@ assert_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.character(x))
-        stopf("`%s` must be a character vector.", arg, call = call)
+        stopf("`%s` must be a character vector.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -119,7 +119,7 @@ assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.call(-
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.data.frame(x))
-        stopf("`%s` must be a data frame.", arg, call = call)
+        stopf("`%s` must be a data frame.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -129,7 +129,7 @@ assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!is.list(x))
-        stopf("`%s` must be a list.", arg, call = call)
+        stopf("`%s` must be a list.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -139,7 +139,7 @@ assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sys.ca
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.integer(x) && length(x) == 1))
-        stopf("`%s` must be an integer vector of length 1.", arg, call = call)
+        stopf("`%s` must be an integer vector of length 1.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -154,7 +154,7 @@ assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.cal
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.double(x) && length(x) == 1))
-        stopf("`%s` must be a double vector of length 1.", arg, call = call)
+        stopf("`%s` must be a double vector of length 1.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -169,7 +169,7 @@ assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.ca
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.numeric(x) && length(x) == 1))
-        stopf("`%s` must be a numeric vector of length 1.", arg, call = call)
+        stopf("`%s` must be a numeric vector of length 1.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -184,7 +184,7 @@ assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sys.ca
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.logical(x) && length(x) == 1))
-        stopf("`%s` must be a logical vector of length 1.", arg, call = call)
+        stopf("`%s` must be a logical vector of length 1.", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -199,7 +199,7 @@ assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.logical(x) && length(x) == 1) || is.na(x))
-        stopf("`%s` must be boolean (TRUE/FALSE).", arg, call = call)
+        stopf("`%s` must be boolean (TRUE/FALSE).", arg, .call = call)
 }
 
 # -------------------------------------------------------------------------
@@ -214,7 +214,7 @@ assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = sys.
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.character(x) && length(x) == 1))
-        stopf("`%s` must be a character vector of length 1.", arg, call = call)
+        stopf("`%s` must be a character vector of length 1.", arg, .call = call)
 
 }
 
@@ -239,5 +239,5 @@ assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 .assert_not_missing <- function(x, arg, call) {
     if (missing(x))
-        stopf("argument `%s` is missing, with no default.", arg, call = call)
+        stopf("argument `%s` is missing, with no default.", arg, .call = call)
 }
