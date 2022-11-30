@@ -8,55 +8,67 @@
 
 #define MAXBOUND 200
 
-SEXP ages_to_interval(SEXP ages, SEXP limits) {
+SEXP cut_ages(SEXP ages, SEXP breaks) {
 
-    // ensure numeric input
-    if (!isReal(ages) && !isInteger(ages))
-        error("`ages` must be integer(ish).");
-    if (!isReal(limits) && !isInteger(limits))
-        error("`limits` must be integer(ish).");
+    // check ages and breaks are numeric
+    if (!isNumeric(ages))
+        error("`ages` must be numeric.");
 
-    // coerce to integer
+    if (!isNumeric(breaks))
+        error("`breaks` must be numeric.");
+
+    // coerce ages and breaks to integer
     ages = PROTECT(coerceVector(ages, INTSXP));
-    limits = PROTECT(coerceVector(limits, INTSXP));
+    breaks = PROTECT(coerceVector(breaks, INTSXP));
 
-    // check ages are appropriately bounded or NA
+    // check the ages are appropriately bounded or NA
     int n_ages = LENGTH(ages);
     int* p_ages = INTEGER(ages);
     for (int i = 0; i < n_ages; i++) {
         int age = p_ages[i];
-        if (age != NA_INTEGER) {
-            if (age < 0 || age >= MAXBOUND)
-                error("`ages` must be in the interval `[0, %d)` or NA.", MAXBOUND);
+        if (age != NA_INTEGER && (age < 0 || age >= MAXBOUND)) {
+            error("`ages` must be in the interval `[0, %d)` or NA.", MAXBOUND);
         }
     }
 
-    // create vector of lower and upper bounds
-    int n_limits = LENGTH(limits);
-    int* p_limits = INTEGER(limits);
+    // create vector of lower and upper bounds by looping over breaks using
+    // index as a pointer that maps an age to a corresponding bound
     int index[MAXBOUND];
 
-    double* lower;
-    lower = (double *) R_alloc(n_limits + 1, sizeof(double));
-    double* upper;
-    upper = (double *) R_alloc(n_limits + 1, sizeof(double));
+    int n_breaks = LENGTH(breaks);
+    int* p_breaks = INTEGER(breaks);
 
-    lower[0] = 0;
-    for (int i = 0; i < n_limits; ++i) {
-        int tmp = p_limits[i];
-        // check limits
-        if (tmp == NA_INTEGER || tmp <= lower[i])
-            error("`limits` must be positive and in strictly increasing order.");
+    double* lower;
+    lower = (double *) R_alloc(n_breaks, sizeof(double));
+
+    double* upper;
+    upper = (double *) R_alloc(n_breaks, sizeof(double));
+
+    int first_break = p_breaks[0];
+    if (first_break == NA_INTEGER || first_break < 0)
+        error("`breaks` must be non-negative.");
+
+    lower[0] = first_break;
+    for (int i = 0; i < n_breaks - 1; ++i) {
+        int tmp = p_breaks[i + 1];
+        if (tmp == NA_INTEGER || tmp <= lower[i]) {
+            error("`breaks` must be non-negative and in strictly increasing order.");
+        }
         lower[i + 1] = tmp;
         upper[i] = tmp;
         for (int j = lower[i]; j < upper[i]; j++)
             index[j] = i;
     }
-    for (int j = lower[n_limits]; j < MAXBOUND; j++)
-        index[j] = n_limits;
-    upper[n_limits] = R_PosInf;
 
-    // create output bounds corresponding to ages
+    // set the last index pointers
+    for (int j = lower[n_breaks - 1]; j < MAXBOUND; j++) {
+        index[j] = n_breaks - 1;
+    }
+
+    // set the upper bound to infinite
+    upper[n_breaks - 1] = R_PosInf;
+
+    // create factors and output bounds corresponding to ages
     SEXP factor = PROTECT(allocVector(INTSXP, n_ages));
     int* p_factor = INTEGER(factor);
 
@@ -67,12 +79,13 @@ SEXP ages_to_interval(SEXP ages, SEXP limits) {
     double* p_upper_bound = REAL(upper_bound);
 
     for (int i = 0; i < n_ages; i++) {
-        if (p_ages[i] == NA_INTEGER) {
+        int age = p_ages[i];
+        if (age == NA_INTEGER || age < first_break) {
+            p_factor[i] = NA_INTEGER;
             p_lower_bound[i] = NA_REAL;
             p_upper_bound[i] = NA_REAL;
-            p_factor[i] = NA_INTEGER;
         } else {
-            int tmp = index[p_ages[i]];
+            int tmp = index[age];
             p_lower_bound[i] = lower[tmp];
             p_upper_bound[i] = upper[tmp];
             p_factor[i] = tmp + 1;
@@ -80,29 +93,22 @@ SEXP ages_to_interval(SEXP ages, SEXP limits) {
     }
 
     // create levels
-    SEXP lvls = PROTECT(allocVector(STRSXP, n_limits + 1));
+    SEXP lvls = PROTECT(allocVector(STRSXP, n_breaks));
 
-    // create first name "[0,%d)"
-    int bufsz = snprintf(NULL, 0, "[0, %d)", (int) p_limits[0]);
-    char* buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[0, %d)", (int) p_limits[0]);
-    SET_STRING_ELT(lvls, 0, mkChar(buf));
-    R_Free(buf);
-
-    // create middle names "[%d,%d)"
-    for (int i = 0; i < n_limits - 1; ++i) {
-        bufsz = snprintf(NULL, 0, "[%d, %d)", (int) p_limits[i], (int) p_limits[i+1]);
-        buf = R_Calloc(bufsz + 1, char);
-        snprintf(buf, bufsz + 1, "[%d, %d)", (int) p_limits[i], (int) p_limits[i+1]);
-        SET_STRING_ELT(lvls, i+1, mkChar(buf));
+    // create all but the last names for the levels, "[%d,%d)"
+    for (int i = 0; i < n_breaks - 1; ++i) {
+        int bufsz = snprintf(NULL, 0, "[%d, %d)", (int) p_breaks[i], (int) p_breaks[i+1]);
+        char* buf = R_Calloc(bufsz + 1, char);
+        snprintf(buf, bufsz + 1, "[%d, %d)", (int) p_breaks[i], (int) p_breaks[i+1]);
+        SET_STRING_ELT(lvls, i, mkChar(buf));
         R_Free(buf);
     }
 
-    // create last name "[%d, Inf)"
-    bufsz = snprintf(NULL, 0, "[%d, Inf)", (int) p_limits[n_limits - 1]);
-    buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[%d, Inf)", (int) p_limits[n_limits - 1]);
-    SET_STRING_ELT(lvls, n_limits, mkChar(buf));
+    // create last level name "[%d, Inf)"
+    int bufsz = snprintf(NULL, 0, "[%d, Inf)", (int) p_breaks[n_breaks - 1]);
+    char* buf = R_Calloc(bufsz + 1, char);
+    snprintf(buf, bufsz + 1, "[%d, Inf)", (int) p_breaks[n_breaks - 1]);
+    SET_STRING_ELT(lvls, n_breaks - 1, mkChar(buf));
     R_Free(buf);
 
     // add levels and class to factor
@@ -136,18 +142,18 @@ SEXP ages_to_interval(SEXP ages, SEXP limits) {
     return out;
 }
 
-/////////////////////////////////////////////////////////
+
 
 SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SEXP max_upper, SEXP weights) {
 
     // ensure numeric bounds, counts, max_upper and weights
-    if (!isReal(lower_bounds) && !isInteger(lower_bounds))
-        error("`lower_bounds` must be integer(ish).");
-    if (!isReal(upper_bounds) && !isInteger(upper_bounds))
-        error("`upper_bounds` must be integer(ish).");
+    if (!isNumeric(lower_bounds))
+        error("`lower_bounds` must be numeric.");
+    if (!isNumeric(upper_bounds))
+        error("`upper_bounds` must be numeric.");
     if (!isNumeric(counts))
         error("`counts` must be numeric.");
-    if ((!isReal(max_upper) && !isInteger(max_upper)) || LENGTH(max_upper) != 1)
+    if (!isNumeric(max_upper) || LENGTH(max_upper) != 1)
         error("`max_upper` must be an integer of length 1.");
 
     // check max_upper
@@ -168,15 +174,22 @@ SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SE
     lower_bounds = PROTECT(coerceVector(lower_bounds, INTSXP));
     int* p_lower_bounds = INTEGER(lower_bounds);
     for (int i = 0; i < n_upper_bounds; i++) {
+
         double ubound = p_upper_bounds[i];
         int lbound = p_lower_bounds[i];
-        if (R_FINITE(ubound) && ubound > max)
-            error("`upper_bounds` can not be greater than `max_upper` unless infinite.");
-        if (ubound == R_PosInf)
-            p_upper_bounds[i] = max;
 
-        if (lbound != NA_INTEGER && lbound >= ubound)
+        if (R_FINITE(ubound) && ubound > max) {
+            error("`upper_bounds` can not be greater than `max_upper` unless infinite.");
+        }
+
+        if (ubound == R_PosInf) {
+            p_upper_bounds[i] = max;
+        }
+
+        if (lbound != NA_INTEGER && lbound >= ubound) {
             error("`lower_bounds` must be less than `upper_bounds`.");
+        }
+
     }
     upper_bounds = PROTECT(coerceVector(upper_bounds, INTSXP));
 
@@ -200,12 +213,15 @@ SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SE
         null_weights = 0;
         weights = PROTECT(coerceVector(weights, REALSXP));
         int n_weights = LENGTH(weights);
-        if (n_weights != max)
+        if (n_weights != max) {
             error("`weights` must be a vector of length %d (`max_upper`) representing ages 0:%d", max, max - 1);
+        }
         p_weights = REAL(weights);
         for (int i = 0; i < n_weights; i++) {
-            if (ISNA(p_weights[i]) || p_weights[i] < 0)
+            if (ISNA(p_weights[i]) || p_weights[i] < 0) {
                 error("`weights` must be positive and not missing (NA).");
+            }
+
         }
     }
 
@@ -286,22 +302,21 @@ SEXP split_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SE
     return out;
 }
 
-/////////////////////////////////////////////////////////
 
-SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
+SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
 
     // ensure numeric input
     if (!isNumeric(counts))
         error("`counts` must be numeric.");
-    if (!isReal(ages) && !isInteger(ages))
-        error("`ages` must be integer(ish).");
-    if (!isReal(limits) && !isInteger(limits))
-        error("`limits` must be integer(ish).");
+    if (!isNumeric(ages))
+        error("`ages` must be numeric.");
+    if (!isNumeric(breaks))
+        error("`breaks` must be numeric.");
 
-    // coerce input
+    // coerce counts to double and ages/breaks to integer
     counts = PROTECT(coerceVector(counts, REALSXP));
     ages = PROTECT(coerceVector(ages, INTSXP));
-    limits = PROTECT(coerceVector(limits, INTSXP));
+    breaks = PROTECT(coerceVector(breaks, INTSXP));
 
     // check ages are appropriately bounded or NA
     int n_ages = LENGTH(ages);
@@ -318,24 +333,24 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
     if (n_ages != LENGTH(counts))
         error("`ages` and `counts` must be the same length.");
 
-    // add MAXBOUND to limits
-    int n_limits = LENGTH(limits);
+    // check breaks and add MAXBOUND
+    int n_breaks = LENGTH(breaks);
+    int* p_breaks = INTEGER(breaks);
 
-    // Think we can get away with this as we have already ensured no NA in limits
-    // on R side. May be better to coerce first to be on safe side
-    SEXP new_limits = PROTECT(allocVector(REALSXP, n_limits + 1));
-    int* p_limits = INTEGER(limits);
-    double* p_new_limits = REAL(new_limits);
-    int tmp = 0;
-    for (int i = 0; i < n_limits; ++i) {
-        int lim = p_limits[i];
-        if (lim == NA_INTEGER || lim <= tmp)
-            error("`limits` must be positive and in strictly increasing order.");
-        p_new_limits[i] = p_limits[i];
-        tmp = lim;
+    SEXP new_breaks = PROTECT(allocVector(REALSXP, n_breaks + 1));
+    double* p_new_breaks = REAL(new_breaks);
+
+    int first_break = p_breaks[0];
+    if (first_break == NA_INTEGER || first_break < 0)
+        error("`breaks` must be non-negative.");
+    p_new_breaks[0] = first_break;
+    for (int i = 0; i < n_breaks - 1; ++i) {
+        int brk = p_breaks[i + 1];
+        if (brk == NA_INTEGER || brk <= p_new_breaks[i])
+            error("`breaks` must be non-negative and in strictly increasing order.");
+        p_new_breaks[i + 1] = brk;
     }
-    p_new_limits[n_limits] = MAXBOUND;
-    ++n_limits;
+    p_new_breaks[n_breaks] = MAXBOUND;
 
     // order by age
     // ind = order(x, nalast = TRUE, decreasing = FALSE)
@@ -356,22 +371,32 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
     }
 
     // number of groups (allowing for an NA group)
-    int n_groups = n_limits + 1;
+    int n_groups = n_breaks + 1;
 
     // allocate output and initialise to 0
     SEXP group_counts = PROTECT(allocVector(REALSXP, n_groups));
     double* p_groups = REAL(group_counts);
     Memzero(p_groups, n_groups);
 
-    // calculate the counts
+    // Calculate the NA values when ages are below the first break
+    int j = 0;
+    int a = out_ages[j];
+    while (a < first_break) {
+        double tmp = out_counts[j];
+        p_groups[n_breaks] += tmp;
+        j++;
+        a = out_ages[j];
+    }
+
+    // calculate the other counts
     int group_index = 0;
-    for (int i = 0; i < n_ages; ++i) {
+    for (int i = j; i < n_ages; ++i) {
         int current_age = out_ages[i];
         double tmp = out_counts[i];
         if (current_age == NA_INTEGER) {
-            p_groups[n_limits] += tmp;
+            p_groups[n_breaks] += tmp;
         } else {
-            while(group_index < n_groups - 2 && current_age >= p_limits[group_index])
+            while(group_index < n_groups - 2 && current_age >= p_breaks[group_index + 1])
                 ++group_index;
             p_groups[group_index] += tmp;
         }
@@ -387,38 +412,28 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
     SEXP lvls = PROTECT(allocVector(STRSXP, n_groups - 1)); // No NA level
     int* p_factor = INTEGER(factor);
 
-    p_start[0] = 0;
-    p_end[0] = p_new_limits[0];
-    p_factor[0] = 1;
-
-    // create first name "[0,%d)"
-    int bufsz = snprintf(NULL, 0, "[0, %d)", (int) p_new_limits[0]);
-    char* buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[0, %d)", (int) p_new_limits[0]);
-    SET_STRING_ELT(lvls, 0, mkChar(buf));
-    R_Free(buf);
-
-    for (int i=0; i < n_groups - 2; ++i) {
-        p_factor[i+1] = i+2;
-        p_start[i+1] = p_new_limits[i];
-        p_end[i+1] = p_new_limits[i+1];
-        // create middle names "[%d,%d)"
-        bufsz = snprintf(NULL, 0, "[%d, %d)", (int) p_new_limits[i], (int) p_new_limits[i+1]);
-        buf = R_Calloc(bufsz + 1, char);
-        snprintf(buf, bufsz + 1, "[%d, %d)", (int) p_new_limits[i], (int) p_new_limits[i+1]);
-        SET_STRING_ELT(lvls, i+1, mkChar(buf));
+    // create all but the last names for the intervals, "[%d,%d)"
+    for (int i=0; i < n_groups - 1; ++i) {
+        p_factor[i] = i+1;
+        p_start[i] = p_new_breaks[i];
+        p_end[i] = p_new_breaks[i+1];
+        // names "[%d,%d)"
+        int bufsz = snprintf(NULL, 0, "[%d, %d)", (int) p_new_breaks[i], (int) p_new_breaks[i+1]);
+        char* buf = R_Calloc(bufsz + 1, char);
+        snprintf(buf, bufsz + 1, "[%d, %d)", (int) p_new_breaks[i], (int) p_new_breaks[i+1]);
+        SET_STRING_ELT(lvls, i, mkChar(buf));
         R_Free(buf);
     }
 
-    p_end[n_groups -2] = R_PosInf;
+    p_end[n_groups - 2] = R_PosInf;
     p_start[n_groups - 1] = NA_REAL;
-    p_end[n_groups -1] = NA_REAL;
+    p_end[n_groups - 1] = NA_REAL;
     p_factor[n_groups - 1] = NA_INTEGER;
 
     // create last name "[%d,Inf)"
-    bufsz = snprintf(NULL, 0, "[%d, Inf)", (int) p_new_limits[n_groups-3]);
-    buf = R_Calloc(bufsz + 1, char);
-    snprintf(buf, bufsz + 1, "[%d, Inf)", (int) p_new_limits[n_groups-3]);
+    int bufsz = snprintf(NULL, 0, "[%d, Inf)", (int) p_new_breaks[n_groups-2]);
+    char* buf = R_Calloc(bufsz + 1, char);
+    snprintf(buf, bufsz + 1, "[%d, Inf)", (int) p_new_breaks[n_groups-2]);
     SET_STRING_ELT(lvls, n_groups-2, mkChar(buf));
     R_Free(buf);
 
@@ -455,9 +470,9 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP limits) {
 
 /////////////////////////////////////////////////////////
 
-SEXP reaggregate_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SEXP limits, SEXP max_upper, SEXP weights) {
+SEXP reaggregate_interval_counts(SEXP lower_bounds, SEXP upper_bounds, SEXP counts, SEXP breaks, SEXP max_upper, SEXP weights) {
     SEXP split = PROTECT(split_interval_counts(lower_bounds, upper_bounds, counts, max_upper, weights));
-    SEXP out = PROTECT(aggregate_age_counts(VECTOR_ELT(split, 1), VECTOR_ELT(split, 0), limits));
+    SEXP out = PROTECT(aggregate_age_counts(VECTOR_ELT(split, 1), VECTOR_ELT(split, 0), breaks));
     UNPROTECT(2);
     return out;
 }

@@ -1,7 +1,5 @@
 # ympes (development version)
 
-## Functions
-
 - New assertion functions that do not require the `imp_` prefix and return NULL
   on success. Note that returning NULL means the new assertions are not pipe
   friendly but the implementation is slightly more efficient.
@@ -9,6 +7,17 @@
 - The old format for assertions (with the `imp_` prefix;
   e.g. `imp_assert_int()`) are now deprecated and will be removed in a future
   release.
+  
+- `ages_to_interval()` has been deprecated and replaced with the function
+  `cut_ages()`. This has a slightly different API (see `help(cut_ages)` for
+  more information).
+  
+ - **breaking change**. The `limits` parameter has been removed from both
+   `aggregate_age_counts()` and `reaggregate_age_counts()`. It has been replaced
+   by a `breaks` which represents the left-hand side of your desired interval
+   bounds (i.e. the `x` value in `[x, y)`). Intervals no longer span the natural
+   numbers by default but will begin from the minimum break input. Any ages
+   below this value will be treated as NA.
 
 # ympes 0.2.1
 

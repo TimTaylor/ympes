@@ -17,29 +17,26 @@ knitr::opts_chunk$set(
 ympes provides a collection of functions for working with age intervals with
 underlying implementations that have been optimised for performance.
 
-## `ages_to_interval()`
+## `cut_ages()`
 
-`ages_to_interval()` provides categorisation of ages based on specified 
-right-hand interval limits. The resultant groupings will span the natural 
-numbers (from 0) and will always be closed on the left and open on the right.
-For example, if `limits = c(1,10,30)` the possible groupings will be "[0, 1)",
-"[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable to a call of
-`cut(ages, right = FALSE, breaks = c(0, limits))` but with the start and end
-points of the interval returned as entries in a list.
-
-Note that the default `limits` argument in all functions is set to
-`limits = c(1L, 5L, 15L, 25L, 45L, 65L)` but for clarity in examples we
-will explicitly set this value where used.
+`cut_ages()` provides categorisation of ages based on specified breaks which
+represent the left-hand interval limits. The resultant groupings will span from
+the minimum break through to `Inf` and will always be closed on the left and
+open on the right. Ages below the minimum break will be returned as NA.
+As an example, if `breaks = c(0, 1, 10, 30)` the possible groupings would be
+"[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable to a
+call of `cut(ages, right = FALSE, breaks = c(limits, Inf))` but with both the
+resultant interval and the start and end points returned as entries in a list.
 
 ```{r}
 library(ympes)
 
-ages_to_interval(ages = 0:9, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
+cut_ages(ages = 0:9, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
 
-ages_to_interval(1:10, limits = 6L)
+cut_ages(1:10, breaks = 6L)
 
-str(x <- ages_to_interval(1:100))
-
+x <- cut_ages(1:100, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
+str(x)
 head(x$interval)
 ```
 
@@ -82,24 +79,25 @@ be provided across all natural numbers as well as for missing values.
 
 ```{r}
 # default ages generated as 0:(length(counts) - 1L) if only counts provided.
-aggregate_age_counts(counts = 1:65, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
+aggregate_age_counts(counts = 1:65, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
 
-aggregate_age_counts(counts = 1:65, limits = 50)
+# Values below the minimum break are counted as NA
+aggregate_age_counts(counts = 1:65, breaks = 50L)
 
-# NA ages are handled with their own grouping
+# NA ages are also handled with their own grouping
 ages <- 1:65
 ages[1:44] <- NA
 aggregate_age_counts(
     counts = 1:65,
     ages = ages,
-    limits = c(1L, 5L, 15L, 25L, 45L, 65L)
+    breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L)
 )
 ```
 
-## `reaggregate_interval_counts()`
+# `reaggregate_interval_counts()`
 
-`reaggregate_interval_counts()` is equivalent to, but more efficient than,
-calling `split_interval_counts()` and then `aggregate_age_counts()`.
+`reaggregate_interval_counts()` is equivalent to, but more efficient than a call
+to to `split_interval_counts()` followed by `aggregate_age_counts()`.
 
 The example below shows how it can be used to redistribute counts across a
 desired set of age intervals. We use data included in the package that has been
@@ -130,7 +128,7 @@ with(
         lower_bounds = lower_bound,
         upper_bounds = upper_bound,
         counts = value,
-        limits = c(1L, 5L, 15L, 25L, 45L, 65L),
+        breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L),
         max_upper = 100L,
         weights = NULL
     )

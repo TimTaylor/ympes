@@ -13,7 +13,7 @@ reference:
   - cc
 - title: "Age interval utilities"
   contents:
-  - ages_to_interval
+  - cut_ages
   - split_interval_counts
   - aggregate_age_counts
   - reaggregate_interval_counts
