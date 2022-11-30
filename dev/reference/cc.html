@@ -66,15 +66,17 @@ intended for interactive use only.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
-<dd><p>Unquoted names (separated by commas) that you wish to quote;
-empty arguments (e.g. third item in <code>one,two,,four</code>) will be returned as
-<code>""</code>.</p></dd>
+<dd><p>Unquoted names (separated by commas) that you wish to quote.</p>
+<p>Empty arguments (e.g. third item in <code>one,two,,four</code>) will be returned as <code>""</code>.</p></dd>
 
 
 <dt>.clip</dt>
-<dd><p>Should the code to generate the constructed character vector be
-copied to your system clipboard; defaults to FALSE unless the option
-"imp.clipboard" is set to TRUE.</p></dd>
+<dd><p><code>[bool]</code></p>
+<p>Should the code to generate the constructed character vector be copied to
+your system clipboard.</p>
+<p>Defaults to FALSE unless the option "imp.clipboard" is set to TRUE.</p>
+<p>Note that copying to clipboard requires the availability of package
+<a href="https://cran.r-project.org/package=clipr" class="external-link">clipr</a>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -83,15 +85,11 @@ copied to your system clipboard; defaults to FALSE unless the option
 
 <p>A character vector of the quoted input.</p>
     </div>
-    <div class="section level2">
-    <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>Copying to clipboard requires the availability of package
-<a href="https://cran.r-project.org/package=clipr" class="external-link">clipr</a>.</p>
-    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">cc</span><span class="op">(</span><span class="va">dale</span>, <span class="va">audrey</span>, <span class="va">laura</span>, <span class="va">hawk</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">cc</span><span class="op">(</span><span class="va">dale</span>, <span class="va">audrey</span>, <span class="va">laura</span>, <span class="va">hawk</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dale"   "audrey" "laura"  "hawk"  </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

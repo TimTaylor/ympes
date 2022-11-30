@@ -63,16 +63,20 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>values</dt>
-<dd><p>character vector of named or hex colours.</p></dd>
+<dd><p><code>[character]</code></p>
+<p>Vector of named or hex colours.</p></dd>
 
 
 <dt>label</dt>
-<dd><p>boolean. Do you want to label the plot or not? If <code>values</code> is
-a named vector the names are used for labels, otherwise, the values.</p></dd>
+<dd><p><code>[bool]</code></p>
+<p>Do you want to label the plot or not?</p>
+<p>If <code>values</code> is a named vector the names are used for labels, otherwise,
+the values.</p></dd>
 
 
 <dt>square</dt>
-<dd><p>boolean. Display palette as square?</p></dd>
+<dd><p><code>[bool]</code></p>
+<p>Display palette as square?</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -84,7 +88,8 @@ a named vector the names are used for labels, otherwise, the values.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">plot_palette</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#5FE756"</span>, <span class="st">"red"</span>, <span class="st">"black"</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">plot_palette</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#5FE756"</span>, <span class="st">"red"</span>, <span class="st">"black"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_palette-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">plot_palette</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#5FE756"</span>, <span class="st">"red"</span>, <span class="st">"black"</span><span class="op">)</span>, square<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_palette-2.png" alt="" width="700" height="433"></span>
