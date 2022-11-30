@@ -3,19 +3,29 @@
 #' `cc()` quotes comma separated names whilst trimming outer whitespace. It is
 #'   intended for interactive use only.
 #'
-#' @param ... Unquoted names (separated by commas) that you wish to quote;
-#'   empty arguments (e.g. third item in `one,two,,four`) will be returned as
-#'   `""`.
-#' @param .clip Should the code to generate the constructed character vector be
-#'   copied to your system clipboard; defaults to FALSE unless the option
-#'   "imp.clipboard" is set to TRUE.
+#' @param ...
 #'
-#' @note Copying to clipboard requires the availability of package
-#'   [clipr](https://cran.r-project.org/package=clipr).
+#' Unquoted names (separated by commas) that you wish to quote.
 #'
-#' @return A character vector of the quoted input.
+#' Empty arguments (e.g. third item in `one,two,,four`) will be returned as `""`.
+#'
+#' @param .clip `[bool]`
+#'
+#' Should the code to generate the constructed character vector be copied to
+#' your system clipboard.
+#'
+#' Defaults to FALSE unless the option "imp.clipboard" is set to TRUE.
+#'
+#' Note that copying to clipboard requires the availability of package
+#' [clipr](https://cran.r-project.org/package=clipr).
+#'
+#'
+#' @return
+#'
+#' A character vector of the quoted input.
 #'
 #' @examples
+#'
 #' cc(dale, audrey, laura, hawk)
 #'
 #' @importFrom utils capture.output

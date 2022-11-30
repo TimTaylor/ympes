@@ -7,12 +7,20 @@
 plot_palette(values, label = TRUE, square = FALSE)
 }
 \arguments{
-\item{values}{character vector of named or hex colours.}
+\item{values}{\verb{[character]}
 
-\item{label}{boolean. Do you want to label the plot or not? If \code{values} is
-a named vector the names are used for labels, otherwise, the values.}
+Vector of named or hex colours.}
 
-\item{square}{boolean. Display palette as square?}
+\item{label}{\verb{[bool]}
+
+Do you want to label the plot or not?
+
+If \code{values} is a named vector the names are used for labels, otherwise,
+the values.}
+
+\item{square}{\verb{[bool]}
+
+Display palette as square?}
 }
 \value{
 The input (invisibly).
@@ -21,6 +29,7 @@ The input (invisibly).
 \code{plot_palette()} plots a palette from a vector of colour values (name or hex).
 }
 \examples{
+
 plot_palette(c("#5FE756", "red", "black"))
 plot_palette(c("#5FE756", "red", "black"), square=TRUE)
 

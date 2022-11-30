@@ -82,9 +82,13 @@ assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 \arguments{
 \item{x}{Argument to check.}
 
-\item{arg}{Name of argument being checked (used in error message).}
+\item{arg}{\verb{[character]}
 
-\item{call}{Call to use in error message.}
+Name of argument being checked (used in error message).}
+
+\item{call}{\verb{[call]}
+
+Call to use in error message.}
 }
 \value{
 NULL if the assertion succeeds (error otherwise).

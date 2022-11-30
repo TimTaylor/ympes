@@ -35,18 +35,19 @@ reaggregate_interval_counts(
 }
 \arguments{
 \item{ages}{\verb{[integerish]}.
+
 Vector of age in years.
 
 Double values will be coerced to integer prior to categorisation /
 aggregation.
 
-For \code{aggregate_age_counts()}, these must corresponding to the \code{counts}
-entry and will defaults to 0:(N-1) where \code{N} is the number of counts
-present.
+For \code{aggregate_age_counts()}, these must corresponding to the \code{counts} entry
+and will defaults to 0:(N-1) where \code{N} is the number of counts present.
 
 \code{ages} >= 200 are not permitted due to the internal implementation.}
 
 \item{limits}{\verb{[integerish]}.
+
 1 or more positive cut points in increasing (strictly) order.
 
 Defaults to c(1L,5L,15L,25L,45L,65L).
@@ -54,19 +55,22 @@ Defaults to c(1L,5L,15L,25L,45L,65L).
 Double values will be coerced to integer prior to categorisation.}
 
 \item{lower_bounds, upper_bounds}{\verb{[integerish]}.
+
 A pair of vectors representing the bounds of the intervals.
 
-\code{lower_bounds} must be strictly less than \code{upper_bounds} and greater than
-or equal to zero.
+\code{lower_bounds} must be strictly less than \code{upper_bounds} and greater than or
+equal to zero.
 
 Missing (NA) bounds are not permitted.
 
 Double vectors will be coerced to integer.}
 
 \item{counts}{\verb{[numeric]}.
+
 Vector of counts to be aggregated.}
 
 \item{max_upper}{\verb{[integerish]}
+
 Represents the maximum upper bounds permitted upon splitting the data.
 
 Used to replace \code{Inf} upper bounds prior to splitting.
@@ -76,6 +80,7 @@ If any \code{upper_bound} is greater than \code{max_upper} the function will err
 Double vectors will be coerced to integer.}
 
 \item{weights}{\verb{[numeric]}
+
 Population weightings to apply for individual years.
 
 If \code{NULL} (default) counts will be split evenly based on interval size.
@@ -84,40 +89,42 @@ If specified, must be of length \code{max_upper} and represent weights in the
 range 0:(max_upper - 1).}
 }
 \value{
-\itemize{
-\item \code{ages_to_interval()}.
+\code{ages_to_interval()}.
 A data frame with an ordered factor column (\code{interval}), as well as columns
 corresponding to the explicit bounds (\code{lower_bound} and \code{upper_bound}).
-\item \code{split_interval_counts()}.
+
+\code{split_interval_counts()}.
 A data frame with entries \code{age} (in years) and \code{count}.
-\item \code{aggregate_age_counts()} and \code{reaggregate_interval_counts()}.
-A data frame with 4 entries; \code{interval}, \code{lower_bound}, \code{upper_bound} and
-an associated \code{count}.
-}
+
+\code{aggregate_age_counts()} and \code{reaggregate_interval_counts()}.
+A data frame with 4 entries; \code{interval}, \code{lower_bound}, \code{upper_bound} and an
+associated \code{count}.
 }
 \description{
 This help page documents the utility functions provided for working with
 age intervals:
-\itemize{
-\item \code{ages_to_interval()} provides categorisation of ages based on specified
+
+\code{ages_to_interval()} provides categorisation of ages based on specified
 right-hand interval limits. The resultant groupings will span the natural
-numbers (from 0) and will always be closed on the left and open on the
-right. For example, if \code{limits = c(1,10,30)} the possible groupings will be
+numbers (from 0) and will always be closed on the left and open on the right.
+For example, if \code{limits = c(1,10,30)} the possible groupings will be
 "[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
 to a call of \code{cut(ages, right = FALSE, breaks = c(0, limits))} but with the
 start and end points of the interval returned as entries in a list.
-\item \code{split_interval_counts()} splits counts within a age interval in to counts
-for individuals years based on a given weighting. Age intervals are
-specified by their lower (closed) and upper (open) bounds, i.e. intervals
-of the form [lower, upper).
-\item \code{aggregate_age_counts()} provides aggregation of counts across ages (in
+
+\code{split_interval_counts()} splits counts within a age interval in to counts
+for individuals years based on a given weighting. Age intervals are specified
+by their lower (closed) and upper (open) bounds, i.e. intervals of the form
+[lower, upper).
+
+\code{aggregate_age_counts()} provides aggregation of counts across ages (in
 years). It is similar to a \code{cut()} and \code{tapply()} pattern but optimised for
 speed over flexibility. Groupings are the same as in \code{ages_to_interval()}
 and counts will be provided across all natural numbers as well as for
 missing values.
-\item \code{reaggregate_interval_counts()} is equivalent to, but more efficient than,
+
+\code{reaggregate_interval_counts()} is equivalent to, but more efficient than,
 calling \code{split_interval_counts()} and then \code{aggregate_age_counts()}.
-}
 }
 \examples{
 

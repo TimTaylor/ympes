@@ -7,13 +7,19 @@
 cc(..., .clip = getOption("imp.clipboard", FALSE))
 }
 \arguments{
-\item{...}{Unquoted names (separated by commas) that you wish to quote;
-empty arguments (e.g. third item in \verb{one,two,,four}) will be returned as
-\code{""}.}
+\item{...}{Unquoted names (separated by commas) that you wish to quote.
 
-\item{.clip}{Should the code to generate the constructed character vector be
-copied to your system clipboard; defaults to FALSE unless the option
-"imp.clipboard" is set to TRUE.}
+Empty arguments (e.g. third item in \verb{one,two,,four}) will be returned as \code{""}.}
+
+\item{.clip}{\verb{[bool]}
+
+Should the code to generate the constructed character vector be copied to
+your system clipboard.
+
+Defaults to FALSE unless the option "imp.clipboard" is set to TRUE.
+
+Note that copying to clipboard requires the availability of package
+\href{https://cran.r-project.org/package=clipr}{clipr}.}
 }
 \value{
 A character vector of the quoted input.
@@ -22,11 +28,8 @@ A character vector of the quoted input.
 \code{cc()} quotes comma separated names whilst trimming outer whitespace. It is
 intended for interactive use only.
 }
-\note{
-Copying to clipboard requires the availability of package
-\href{https://cran.r-project.org/package=clipr}{clipr}.
-}
 \examples{
+
 cc(dale, audrey, laura, hawk)
 
 }

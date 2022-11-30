@@ -1,94 +1,100 @@
 #' Utilities for Age Intervals
 #'
 #' @description
+#'
 #' This help page documents the utility functions provided for working with
 #' age intervals:
 #'
-#' - `ages_to_interval()` provides categorisation of ages based on specified
-#'   right-hand interval limits. The resultant groupings will span the natural
-#'   numbers (from 0) and will always be closed on the left and open on the
-#'   right. For example, if `limits = c(1,10,30)` the possible groupings will be
-#'   "[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
-#'   to a call of `cut(ages, right = FALSE, breaks = c(0, limits))` but with the
-#'   start and end points of the interval returned as entries in a list.
+#' `ages_to_interval()` provides categorisation of ages based on specified
+#' right-hand interval limits. The resultant groupings will span the natural
+#' numbers (from 0) and will always be closed on the left and open on the right.
+#' For example, if `limits = c(1,10,30)` the possible groupings will be
+#' "[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
+#' to a call of `cut(ages, right = FALSE, breaks = c(0, limits))` but with the
+#' start and end points of the interval returned as entries in a list.
 #'
-#' - `split_interval_counts()` splits counts within a age interval in to counts
-#'   for individuals years based on a given weighting. Age intervals are
-#'   specified by their lower (closed) and upper (open) bounds, i.e. intervals
-#'   of the form [lower, upper).
+#' `split_interval_counts()` splits counts within a age interval in to counts
+#' for individuals years based on a given weighting. Age intervals are specified
+#' by their lower (closed) and upper (open) bounds, i.e. intervals of the form
+#' [lower, upper).
 #'
-#' - `aggregate_age_counts()` provides aggregation of counts across ages (in
-#'   years). It is similar to a `cut()` and `tapply()` pattern but optimised for
-#'   speed over flexibility. Groupings are the same as in `ages_to_interval()`
-#'   and counts will be provided across all natural numbers as well as for
-#'   missing values.
+#' `aggregate_age_counts()` provides aggregation of counts across ages (in
+#' years). It is similar to a `cut()` and `tapply()` pattern but optimised for
+#' speed over flexibility. Groupings are the same as in `ages_to_interval()`
+#' and counts will be provided across all natural numbers as well as for
+#' missing values.
 #'
-#' - `reaggregate_interval_counts()` is equivalent to, but more efficient than,
-#'   calling `split_interval_counts()` and then `aggregate_age_counts()`.
+#' `reaggregate_interval_counts()` is equivalent to, but more efficient than,
+#' calling `split_interval_counts()` and then `aggregate_age_counts()`.
 #'
 #'
 #' @param ages `[integerish]`.
-#'   Vector of age in years.
 #'
-#'   Double values will be coerced to integer prior to categorisation /
-#'   aggregation.
+#' Vector of age in years.
 #'
-#'   For `aggregate_age_counts()`, these must corresponding to the `counts`
-#'   entry and will defaults to 0:(N-1) where `N` is the number of counts
-#'   present.
+#' Double values will be coerced to integer prior to categorisation /
+#' aggregation.
 #'
-#'   `ages` >= 200 are not permitted due to the internal implementation.
+#' For `aggregate_age_counts()`, these must corresponding to the `counts` entry
+#' and will defaults to 0:(N-1) where `N` is the number of counts present.
+#'
+#' `ages` >= 200 are not permitted due to the internal implementation.
 #'
 #' @param limits `[integerish]`.
-#'   1 or more positive cut points in increasing (strictly) order.
 #'
-#'   Defaults to c(1L,5L,15L,25L,45L,65L).
+#' 1 or more positive cut points in increasing (strictly) order.
 #'
-#'   Double values will be coerced to integer prior to categorisation.
+#' Defaults to c(1L,5L,15L,25L,45L,65L).
+#'
+#' Double values will be coerced to integer prior to categorisation.
 #'
 #' @param counts `[numeric]`.
-#'   Vector of counts to be aggregated.
+#'
+#' Vector of counts to be aggregated.
 #'
 #' @param lower_bounds,upper_bounds `[integerish]`.
-#'   A pair of vectors representing the bounds of the intervals.
 #'
-#'   `lower_bounds` must be strictly less than `upper_bounds` and greater than
-#'   or equal to zero.
+#' A pair of vectors representing the bounds of the intervals.
 #'
-#'   Missing (NA) bounds are not permitted.
+#' `lower_bounds` must be strictly less than `upper_bounds` and greater than or
+#' equal to zero.
 #'
-#'   Double vectors will be coerced to integer.
+#' Missing (NA) bounds are not permitted.
+#'
+#' Double vectors will be coerced to integer.
 #'
 #' @param max_upper `[integerish]`
-#'   Represents the maximum upper bounds permitted upon splitting the data.
 #'
-#'   Used to replace `Inf` upper bounds prior to splitting.
+#' Represents the maximum upper bounds permitted upon splitting the data.
 #'
-#'   If any `upper_bound` is greater than `max_upper` the function will error.
+#' Used to replace `Inf` upper bounds prior to splitting.
 #'
-#'   Double vectors will be coerced to integer.
+#' If any `upper_bound` is greater than `max_upper` the function will error.
+#'
+#' Double vectors will be coerced to integer.
 #'
 #' @param weights `[numeric]`
-#'   Population weightings to apply for individual years.
 #'
-#'   If `NULL` (default) counts will be split evenly based on interval size.
+#' Population weightings to apply for individual years.
 #'
-#'   If specified, must be of length `max_upper` and represent weights in the
-#'   range 0:(max_upper - 1).
+#' If `NULL` (default) counts will be split evenly based on interval size.
+#'
+#' If specified, must be of length `max_upper` and represent weights in the
+#' range 0:(max_upper - 1).
 #'
 #'
 #' @return
 #'
-#' - `ages_to_interval()`.
-#'   A data frame with an ordered factor column (`interval`), as well as columns
-#'   corresponding to the explicit bounds (`lower_bound` and `upper_bound`).
+#' `ages_to_interval()`.
+#' A data frame with an ordered factor column (`interval`), as well as columns
+#' corresponding to the explicit bounds (`lower_bound` and `upper_bound`).
 #'
-#' - `split_interval_counts()`.
-#'   A data frame with entries `age` (in years) and `count`.
+#' `split_interval_counts()`.
+#' A data frame with entries `age` (in years) and `count`.
 #'
-#' - `aggregate_age_counts()` and `reaggregate_interval_counts()`.
-#'   A data frame with 4 entries; `interval`, `lower_bound`, `upper_bound` and
-#'   an associated `count`.
+#' `aggregate_age_counts()` and `reaggregate_interval_counts()`.
+#' A data frame with 4 entries; `interval`, `lower_bound`, `upper_bound` and an
+#' associated `count`.
 #'
 #'
 #' @examples
@@ -140,11 +146,11 @@ ages_to_interval <- function(ages, limits = c(1L, 5L, 15L, 25L, 45L, 65L)) {
 #' @rdname ageutils
 #' @export
 split_interval_counts <- function(
-        lower_bounds,
-        upper_bounds,
-        counts,
-        max_upper = 100L,
-        weights = NULL
+    lower_bounds,
+    upper_bounds,
+    counts,
+    max_upper = 100L,
+    weights = NULL
 ) {
 
     .Call(C_split_interval_counts, lower_bounds, upper_bounds, counts, max_upper, weights)
@@ -167,12 +173,12 @@ aggregate_age_counts <- function(
 #' @rdname ageutils
 #' @export
 reaggregate_interval_counts <- function(
-        lower_bounds,
-        upper_bounds,
-        counts,
-        limits = c(1L, 5L, 15L, 25L, 45L, 65L),
-        max_upper = 100L,
-        weights = NULL
+    lower_bounds,
+    upper_bounds,
+    counts,
+    limits = c(1L, 5L, 15L, 25L, 45L, 65L),
+    max_upper = 100L,
+    weights = NULL
 ) {
     .Call(C_reaggregate_interval_counts, lower_bounds, upper_bounds, counts, limits, max_upper, weights)
 }

@@ -5,11 +5,21 @@
 #' make it easy to identify the top level calling function whether used within a
 #' user facing function or internally.
 #'
-#' @param x Argument to check.
-#' @param arg Name of argument being checked (used in error message).
-#' @param call Call to use in error message.
+#' @param x
 #'
-#' @return NULL if the assertion succeeds (error otherwise).
+#' Argument to check.
+#'
+#' @param arg `[character]`
+#'
+#' Name of argument being checked (used in error message).
+#'
+#' @param call `[call]`
+#'
+#' Call to use in error message.
+#'
+#' @return
+#'
+#' NULL if the assertion succeeds (error otherwise).
 #'
 #' @examples
 #'
