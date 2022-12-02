@@ -19,6 +19,9 @@
     <loc>https://timtaylor.github.io/ympes/dev/news/index.html</loc>
   </url>
   <url>
+    <loc>https://timtaylor.github.io/ympes/dev/reference/ages_to_interval-deprecated.html</loc>
+  </url>
+  <url>
     <loc>https://timtaylor.github.io/ympes/dev/reference/ageutils.html</loc>
   </url>
   <url>
@@ -26,6 +29,9 @@
   </url>
   <url>
     <loc>https://timtaylor.github.io/ympes/dev/reference/cc.html</loc>
+  </url>
+  <url>
+    <loc>https://timtaylor.github.io/ympes/dev/reference/imp_assert-deprecated.html</loc>
   </url>
   <url>
     <loc>https://timtaylor.github.io/ympes/dev/reference/index.html</loc>
