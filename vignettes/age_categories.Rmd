@@ -17,24 +17,32 @@ knitr::opts_chunk$set(
 ympes provides a collection of functions for working with age intervals with
 underlying implementations that have been optimised for performance.
 
-## `cut_ages()`
+## `breaks_to_interval()`
 
-`cut_ages()` provides categorisation of ages based on specified breaks which
-represent the left-hand interval limits. The resultant groupings will span from
-the minimum break through to `Inf` and will always be closed on the left and
-open on the right. Ages below the minimum break will be returned as NA.
-As an example, if `breaks = c(0, 1, 10, 30)` the possible groupings would be
-"[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable to a
-call of `cut(ages, right = FALSE, breaks = c(limits, Inf))` but with both the
-resultant interval and the start and end points returned as entries in a list.
+`breaks_to_interval` provides a categorisation based on specified breaks which
+represent left-hand interval limits. The resultant groupings span from the
+minimum break through to `Inf` and will always be closed on the left and open on
+the right. Ages below the minimum break will be returned as NA. As an example,
+if `breaks = c(0, 1, 10, 30)` the interval categories would be [0, 1), [1, 10),
+[10, 30) and [30, Inf). Intervals are returned as a data frame with 3 entries;
+A factor with a character representation of the interval and two columns
+representing the numeric values of the corresponding lower (closed) and upper
+(open) bounds.
 
 ```{r}
 library(ympes)
+breaks_to_interval(breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
+```
 
+## `cut_ages()`
+
+`cut_ages()` provides categorisation of ages based on specified breaks which
+represent the left-hand interval limits. Categorisation is based on the breaks
+and follows the approach of `breaks_to_interval`.
+
+```{r}
 cut_ages(ages = 0:9, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
-
 cut_ages(1:10, breaks = 6L)
-
 x <- cut_ages(1:100, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
 str(x)
 head(x$interval)
@@ -94,7 +102,7 @@ aggregate_age_counts(
 )
 ```
 
-# `reaggregate_interval_counts()`
+## `reaggregate_interval_counts()`
 
 `reaggregate_interval_counts()` is equivalent to, but more efficient than a call
 to to `split_interval_counts()` followed by `aggregate_age_counts()`.
