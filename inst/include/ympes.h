@@ -10,6 +10,10 @@
 //          limits are integer, unique, sorted (increasingly) and not NA
 SEXP ages_to_interval(SEXP ages, SEXP limits);
 
+// convert breaks to interval
+// Assumes: breaks are finite, coercible to integer, not NA, and strictly sorted (increasingly).
+SEXP breaks_to_interval(SEXP breaks);
+
 // convert ages to interval
 // Assumes: ages are integer with 200 > age >= 0 (NA allowed)
 //          not all ages are NA

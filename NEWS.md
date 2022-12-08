@@ -12,6 +12,9 @@
   `cut_ages()`. This has a slightly different API (see `help(cut_ages)` for
   more information).
   
+- New function `breaks_to_interval()` for transforming breaks in to
+  corresponding intervals (see `help(breaks_to_interval)`).
+  
  - **breaking change**. The `limits` parameter has been removed from both
    `aggregate_age_counts()` and `reaggregate_age_counts()`. It has been replaced
    by a `breaks` which represents the left-hand side of your desired interval
