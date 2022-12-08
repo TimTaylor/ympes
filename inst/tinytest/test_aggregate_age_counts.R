@@ -108,7 +108,7 @@ expect_error(
 
 expect_error(
     aggregate_age_counts(1:10, breaks = NA_integer_),
-    "`breaks` must be non-negative.",
+    "`breaks` must be non-negative and coercible to integer.",
     fixed = TRUE
 )
 
@@ -120,7 +120,7 @@ expect_error(
 
 expect_error(
     aggregate_age_counts(1:10, breaks = -1),
-    "`breaks` must be non-negative.",
+    "`breaks` must be non-negative and coercible to integer.",
     fixed = TRUE
 )
 

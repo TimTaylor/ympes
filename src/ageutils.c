@@ -46,7 +46,7 @@ SEXP cut_ages(SEXP ages, SEXP breaks) {
 
     int first_break = p_breaks[0];
     if (first_break == NA_INTEGER || first_break < 0)
-        error("`breaks` must be non-negative.");
+        error("`breaks` must be non-negative and coercible to integer.");
 
     lower[0] = first_break;
     for (int i = 0; i < n_breaks - 1; ++i) {
@@ -342,7 +342,7 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
 
     int first_break = p_breaks[0];
     if (first_break == NA_INTEGER || first_break < 0)
-        error("`breaks` must be non-negative.");
+        error("`breaks` must be non-negative and coercible to integer.");
     p_new_breaks[0] = first_break;
     for (int i = 0; i < n_breaks - 1; ++i) {
         int brk = p_breaks[i + 1];

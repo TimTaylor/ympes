@@ -157,7 +157,7 @@ expect_error(
 
 expect_error(
     cut_ages(1:10, breaks = NA_integer_),
-    "`breaks` must be non-negative.",
+    "`breaks` must be non-negative and coercible to integer.",
     fixed = TRUE
 )
 
