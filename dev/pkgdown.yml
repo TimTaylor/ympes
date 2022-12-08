@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   age_categories: age_categories.html
-last_built: 2022-12-08T16:47Z
+last_built: 2022-12-08T17:10Z
 urls:
   reference: https://timtaylor.github.io/ympes/reference
   article: https://timtaylor.github.io/ympes/articles
