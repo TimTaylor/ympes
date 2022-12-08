@@ -482,7 +482,11 @@ SEXP aggregate_age_counts(SEXP counts, SEXP ages, SEXP breaks) {
         double tmp = out_counts[j];
         p_groups[n_breaks] += tmp;
         j++;
-        a = out_ages[j];
+        if (j < n_ages) {
+            a = out_ages[j];
+        } else {
+            break;
+        }
     }
 
     // calculate the other counts
