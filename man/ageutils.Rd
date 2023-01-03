@@ -88,14 +88,17 @@ If specified, must be of length \code{max_upper} and represent weights in the
 range 0:(max_upper - 1).}
 }
 \value{
-\code{breaks_to_interval()}, \code{cut_ages()} and \code{ages_to_interval()}.
+\code{breaks_to_interval()}, \code{cut_ages()}:
+
 A data frame with an ordered factor column (\code{interval}), as well as columns
 corresponding to the explicit bounds (\code{lower_bound} and \code{upper_bound}).
 
-\code{split_interval_counts()}.
+\code{split_interval_counts()}:
+
 A data frame with entries \code{age} (in years) and \code{count}.
 
-\code{aggregate_age_counts()} and \code{reaggregate_interval_counts()}.
+\code{aggregate_age_counts()} and \code{reaggregate_interval_counts()}:
+
 A data frame with 4 entries; \code{interval}, \code{lower_bound}, \code{upper_bound} and an
 associated \code{count}.
 }
@@ -104,7 +107,7 @@ This help page documents the utility functions provided for working with
 age intervals:
 
 \code{breaks_to_interval()} takes a specified set of breaks representing the left
-hand limits of a closed open interval (i.e [x, y)]) and returns the
+hand limits of a closed open interval, i.e [x, y), and returns the
 corresponding interval and upper bounds. The resulting intervals span from
 the minimum break through to \code{Inf}.
 
@@ -113,7 +116,7 @@ represent the left-hand interval limits. The resultant groupings will span
 from the minimum break through to \code{Inf} and will always be closed on the left
 and open on the right. Ages below the minimum break will be returned as NA.
 As an example, if \code{breaks = c(0, 1, 10, 30)} the possible groupings would be
-"[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
+[0, 1), [1, 10), [10, 30) and [30, Inf). This is roughly comparable
 to a call of \code{cut(ages, right = FALSE, breaks = c(limits, Inf))} but with
 both the resultant interval and the start and end points returned as entries
 in a list.
@@ -132,8 +135,6 @@ grouped as NA.
 
 \code{reaggregate_interval_counts()} is equivalent to, but more efficient than,
 a call to \code{split_interval_counts()} followed by \code{aggregate_age_counts()}.
-
-[x, y)]: R:x,\%20y)
 }
 \examples{
 

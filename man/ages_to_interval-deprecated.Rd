@@ -20,7 +20,7 @@ Double values are coerced to integer prior to categorisation / aggregation.
 
 1 or more positive cut points in increasing (strictly) order.
 
-Defaults to c(1L,5L,15L,25L,45L,65L).
+Defaults to c(1L, 5L, 15L, 25L, 45L, 65L).
 
 Double values are coerced to integer prior to categorisation.}
 }
@@ -33,13 +33,13 @@ release of ympes.
 right-hand interval limits. The resultant groupings will span the natural
 numbers (from 0) and will always be closed on the left and open on the right.
 For example, if \code{limits = c(1,10,30)} the possible groupings will be
-"[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
+[0, 1), [1, 10), [10, 30) and [30, Inf). This is roughly comparable
 to a call of \code{cut(ages, right = FALSE, breaks = c(0, limits))} but with the
 start and end points of the interval returned as entries in a list.
 }
 \examples{
 
-# limits are set to c(1L,5L,15L,25L,45L,65L) by default
+# limits are set to c(1L, 5L, 15L, 25L, 45L, 65L) by default
 ages_to_interval(ages = 0:9, limits = c(3L, 5L, 10L))
 ages_to_interval(ages = 0:9)
 ages_to_interval(ages = 0:9, limits = c(1L, 5L, 15L, 25L, 45L, 65L))

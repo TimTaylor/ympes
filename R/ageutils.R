@@ -6,7 +6,7 @@
 #' age intervals:
 #'
 #' `breaks_to_interval()` takes a specified set of breaks representing the left
-#' hand limits of a closed open interval (i.e [x, y)]) and returns the
+#' hand limits of a closed open interval, i.e [x, y), and returns the
 #' corresponding interval and upper bounds. The resulting intervals span from
 #' the minimum break through to `Inf`.
 #'
@@ -15,7 +15,7 @@
 #' from the minimum break through to `Inf` and will always be closed on the left
 #' and open on the right. Ages below the minimum break will be returned as NA.
 #' As an example, if `breaks = c(0, 1, 10, 30)` the possible groupings would be
-#' "[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
+#' [0, 1), [1, 10), [10, 30) and [30, Inf). This is roughly comparable
 #' to a call of `cut(ages, right = FALSE, breaks = c(limits, Inf))` but with
 #' both the resultant interval and the start and end points returned as entries
 #' in a list.
@@ -92,14 +92,17 @@
 #'
 #' @return
 #'
-#' `breaks_to_interval()`, `cut_ages()` and `ages_to_interval()`.
+#' `breaks_to_interval()`, `cut_ages()`:
+#'
 #' A data frame with an ordered factor column (`interval`), as well as columns
 #' corresponding to the explicit bounds (`lower_bound` and `upper_bound`).
 #'
-#' `split_interval_counts()`.
+#' `split_interval_counts()`:
+#'
 #' A data frame with entries `age` (in years) and `count`.
 #'
-#' `aggregate_age_counts()` and `reaggregate_interval_counts()`.
+#' `aggregate_age_counts()` and `reaggregate_interval_counts()`:
+#'
 #' A data frame with 4 entries; `interval`, `lower_bound`, `upper_bound` and an
 #' associated `count`.
 #'
