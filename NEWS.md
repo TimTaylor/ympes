@@ -21,6 +21,8 @@
    bounds (i.e. the `x` value in `[x, y)`). Intervals no longer span the natural
    numbers by default but will begin from the minimum break input. Any ages
    below this value will be treated as NA.
+   
+- New function `greprows()` for searching rows of a data frame.
 
 # ympes 0.2.1
 

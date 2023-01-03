@@ -21,7 +21,7 @@ Description: Provides a collection of lightweight helper functions (imps) both
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Suggests: 
     clipr,
     knitr,

@@ -24,3 +24,6 @@ reference:
 - title: "Data sets"
   contents:
   - pop_dat
+- title: "Miscellaneous"
+  contents:
+  - greprows
