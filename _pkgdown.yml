@@ -11,19 +11,9 @@ reference:
 - title: "Quote input"
   contents:
   - cc
-- title: "Age interval utilities"
-  contents:
-  - breaks_to_interval
-  - cut_ages
-  - split_interval_counts
-  - aggregate_age_counts
-  - reaggregate_interval_counts
 - title: "Input assertions"
   contents:
   - starts_with("assert")
-- title: "Data sets"
-  contents:
-  - pop_dat
 - title: "Miscellaneous"
   contents:
   - greprows

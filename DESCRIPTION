@@ -24,12 +24,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Suggests: 
     clipr,
-    knitr,
-    rmarkdown,
     tinytest
-Depends: 
-    R (>= 3.5.0)
-LazyData: true
-VignetteBuilder: knitr
 URL: https://timtaylor.github.io/ympes/
 BugReports: https://github.com/TimTaylor/ympes/issues
