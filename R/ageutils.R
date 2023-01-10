@@ -1,6 +1,12 @@
-#' Utilities for Age Intervals
+#' Deprecated Utilities for Age Intervals
 #'
 #' @description
+#'
+#' These functions are now deprecated and may be defunct as soon as the next
+#' release of ympes. Alternative functions, with similar naming and usage, can
+#' be found in the ageutils package.
+#'
+#' @details
 #'
 #' This help page documents the utility functions provided for working with
 #' age intervals:
@@ -138,13 +144,21 @@
 #'     breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L)
 #' )
 #'
-#' @name ageutils
+#' @name ageutils-deprecated
 NULL
 
 # -------------------------------------------------------------------------
-#' @rdname ageutils
+#' @rdname ageutils-deprecated
 #' @export
 breaks_to_interval <- function(breaks) {
+
+    old <- as.character(sys.call()[1L])
+    msg <- paste(
+        sprintf("`%s` is deprecated within {ympes} and will be removed in a future release.", old),
+        "Going forward please use the identically named function from the {ageutils} package.",
+        sep = "\n"
+    )
+    .Deprecated(msg = msg)
 
     # check breaks are numeric
     if (!is.numeric(breaks))
@@ -178,14 +192,22 @@ breaks_to_interval <- function(breaks) {
 
 
 # -------------------------------------------------------------------------
-#' @rdname ageutils
+#' @rdname ageutils-deprecated
 #' @export
 cut_ages <- function(ages, breaks) {
+    old <- as.character(sys.call()[1L])
+    msg <- paste(
+        sprintf("`%s` is deprecated within {ympes} and will be removed in a future release.", old),
+        "Going forward please use the identically named function from the {ageutils} package.",
+        sep = "\n"
+    )
+    .Deprecated(msg = msg)
+
     .Call(C_cut_ages, ages, breaks)
 }
 
 # -------------------------------------------------------------------------
-#' @rdname ageutils
+#' @rdname ageutils-deprecated
 #' @export
 split_interval_counts <- function(
     lower_bounds,
@@ -194,23 +216,38 @@ split_interval_counts <- function(
     max_upper = 100L,
     weights = NULL
 ) {
+    old <- as.character(sys.call()[1L])
+    msg <- paste(
+        sprintf("`%s` is deprecated within {ympes} and will be removed in a future release.", old),
+        "Going forward please use the identically named function from the {ageutils} package.",
+        sep = "\n"
+    )
+    .Deprecated(msg = msg)
 
     .Call(C_split_interval_counts, lower_bounds, upper_bounds, counts, max_upper, weights)
 }
 
 # -------------------------------------------------------------------------
-#' @rdname ageutils
+#' @rdname ageutils-deprecated
 #' @export
 aggregate_age_counts <- function(
     counts,
     ages = 0:(length(counts) - 1L),
     breaks
 ) {
+    old <- as.character(sys.call()[1L])
+    msg <- paste(
+        sprintf("`%s` is deprecated within {ympes} and will be removed in a future release.", old),
+        "Going forward please use the identically named function from the {ageutils} package.",
+        sep = "\n"
+    )
+    .Deprecated(msg = msg)
+
     .Call(C_aggregate_age_counts, counts, ages, breaks)
 }
 
 # -------------------------------------------------------------------------
-#' @rdname ageutils
+#' @rdname ageutils-deprecated
 #' @export
 reaggregate_interval_counts <- function(
     lower_bounds,
@@ -220,5 +257,13 @@ reaggregate_interval_counts <- function(
     max_upper = 100L,
     weights = NULL
 ) {
+    old <- as.character(sys.call()[1L])
+    msg <- paste(
+        sprintf("`%s` is deprecated within {ympes} and will be removed in a future release.", old),
+        "Going forward please use the identically named function from the {ageutils} package.",
+        sep = "\n"
+    )
+    .Deprecated(msg = msg)
+
     .Call(C_reaggregate_interval_counts, lower_bounds, upper_bounds, counts, breaks, max_upper, weights)
 }

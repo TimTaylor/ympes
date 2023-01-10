@@ -7,7 +7,10 @@ expected <- data.frame(
     upper_bound = c(5, Inf, NA),
     count = c(15, 40, 0)
 )
-expect_equal(aggregate_age_counts(dat, breaks = brk), expected)
+expect_equal(
+    suppressWarnings(aggregate_age_counts(dat, breaks = brk)),
+    expected
+)
 
 
 # NA ages are handled
@@ -25,7 +28,7 @@ expected <- data.frame(
 )
 
 expect_equal(
-    aggregate_age_counts(counts, ages, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L)),
+    suppressWarnings(aggregate_age_counts(counts, ages, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))),
     expected
 )
 
@@ -42,7 +45,10 @@ expected <- data.frame(
     upper_bound = c(1, 10, Inf, NA),
     count = c(0, 1, 10, 0)
 )
-expect_equal(aggregate_age_counts(counts, ages, breaks), expected)
+expect_equal(
+    suppressWarnings(aggregate_age_counts(counts, ages, breaks)),
+    expected
+)
 
 # counts and ages do not need to be ordered
 counts <- ages <- c(10, 1)
@@ -57,7 +63,10 @@ expected <- data.frame(
     upper_bound = c(1, 10, Inf, NA),
     count = c(0, 1, 10, 0)
 )
-expect_equal(aggregate_age_counts(counts, ages, breaks), expected)
+expect_equal(
+    suppressWarnings(aggregate_age_counts(counts, ages, breaks)),
+    expected
+)
 
 counts <- ages <- c(10, 1)
 breaks <- c(3, 10)
@@ -71,61 +80,64 @@ expected <- data.frame(
     upper_bound = c(10, Inf, NA),
     count = c(0, 10, 1)
 )
-expect_equal(aggregate_age_counts(counts, ages, breaks), expected)
+expect_equal(
+    suppressWarnings(aggregate_age_counts(counts, ages, breaks)),
+    expected
+)
 
 # error messaging
 counts <- ages <- c(10, 1)
 breaks <- c(0, counts)
 expect_error(
-    aggregate_age_counts(counts, ages, breaks),
+    suppressWarnings(aggregate_age_counts(counts, ages, breaks)),
     "`breaks` must be non-negative and in strictly increasing order.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(1:10, as.character(1:10), 5L),
+    suppressWarnings(aggregate_age_counts(1:10, as.character(1:10), 5L)),
     "`ages` must be numeric.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(1:10, 1:9, 5L),
+    suppressWarnings(aggregate_age_counts(1:10, 1:9, 5L)),
     "`ages` and `counts` must be the same length.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts("bob", breaks = 1L),
+    suppressWarnings(aggregate_age_counts("bob", breaks = 1L)),
     "`counts` must be numeric.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(ages = -1:10, counts = seq_along(ages), breaks = 2L),
+    suppressWarnings(aggregate_age_counts(ages = -1:10, counts = seq_along(ages), breaks = 2L)),
     "`ages` must be in the interval `[0, 200)` or NA.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(1:10, breaks = NA_integer_),
+    suppressWarnings(aggregate_age_counts(1:10, breaks = NA_integer_)),
     "`breaks` must be non-negative and coercible to integer.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(1:10, breaks = c(2L, 2L)),
+    suppressWarnings(aggregate_age_counts(1:10, breaks = c(2L, 2L))),
     "`breaks` must be non-negative and in strictly increasing order.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(1:10, breaks = -1),
+    suppressWarnings(aggregate_age_counts(1:10, breaks = -1)),
     "`breaks` must be non-negative and coercible to integer.",
     fixed = TRUE
 )
 
 expect_error(
-    aggregate_age_counts(1:10, breaks = "5"),
+    suppressWarnings(aggregate_age_counts(1:10, breaks = "5")),
     "`breaks` must be numeric.",
     fixed = TRUE
 )
@@ -134,10 +146,12 @@ ages <- 1:10
 ages[1] <- -1L
 counts <- 1:10
 expect_error(
-    aggregate_age_counts(counts, ages, breaks = 1),
+    suppressWarnings(aggregate_age_counts(counts, ages, breaks = 1)),
     "`ages` must be in the interval `[0, 200)` or NA.",
     fixed = TRUE
 )
 
 # success
-expect_silent(aggregate_age_counts(1:10, rep.int(NA_integer_, 10L), breaks = 2L))
+expect_silent(
+    suppressWarnings(aggregate_age_counts(1:10, rep.int(NA_integer_, 10L), breaks = 2L))
+)

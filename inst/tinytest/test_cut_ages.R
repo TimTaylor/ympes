@@ -12,7 +12,10 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(cut_ages(dat, c(0L, limit)), expected)
+expect_identical(
+    suppressWarnings(cut_ages(dat, c(0L, limit))),
+    expected
+)
 
 # multiple limits
 dat <- c(1:5, 99:102)
@@ -28,7 +31,10 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(cut_ages(dat, c(0L, limit)), expected)
+expect_identical(
+    suppressWarnings(cut_ages(dat, c(0L, limit))),
+    expected
+)
 
 # multiple limits with ages below minimum
 dat <- c(1:5, 99:102)
@@ -42,7 +48,10 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(cut_ages(dat, limit), expected)
+expect_identical(
+    suppressWarnings(cut_ages(dat, limit)),
+    expected
+)
 
 # NA handled correctly
 dat <- c(1:5, 99:102)
@@ -64,7 +73,10 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(cut_ages(dat, c(0L, limit)), expected)
+expect_identical(
+    suppressWarnings(cut_ages(dat, c(0L, limit))),
+    expected
+)
 
 # limits greater than values
 dat <- 1:5
@@ -81,7 +93,10 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(cut_ages(dat, c(0L, limits)), expected)
+expect_identical(
+    suppressWarnings(cut_ages(dat, c(0L, limits))),
+    expected
+)
 
 # all NA ages handled correctly
 dat <- rep.int(NA_real_, 5L)
@@ -95,37 +110,40 @@ expected <- data.frame(
     lower_bound = dat,
     upper_bound = dat
 )
-expect_identical(cut_ages(dat, c(0L, limits)), expected)
+expect_identical(
+    suppressWarnings(cut_ages(dat, c(0L, limits))),
+    expected
+)
 
 # error messaging
-expect_error(cut_ages("bob"))
+expect_error(suppressWarnings(cut_ages("bob")))
 
 expect_error(
-    cut_ages("bob", 3),
+    suppressWarnings(cut_ages("bob", 3)),
     "`ages` must be numeric.",
     fixed = TRUE
 )
 
 expect_error(
-    cut_ages(1:10, breaks = "5L"),
+    suppressWarnings(cut_ages(1:10, breaks = "5L")),
     "`breaks` must be numeric.",
     fixed = TRUE
 )
 
 expect_error(
-    cut_ages(-1:10, 5L),
+    suppressWarnings(cut_ages(-1:10, 5L)),
     "`ages` must be in the interval `[0, 200)` or NA.",
     fixed = TRUE
 )
 
 expect_error(
-    cut_ages(1:10, breaks = NA_integer_),
+    suppressWarnings(cut_ages(1:10, breaks = NA_integer_)),
     "`breaks` must be non-negative and coercible to integer.",
     fixed = TRUE
 )
 
 expect_error(
-    cut_ages(1:10, breaks = c(2L, 2L)),
+    suppressWarnings(cut_ages(1:10, breaks = c(2L, 2L))),
     "`breaks` must be non-negative and in strictly increasing order.",
     fixed = TRUE
 )

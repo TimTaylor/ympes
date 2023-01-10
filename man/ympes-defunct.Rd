@@ -101,8 +101,7 @@ ages_to_interval(ages, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
 \description{
 These functions are now defunct having previously been deprecated in version
 0.3.0 of ympes. For replacement assertion functions see \code{help("assersions")}.
-and for a replacement to the \code{ages_to_interval()} function see
+For a replacement to the \code{ages_to_interval()} function see
 \code{ageutils::cut_ages()}.
-#'
 }
 \keyword{internal}

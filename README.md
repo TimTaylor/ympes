@@ -12,7 +12,7 @@
 ympes provides a collection of lightweight helper functions (imps) both
 for interactive use and for inclusion within other packages. These
 include functions for visualising colour palettes, quoting user input,
-working with age intervals and a set of minimal assertion functions.
+searching rows of a data frame and a set of minimal assertion functions.
 
 <img src="man/figures/750px-Imp_with_cards_-_illustration_from_Le_grand_Etteilla.jpg" alt="Illustration of an imp looking at a hand of playing cards. Published on page 193 of Le grand Etteilla, ou, l'art de tirer les cartes." width="100%" />
 

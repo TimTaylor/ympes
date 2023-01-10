@@ -17,13 +17,13 @@ expected <- data.frame(
 )
 
 expect_equal(
-    reaggregate_interval_counts(
+    suppressWarnings(reaggregate_interval_counts(
         lower_bounds = lower_bounds,
         upper_bounds = upper_bounds,
         counts = counts,
         breaks = breaks,
         max_upper = max_upper
-    ),
+    )),
     expected
 )
 
@@ -42,13 +42,13 @@ expected <- data.frame(
 )
 
 expect_equal(
-    reaggregate_interval_counts(
+    suppressWarnings(reaggregate_interval_counts(
         lower_bounds = lower_bounds,
         upper_bounds = upper_bounds,
         counts = counts,
         breaks = breaks,
         weights = weights,
         max_upper = max_upper
-    ),
+    )),
     expected
 )
