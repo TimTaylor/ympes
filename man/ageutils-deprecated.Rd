@@ -173,3 +173,4 @@ reaggregate_interval_counts(
 )
 
 }
+\keyword{internal}
