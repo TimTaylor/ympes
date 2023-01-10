@@ -2,8 +2,13 @@
 
 - The old format for assertions (with the `imp_` prefix;
   e.g. `imp_assert_int()`) are now defunct and calling them will result in an
-  error. Similarly the function `ages_to_interval()` is also now defunt. See the
+  error. Similarly the function `ages_to_interval()` is also now defunct. See the
   earlier 0.3.0 release notes for replacement details.
+  
+- `breaks_to_interval()`, `cut_ages()`, `split_interval_counts()`,
+  `aggregate_age_counts()` and `reaggregate_interval_counts()` have been
+  deprecated in favour of functions within the `ageutils` package. As of version
+  0.0.1 of `ageutils` these have an identical naming and usage.
 
 # ympes 0.3.0
 
