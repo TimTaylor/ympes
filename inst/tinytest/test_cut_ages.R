@@ -12,8 +12,6 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-
-expect_identical(suppressWarnings(ages_to_interval(dat, limit)), expected)
 expect_identical(cut_ages(dat, c(0L, limit)), expected)
 
 # multiple limits
@@ -30,7 +28,6 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(suppressWarnings(ages_to_interval(dat, limit)), expected)
 expect_identical(cut_ages(dat, c(0L, limit)), expected)
 
 # multiple limits with ages below minimum
@@ -67,7 +64,6 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(suppressWarnings(ages_to_interval(dat, limit)), expected)
 expect_identical(cut_ages(dat, c(0L, limit)), expected)
 
 # limits greater than values
@@ -85,7 +81,6 @@ expected <- data.frame(
     lower_bound = lower_bound,
     upper_bound = upper_bound
 )
-expect_identical(suppressWarnings(ages_to_interval(dat, limits)), expected)
 expect_identical(cut_ages(dat, c(0L, limits)), expected)
 
 # all NA ages handled correctly
@@ -100,41 +95,9 @@ expected <- data.frame(
     lower_bound = dat,
     upper_bound = dat
 )
-expect_identical(suppressWarnings(ages_to_interval(dat, limits)), expected)
 expect_identical(cut_ages(dat, c(0L, limits)), expected)
 
 # error messaging
-expect_error(
-    suppressWarnings(ages_to_interval("bob")),
-    "`ages` must be integer(ish).",
-    fixed = TRUE
-)
-
-expect_error(
-    suppressWarnings(ages_to_interval(1:10, limits = "5L")),
-    "`limits` must be integer(ish).",
-    fixed = TRUE
-)
-
-expect_error(
-    suppressWarnings(ages_to_interval(-1:10)),
-    "`ages` must be in the interval `[0, 200)` or NA.",
-    fixed = TRUE
-)
-
-expect_error(
-    suppressWarnings(ages_to_interval(1:10, limits = NA_integer_)),
-    "`limits` must be positive and in strictly increasing order.",
-    fixed = TRUE
-)
-
-expect_error(
-    suppressWarnings(ages_to_interval(1:10, limits = c(2L, 2L))),
-    "`limits` must be positive and in strictly increasing order.",
-    fixed = TRUE
-)
-
-
 expect_error(cut_ages("bob"))
 
 expect_error(

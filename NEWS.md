@@ -1,5 +1,10 @@
 # ympes (development version)
 
+- The old format for assertions (with the `imp_` prefix;
+  e.g. `imp_assert_int()`) are now defunct and calling them will result in an
+  error. Similarly the function `ages_to_interval()` is also now defunt. See the
+  earlier 0.3.0 release notes for replacement details.
+
 # ympes 0.3.0
 
 - New assertion functions that do not require the `imp_` prefix and return NULL
@@ -17,12 +22,12 @@
 - New function `breaks_to_interval()` for transforming breaks in to
   corresponding intervals (see `help(breaks_to_interval)`).
   
- - **breaking change**. The `limits` parameter has been removed from both
-   `aggregate_age_counts()` and `reaggregate_age_counts()`. It has been replaced
-   by a `breaks` which represents the left-hand side of your desired interval
-   bounds (i.e. the `x` value in `[x, y)`). Intervals no longer span the natural
-   numbers by default but will begin from the minimum break input. Any ages
-   below this value will be treated as NA.
+- **breaking change**. The `limits` parameter has been removed from both
+  `aggregate_age_counts()` and `reaggregate_age_counts()`. It has been replaced
+  by a `breaks` which represents the left-hand side of your desired interval
+  bounds (i.e. the `x` value in `[x, y)`). Intervals no longer span the natural
+  numbers by default but will begin from the minimum break input. Any ages
+  below this value will be treated as NA.
    
 - New function `greprows()` for searching rows of a data frame.
 

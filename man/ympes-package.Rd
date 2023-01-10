@@ -6,7 +6,7 @@
 \alias{ympes-package}
 \title{ympes: Collection of Helper Functions}
 \description{
-Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include minimal assertion functions with a focus on informative error messaging for both missing and incorrect function arguments as well as other functions for visualising colour palettes, quoting user input and working with age intervals.
+Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include minimal assertion functions with a focus on informative error messaging for both missing and incorrect function arguments as well as other functions for visualising colour palettes, quoting user input and searching rows of a data frame.
 }
 \seealso{
 Useful links:
