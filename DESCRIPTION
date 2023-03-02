@@ -27,3 +27,5 @@ Suggests:
     tinytest
 URL: https://timtaylor.github.io/ympes/
 BugReports: https://github.com/TimTaylor/ympes/issues
+Imports: 
+    utils

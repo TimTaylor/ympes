@@ -1,5 +1,8 @@
 # ympes (development version)
 
+- New function `new_package()` for setting up a package skeleton based on my
+  preferred folder structure.
+
 - The old format for assertions (with the `imp_` prefix;
   e.g. `imp_assert_int()`) are now defunct and calling them will result in an
   error. Similarly the function `ages_to_interval()` is also now defunct. See the
