@@ -1,8 +1,10 @@
 #' Quote names
 #'
+# -------------------------------------------------------------------------
 #' `cc()` quotes comma separated names whilst trimming outer whitespace. It is
 #'   intended for interactive use only.
 #'
+# -------------------------------------------------------------------------
 #' @param ...
 #'
 #' Unquoted names (separated by commas) that you wish to quote.
@@ -19,15 +21,17 @@
 #' Note that copying to clipboard requires the availability of package
 #' [clipr](https://cran.r-project.org/package=clipr).
 #'
-#'
+# -------------------------------------------------------------------------
 #' @return
 #'
 #' A character vector of the quoted input.
 #'
+# -------------------------------------------------------------------------
 #' @examples
 #'
 #' cc(dale, audrey, laura, hawk)
 #'
+# -------------------------------------------------------------------------
 #' @importFrom utils capture.output
 #' @export
 cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {

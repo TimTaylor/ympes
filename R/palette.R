@@ -1,7 +1,9 @@
 #' Plot a colour palette
 #'
+# -------------------------------------------------------------------------
 #' `plot_palette()` plots a palette from a vector of colour values (name or hex).
 #'
+# -------------------------------------------------------------------------
 #' @param values `[character]`
 #'
 #' Vector of named or hex colours.
@@ -17,18 +19,20 @@
 #'
 #' Display palette as square?
 #'
+# -------------------------------------------------------------------------
 #' @return
 #'
 #' The input (invisibly).
 #'
+# -------------------------------------------------------------------------
 #' @examples
 #'
 #' plot_palette(c("#5FE756", "red", "black"))
 #' plot_palette(c("#5FE756", "red", "black"), square=TRUE)
 #'
+# -------------------------------------------------------------------------
 #' @importFrom graphics axis image text
 #' @importFrom grDevices col2rgb
-#'
 #' @export
 plot_palette <- function(values, label = TRUE, square = FALSE) {
 

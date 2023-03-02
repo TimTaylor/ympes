@@ -68,7 +68,6 @@ greprows(dat, "A|b")
 greprows(dat, "A|b", ignore.case = TRUE)
 greprows(dat, "c", value = FALSE)
 
-
 }
 \seealso{
 grep

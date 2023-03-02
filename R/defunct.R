@@ -1,12 +1,12 @@
 #' Functions now defunct in package ympes
 #'
-#' @description
-#'
+# -------------------------------------------------------------------------
 #' These functions are now defunct having previously been deprecated in version
 #' 0.3.0 of ympes. For replacement assertion functions see `help("assersions")`.
 #' For a replacement to the `ages_to_interval()` function see
 #' `ageutils::cut_ages()`.
 #'
+# -------------------------------------------------------------------------
 #' @name ympes-defunct
 #' @keywords internal
 NULL

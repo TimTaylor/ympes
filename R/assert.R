@@ -1,10 +1,12 @@
 #' Argument assertions
 #'
+# -------------------------------------------------------------------------
 #' Assertions for function arguments. Motivated by `vctrs::vec_assert()` but
 #' with lower overhead at a cost of less informative error messages. Designed to
 #' make it easy to identify the top level calling function whether used within a
 #' user facing function or internally.
 #'
+# -------------------------------------------------------------------------
 #' @param x
 #'
 #' Argument to check.
@@ -17,10 +19,12 @@
 #'
 #' Call to use in error message.
 #'
+# -------------------------------------------------------------------------
 #' @return
 #'
 #' NULL if the assertion succeeds (error otherwise).
 #'
+# -------------------------------------------------------------------------
 #' @examples
 #'
 #' # Use in a user facing function
@@ -44,6 +48,7 @@
 #' try(external_fun())
 #' try(external_fun(b = letters))
 #'
+# -------------------------------------------------------------------------
 #' @name assertions
 NULL
 

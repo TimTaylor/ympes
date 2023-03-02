@@ -1,10 +1,10 @@
 #' Pattern matching on data frame rows
 #'
-#'
+# -------------------------------------------------------------------------
 #' `greprows()` searches for pattern matches within a data frames columns and
 #' returns the related rows or row indices.
 #'
-#'
+# -------------------------------------------------------------------------
 #' @param dat Data frame
 #'
 #' @param cols `[character]`
@@ -21,13 +21,13 @@
 #'
 #' @inheritParams base::grep
 #'
-#'
+# -------------------------------------------------------------------------
 #' @return
 #'
 #' A data frame of the corresponding rows or, if `value = FALSE`, the
 #' corresponding row numbers.
 #'
-#'
+# -------------------------------------------------------------------------
 #' @examples
 #'
 #' dat <- data.frame(
@@ -39,9 +39,8 @@
 #' greprows(dat, "A|b", ignore.case = TRUE)
 #' greprows(dat, "c", value = FALSE)
 #'
-#'
+# -------------------------------------------------------------------------
 #' @seealso grep
-#'
 #' @export
 greprows <- function(
     dat,
