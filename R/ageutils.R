@@ -33,10 +33,9 @@
 #'
 #' `aggregate_age_counts()` provides aggregation of counts across ages (in
 #' years). It is similar to a `cut()` and `tapply()` pattern but optimised for
-#' speed over flexibility. Groupings are the same as in `ages_to_interval()`
-#' and counts will be provided across all natural numbers grater than the
-#' minimum break. Missing values, and those less than the minimum break, are
-#' grouped as NA.
+#' speed over flexibility. Groupings are the same as in `cut_ages()` and counts
+#' will be provided across all natural numbers grater than the minimum break.
+#' Missing values, and those less than the minimum break, are grouped as NA.
 #'
 #' `reaggregate_interval_counts()` is equivalent to, but more efficient than,
 #' a call to `split_interval_counts()` followed by `aggregate_age_counts()`.
