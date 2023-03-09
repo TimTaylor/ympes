@@ -28,6 +28,11 @@
 \alias{imp_assert_scalar_chr}
 \alias{imp_assert_string}
 \alias{ages_to_interval}
+\alias{breaks_to_interval}
+\alias{cut_ages}
+\alias{split_interval_counts}
+\alias{aggregate_age_counts}
+\alias{reaggregate_interval_counts}
 \title{Functions now defunct in package ympes}
 \usage{
 imp_assert_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
@@ -97,11 +102,36 @@ imp_assert_scalar_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 imp_assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 ages_to_interval(ages, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
+
+breaks_to_interval(breaks)
+
+cut_ages(ages, breaks)
+
+split_interval_counts(
+  lower_bounds,
+  upper_bounds,
+  counts,
+  max_upper = 100L,
+  weights = NULL
+)
+
+aggregate_age_counts(counts, ages = 0:(length(counts) - 1L), breaks)
+
+reaggregate_interval_counts(
+  lower_bounds,
+  upper_bounds,
+  counts,
+  breaks,
+  max_upper = 100L,
+  weights = NULL
+)
 }
 \description{
-These functions are now defunct having previously been deprecated in version
-0.3.0 of ympes. For replacement assertion functions see \code{help("assersions")}.
-For a replacement to the \code{ages_to_interval()} function see
-\code{ageutils::cut_ages()}.
+These functions are now defunct.
+
+For replacement assertion functions see \code{help("assertions")}.
+
+For replacements to the age utilities function see the
+\href{https://cran.r-project.org/package=ageutils}{\code{ageutils}} package.
 }
 \keyword{internal}

@@ -1,10 +1,14 @@
 #' Functions now defunct in package ympes
 #'
 # -------------------------------------------------------------------------
-#' These functions are now defunct having previously been deprecated in version
-#' 0.3.0 of ympes. For replacement assertion functions see `help("assersions")`.
-#' For a replacement to the `ages_to_interval()` function see
-#' `ageutils::cut_ages()`.
+#' @description
+#'
+#' These functions are now defunct.
+#'
+#' For replacement assertion functions see `help("assertions")`.
+#'
+#' For replacements to the age utilities function see the
+#' [`ageutils`](https://cran.r-project.org/package=ageutils) package.
 #'
 # -------------------------------------------------------------------------
 #' @name ympes-defunct
@@ -194,5 +198,59 @@ imp_assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-
 #' @export
 ages_to_interval <- function(ages, limits = c(1L, 5L, 15L, 25L, 45L, 65L)) {
     .Defunct(new = "ageutils::cut_ages")
+}
+
+# -------------------------------------------------------------------------
+#' @rdname ympes-defunct
+#' @export
+breaks_to_interval <- function(breaks) {
+    .Defunct(new = "ageutils::breaks_to_interval")
+}
+
+
+# -------------------------------------------------------------------------
+#' @rdname ympes-defunct
+#' @export
+cut_ages <- function(ages, breaks) {
+    .Defunct(new = "ageutils::cut_ages")
+}
+
+
+# -------------------------------------------------------------------------
+#' @rdname ympes-defunct
+#' @export
+split_interval_counts <- function(
+        lower_bounds,
+        upper_bounds,
+        counts,
+        max_upper = 100L,
+        weights = NULL
+) {
+    .Defunct(new = "ageutils::split_interval_count")
+}
+
+# -------------------------------------------------------------------------
+#' @rdname ympes-defunct
+#' @export
+aggregate_age_counts <- function(
+        counts,
+        ages = 0:(length(counts) - 1L),
+        breaks
+) {
+    .Defunct(new = "ageutils::aggregate_age_counts")
+}
+
+# -------------------------------------------------------------------------
+#' @rdname ympes-defunct
+#' @export
+reaggregate_interval_counts <- function(
+        lower_bounds,
+        upper_bounds,
+        counts,
+        breaks,
+        max_upper = 100L,
+        weights = NULL
+) {
+    .Defunct(new = "ageutils::reaggregate_interval_counts")
 }
 
