@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 0.3.0.9000
+Version: 0.3.1
 Authors@R: 
     c(
       person(
@@ -25,7 +25,7 @@ RoxygenNote: 7.2.3
 Suggests: 
     clipr,
     tinytest
-URL: https://timtaylor.github.io/ympes/
+URL: https://github.com/TimTaylor/ympes
 BugReports: https://github.com/TimTaylor/ympes/issues
 Imports: 
     utils

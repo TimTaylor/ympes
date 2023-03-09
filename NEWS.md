@@ -1,4 +1,4 @@
-# ympes (development version)
+# ympes 0.3.1
 
 - New function `new_package()` for setting up a package skeleton based on my
   preferred folder structure.
