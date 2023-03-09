@@ -1,4 +1,4 @@
-# ympes 0.3.1
+# ympes 0.4.0
 
 - New function `new_package()` for setting up a package skeleton based on my
   preferred folder structure.
@@ -9,7 +9,7 @@
   
 - Age utility functions `breaks_to_interval()`, `cut_ages()`,
   `split_interval_counts()`, `aggregate_age_counts()`,
-  `reaggregate_interval_counts()` and `ages_to_interval()` are also defunct.
+  `reaggregate_interval_counts()` and `ages_to_interval()` are now defunct.
   These functions have been migrated to the more focussed
   [`ageutils`](https://cran.r-project.org/package=ageutils) package. As of
   version 0.0.1 of `ageutils` these have an identical naming and usage.
