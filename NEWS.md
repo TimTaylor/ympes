@@ -1,3 +1,5 @@
+# ympes (development version)
+
 # ympes 0.4.0
 
 - New function `new_package()` for setting up a package skeleton based on my
