@@ -112,6 +112,34 @@ new_package <- function(
     }
     .done()
 
+    # add .Rbuildignore
+    message("Adding .Rbuildignore .............. ", appendLF = FALSE)
+    tmp <- file.copy(
+        system.file("skeletons", "pkg.Rbuildignore", package = "ympes"),
+        file.path(root, ".Rbuildignore")
+    )
+    if (!tmp) {
+        .x()
+        unlink(root, recursive = TRUE)
+        stop("Unable to create '.Rbuildignore'.")
+    }
+    .done()
+
+    # add .Rproj
+    message("Adding .Rproj ..................... ", appendLF = FALSE)
+    rprojname <- sprintf("%s.Rproj", name)
+    tmp <- file.copy(
+        system.file("skeletons", "rproj", package = "ympes"),
+        file.path(root, rprojname)
+    )
+    if (!tmp) {
+        .x()
+        unlink(root, recursive = TRUE)
+        stopf("Unable to create '%s.Rproj'.", name)
+    }
+    .done()
+
+
     # get roxygen details
     roxy <- tryCatch(
         utils::packageVersion("roxygen2"),
@@ -128,28 +156,24 @@ new_package <- function(
     })
     if (is.null(orcid)) {
         author <- sprintf(
-'c(
-    person(
+'    person(
         given = "%s",
         family = "%s",
         role = c("aut", "cre", "cph"),
         email = "%s"
-    )
-)',
+    )',
 firstname,
 surname,
 email
 )    } else {
         author <- sprintf(
-'c(
-    person(
+'    person(
         given = "%s",
         family = "%s",
         role = c("aut", "cre", "cph"),
         email = "%s",
         comment = c(ORCID = "%s")
-    )
-)',
+    )',
 firstname,
 surname,
 email,
@@ -162,7 +186,7 @@ orcid
             "Type: Package\n",
             "Title: What the package does (short line)\n",
             "Version: 0.0.0.9000\n",
-            "Authors@R:\n\t", author, "\n",
+            "Authors@R:\n", author, "\n",
             "Description: More about what it does (maybe more than one line)\n",
             "License: What license is it under?\n",
             "Encoding: UTF-8\n",
@@ -197,3 +221,7 @@ orcid
     message(sprintf("\nComplete.\n\nPackage skeleton created in\n   %s", root))
     invisible(root)
 }
+
+#' @rdname new_package
+#' @export
+np <- new_package

@@ -2,9 +2,20 @@
 % Please edit documentation in R/new_package.R
 \name{new_package}
 \alias{new_package}
+\alias{np}
 \title{Create a package skeleton}
 \usage{
 new_package(
+  name = "mypackage",
+  dir = ".",
+  firstname = getOption("ympes.firstname", "Joe"),
+  surname = getOption("ympes.surname", "Bloggs"),
+  email = getOption("ympes.email", "Joe.Bloggs@missing.com"),
+  orcid = getOption("ympes.orcid", default = NULL),
+  enter = TRUE
+)
+
+np(
   name = "mypackage",
   dir = ".",
   firstname = getOption("ympes.firstname", "Joe"),

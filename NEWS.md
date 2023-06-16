@@ -1,5 +1,10 @@
 # ympes (development version)
 
+- `new_package()` will now add `.Rbuildignore` and `.Rproj` files with sensible
+  defaults.
+
+- `np()` is now given as an alias for `new_package()`.
+
 # ympes 0.4.0
 
 - New function `new_package()` for setting up a package skeleton based on my
