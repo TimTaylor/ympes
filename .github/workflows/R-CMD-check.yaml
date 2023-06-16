@@ -14,6 +14,7 @@ on:
       - 'DESCRIPTION'
       - 'NAMESPACE'
       - 'LICENSE'
+      - '.Rbuildignore'
       - '.github/workflows/R-CMD-check.yaml'
   pull_request:
     branches: [main, master]
@@ -28,6 +29,7 @@ on:
       - 'DESCRIPTION'
       - 'NAMESPACE'
       - 'LICENSE'
+      - '.Rbuildignore'
       - '.github/workflows/R-CMD-check.yaml'
 
 name: R-CMD-check
