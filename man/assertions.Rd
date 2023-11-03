@@ -16,17 +16,33 @@
 \alias{assert_list}
 \alias{assert_scalar_integer}
 \alias{assert_scalar_int}
+\alias{assert_scalar_integer_not_na}
+\alias{assert_scalar_int_not_na}
 \alias{assert_scalar_double}
 \alias{assert_scalar_dbl}
+\alias{assert_scalar_double_not_na}
+\alias{assert_scalar_dbl_not_na}
 \alias{assert_scalar_numeric}
 \alias{assert_scalar_num}
+\alias{assert_scalar_numeric_not_na}
+\alias{assert_scalar_num_not_na}
 \alias{assert_scalar_logical}
 \alias{assert_scalar_lgl}
 \alias{assert_bool}
 \alias{assert_boolean}
 \alias{assert_scalar_character}
 \alias{assert_scalar_chr}
+\alias{assert_scalar_character_not_na}
+\alias{assert_scalar_chr_not_na}
 \alias{assert_string}
+\alias{assert_non_negative_or_na}
+\alias{assert_non_positive_or_na}
+\alias{assert_non_negative}
+\alias{assert_non_positive}
+\alias{assert_positive}
+\alias{assert_negative}
+\alias{assert_positive_or_na}
+\alias{assert_negative_or_na}
 \title{Argument assertions}
 \usage{
 assert_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
@@ -57,13 +73,37 @@ assert_scalar_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 assert_scalar_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
+assert_scalar_integer_not_na(
+  x,
+  arg = deparse(substitute(x)),
+  call = sys.call(-1L)
+)
+
+assert_scalar_int_not_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
 assert_scalar_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 assert_scalar_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
+assert_scalar_double_not_na(
+  x,
+  arg = deparse(substitute(x)),
+  call = sys.call(-1L)
+)
+
+assert_scalar_dbl_not_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
 assert_scalar_numeric(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 assert_scalar_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_scalar_numeric_not_na(
+  x,
+  arg = deparse(substitute(x)),
+  call = sys.call(-1L)
+)
+
+assert_scalar_num_not_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 assert_scalar_logical(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
@@ -77,7 +117,39 @@ assert_scalar_character(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
 assert_scalar_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 
+assert_scalar_character_not_na(
+  x,
+  arg = deparse(substitute(x)),
+  call = sys.call(-1L)
+)
+
+assert_scalar_chr_not_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
 assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_non_negative_or_na(
+  x,
+  arg = deparse(substitute(x)),
+  call = sys.call(-1L)
+)
+
+assert_non_positive_or_na(
+  x,
+  arg = deparse(substitute(x)),
+  call = sys.call(-1L)
+)
+
+assert_non_negative(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_non_positive(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_positive(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_negative(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_positive_or_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+
+assert_negative_or_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
 }
 \arguments{
 \item{x}{Argument to check.}

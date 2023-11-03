@@ -165,6 +165,21 @@ assert_scalar_int <- assert_scalar_integer
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
+assert_scalar_integer_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!(is.integer(x) && length(x) == 1) || is.na(x))
+        stopf("`%s` must be an integer vector of length 1 and not NA.", arg, .call = call)
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_scalar_int_not_na <- assert_scalar_integer_not_na
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -180,6 +195,21 @@ assert_scalar_dbl <- assert_scalar_double
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
+assert_scalar_double_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!(is.double(x) && length(x) == 1) || is.na(x))
+        stopf("`%s` must be a double vector of length 1 and not NA.", arg, .call = call)
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_scalar_dbl_not_na <- assert_scalar_double_not_na
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -191,6 +221,21 @@ assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.ca
 #' @rdname assertions
 #' @export
 assert_scalar_num <- assert_scalar_numeric
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_scalar_numeric_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!(is.numeric(x) && length(x) == 1) || is.na(x))
+        stopf("`%s` must be a numeric vector of length 1 and not NA.", arg, .call = call)
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_scalar_num_not_na <- assert_scalar_numeric_not_na
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
@@ -241,10 +286,137 @@ assert_scalar_chr <- assert_scalar_character
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
+assert_scalar_character_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!(is.character(x) && length(x) == 1) || is.na(x))
+        stopf("`%s` must be a character vector of length 1 and not NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_scalar_chr_not_na <- assert_scalar_character_not_na
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     assert_scalar_chr(x = x, arg = arg, call = call)
 }
 
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_non_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_non_negative_or_na(x))
+        stopf("`%s` values must be non-negative or NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_non_positive_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_non_positive_or_na(x))
+        stopf("`%s` values must be non-positive or NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_non_negative <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_non_negative(x))
+        stopf("`%s` values must be non-negative and not NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_non_positive <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_non_positive(x))
+        stopf("`%s` values must be non-positive and not NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_positive <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_positive(x))
+        stopf("`%s` values must be positive and not NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_negative <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_negative(x))
+        stopf("`%s` values must be negative and not NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_positive_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_positive_or_na(x))
+        stopf("`%s` values must be positive or NA.", arg, .call = call)
+
+}
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    .assert_not_missing(x = x, arg = arg, call = call)
+
+    if (!is.numeric(x))
+        stopf("`%s` must be a numeric vector.", arg, .call = call)
+
+    if (!.all_negative_or_na(x))
+        stopf("`%s` values must be negative or NA.", arg, .call = call)
+
+}
 
 # ------------------------------------------------------------------------- #
 # ------------------------------------------------------------------------- #
@@ -256,3 +428,84 @@ assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L))
     if (missing(x))
         stopf("argument `%s` is missing, with no default.", arg, .call = call)
 }
+
+# -------------------------------------------------------------------------
+
+.all_non_negative_or_na <- function(x) {
+    min(0, x, na.rm = TRUE) >= 0
+}
+
+# -------------------------------------------------------------------------
+
+.all_non_positive_or_na <- function(x) {
+    max(0, x, na.rm = TRUE) <= 0
+}
+
+# -------------------------------------------------------------------------
+
+.all_non_negative <- function(x) {
+    if (length(x) == 0L)
+        return(TRUE)
+    min <- min(x)
+    if(is.na(min))
+        return(FALSE)
+    if (min >= 0) TRUE else FALSE
+}
+
+# -------------------------------------------------------------------------
+
+.all_non_positive <- function(x) {
+    if (length(x) == 0L)
+        return(TRUE)
+    max <- max(x)
+    if(is.na(max))
+        return(FALSE)
+    if (max <= 0) TRUE else FALSE
+}
+
+# -------------------------------------------------------------------------
+
+.all_positive <- function(x) {
+    if (length(x) == 0L)
+        return(TRUE)
+    min <- min(x)
+    if (is.na(min))
+        return(FALSE)
+    if (min > 0) TRUE else FALSE
+}
+
+# -------------------------------------------------------------------------
+
+.all_negative <- function(x) {
+    if (length(x) == 0L)
+        return(TRUE)
+    max <- max(x)
+    if (is.na(max))
+        return(FALSE)
+    if (max < 0) TRUE else FALSE
+}
+
+# -------------------------------------------------------------------------
+
+.all_positive_or_na <- function(x) {
+    if (length(x) == 0L)
+        return(TRUE)
+    nax <- is.na(x)
+    if (sum(nax) == length(x))
+        return(TRUE)
+    if (min(x, na.rm = TRUE) <= 0) FALSE else TRUE
+}
+
+# -------------------------------------------------------------------------
+
+.all_negative_or_na <- function(x) {
+    if (length(x) == 0L)
+        return(TRUE)
+    nax <- is.na(x)
+    if (sum(nax) == length(x))
+        return(TRUE)
+    if (max(x, na.rm = TRUE) >= 0) FALSE else TRUE
+}
+
+# -------------------------------------------------------------------------
+
