@@ -1,4 +1,4 @@
-# ympes 0.4.1
+# ympes 0.5.0
 
 - `new_package()` will now add `.Rbuildignore` and `.Rproj` files with sensible
   defaults.
