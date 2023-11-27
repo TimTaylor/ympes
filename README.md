@@ -28,7 +28,7 @@ install.packages("ympes")
 The development version of ympes can be installed from GitHub with:
 
 ``` r
-remotes::install_github("TimTaylor/ympes")
+remotes::install_git("https://git.sr.ht/~htgb/ympes")
 ```
 
 </div>
