@@ -25,7 +25,7 @@ install.packages("ympes")
 
 <div class="pkgdown-devel">
 
-The development version of ympes can be installed from GitHub with:
+The development version of ympes can be installed from sourcehut with:
 
 ``` r
 remotes::install_git("https://git.sr.ht/~htgb/ympes")
