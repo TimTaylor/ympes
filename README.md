@@ -4,12 +4,6 @@
 # ympes
 
 <!-- badges: start -->
-
-<a
-href="https://github.com/TimTaylor/ympes/actions/workflows/R-CMD-check.yaml"
-class="pkgdown-devel"><img
-src="https://github.com/TimTaylor/ympes/actions/workflows/R-CMD-check.yaml/badge.svg"
-alt="R-CMD-check" /></a>
 <a href="https://CRAN.R-project.org/package=ympes"
 class="pkgdown-release"><img
 src="https://www.r-pkg.org/badges/version/ympes"
