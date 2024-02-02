@@ -153,7 +153,7 @@ assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
 assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.integer(x) && length(x) == 1))
+    if (!(is.integer(x) && length(x) == 1L))
         stopf("`%s` must be an integer vector of length 1.", arg, .call = call)
 }
 
@@ -168,7 +168,7 @@ assert_scalar_int <- assert_scalar_integer
 assert_scalar_integer_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.integer(x) && length(x) == 1) || is.na(x))
+    if (!(is.integer(x) && length(x) == 1L) || is.na(x))
         stopf("`%s` must be an integer vector of length 1 and not NA.", arg, .call = call)
 }
 
@@ -183,7 +183,7 @@ assert_scalar_int_not_na <- assert_scalar_integer_not_na
 assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.double(x) && length(x) == 1))
+    if (!(is.double(x) && length(x) == 1L))
         stopf("`%s` must be a double vector of length 1.", arg, .call = call)
 }
 
@@ -198,7 +198,7 @@ assert_scalar_dbl <- assert_scalar_double
 assert_scalar_double_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.double(x) && length(x) == 1) || is.na(x))
+    if (!(is.double(x) && length(x) == 1L) || is.na(x))
         stopf("`%s` must be a double vector of length 1 and not NA.", arg, .call = call)
 }
 
@@ -213,7 +213,7 @@ assert_scalar_dbl_not_na <- assert_scalar_double_not_na
 assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.numeric(x) && length(x) == 1))
+    if (!(is.numeric(x) && length(x) == 1L))
         stopf("`%s` must be a numeric vector of length 1.", arg, .call = call)
 }
 
@@ -228,7 +228,7 @@ assert_scalar_num <- assert_scalar_numeric
 assert_scalar_numeric_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.numeric(x) && length(x) == 1) || is.na(x))
+    if (!(is.numeric(x) && length(x) == 1L) || is.na(x))
         stopf("`%s` must be a numeric vector of length 1 and not NA.", arg, .call = call)
 }
 
@@ -243,7 +243,7 @@ assert_scalar_num_not_na <- assert_scalar_numeric_not_na
 assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.logical(x) && length(x) == 1))
+    if (!(is.logical(x) && length(x) == 1L))
         stopf("`%s` must be a logical vector of length 1.", arg, .call = call)
 }
 
@@ -258,7 +258,7 @@ assert_scalar_lgl <- assert_scalar_logical
 assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.logical(x) && length(x) == 1) || is.na(x))
+    if (!(is.logical(x) && length(x) == 1L) || is.na(x))
         stopf("`%s` must be boolean (TRUE/FALSE).", arg, .call = call)
 }
 
@@ -273,7 +273,7 @@ assert_boolean <- assert_bool
 assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.character(x) && length(x) == 1))
+    if (!(is.character(x) && length(x) == 1L))
         stopf("`%s` must be a character vector of length 1.", arg, .call = call)
 
 }
@@ -289,7 +289,7 @@ assert_scalar_chr <- assert_scalar_character
 assert_scalar_character_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
-    if (!(is.character(x) && length(x) == 1) || is.na(x))
+    if (!(is.character(x) && length(x) == 1L) || is.na(x))
         stopf("`%s` must be a character vector of length 1 and not NA.", arg, .call = call)
 
 }
@@ -447,7 +447,7 @@ assert_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.ca
     if (length(x) == 0L)
         return(TRUE)
     min <- min(x)
-    if(is.na(min))
+    if (is.na(min))
         return(FALSE)
     if (min >= 0) TRUE else FALSE
 }
@@ -458,7 +458,7 @@ assert_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.ca
     if (length(x) == 0L)
         return(TRUE)
     max <- max(x)
-    if(is.na(max))
+    if (is.na(max))
         return(FALSE)
     if (max <= 0) TRUE else FALSE
 }
@@ -508,4 +508,3 @@ assert_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.ca
 }
 
 # -------------------------------------------------------------------------
-

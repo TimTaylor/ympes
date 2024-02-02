@@ -191,11 +191,11 @@ cut_ages <- function(ages, breaks) {
 # -------------------------------------------------------------------------
 #' @rdname ympes-defunct
 split_interval_counts <- function(
-        lower_bounds,
-        upper_bounds,
-        counts,
-        max_upper = 100L,
-        weights = NULL
+    lower_bounds,
+    upper_bounds,
+    counts,
+    max_upper = 100L,
+    weights = NULL
 ) {
     .Defunct(new = "ageutils::split_interval_count")
 }
@@ -203,9 +203,9 @@ split_interval_counts <- function(
 # -------------------------------------------------------------------------
 #' @rdname ympes-defunct
 aggregate_age_counts <- function(
-        counts,
-        ages = 0:(length(counts) - 1L),
-        breaks
+    counts,
+    ages = 0:(length(counts) - 1L),
+    breaks
 ) {
     .Defunct(new = "ageutils::aggregate_age_counts")
 }
@@ -213,13 +213,12 @@ aggregate_age_counts <- function(
 # -------------------------------------------------------------------------
 #' @rdname ympes-defunct
 reaggregate_interval_counts <- function(
-        lower_bounds,
-        upper_bounds,
-        counts,
-        breaks,
-        max_upper = 100L,
-        weights = NULL
+    lower_bounds,
+    upper_bounds,
+    counts,
+    breaks,
+    max_upper = 100L,
+    weights = NULL
 ) {
     .Defunct(new = "ageutils::reaggregate_interval_counts")
 }
-

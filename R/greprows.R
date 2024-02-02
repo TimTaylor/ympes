@@ -64,12 +64,12 @@ greprows <- function(
     # pull out specified columns or characters and factors if NULL
     if (is.null(cols)) {
         cols <- vapply(dat, function(x) is.character(x) || is.factor(x), TRUE)
-    } else {
-        if(!is.character(cols))
-            stop("`cols` must be a character vector")
+    } else if (is.character(cols)) {
         invalid <- cols[!cols %in% names(dat)]
         if (length(invalid))
             stopf("%s is not a valid column name", sQuote(invalid[1]))
+    } else {
+        stop("`cols` must be a character vector")
     }
     cols <- .subset(dat, cols)
 
