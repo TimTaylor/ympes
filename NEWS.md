@@ -1,3 +1,9 @@
+# ympes development version
+
+- **breaking change**. Assertion functions have been removed. They can still be
+  found internally (and are checked by tests) but the intention is to use them
+  as a standalone file that is copy and pasted between packages as needed. 
+
 # ympes 0.5.0
 
 - `new_package()` will now add `.Rbuildignore` and `.Rproj` files with sensible
