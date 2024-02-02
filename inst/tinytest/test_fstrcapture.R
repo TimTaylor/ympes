@@ -7,7 +7,7 @@ notables <- c(
 )
 
 regex <- "(?<first>[[:upper:]][[:lower:]]+) (?<last>[[:upper:]][[:lower:]]+)"
-proto = data.frame("", "")
+proto <- data.frame("", "")
 
 expect_identical(
     utils::strcapture(regex, notables, proto, perl = TRUE),
@@ -18,6 +18,8 @@ expect_identical(
     utils::strcapture(regex, notables, proto, perl = TRUE),
     fstrcapture(regex, notables, proto, perl = TRUE)
 )
+
+proto <- data.frame(a="", b="")
 
 expect_identical(
     utils::strcapture(regex, "", proto, perl = TRUE),
