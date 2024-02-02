@@ -70,5 +70,5 @@ greprows(dat, "c", value = FALSE)
 
 }
 \seealso{
-grep
+\code{\link[=grep]{grep()}}
 }
