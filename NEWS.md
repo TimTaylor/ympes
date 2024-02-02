@@ -1,4 +1,4 @@
-# ympes development version
+# ympes 1.0.0
 
 - New function `fstrcapture()`. This is an (almost) drop-in replacement for
   `strcapture()` that performs better when using Perl-compatible regexps.

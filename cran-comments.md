@@ -1,3 +1,3 @@
 Checked on:
-* R Under development (unstable) (2023-11-03 r85467) - Fedora 38
+* R Under development (unstable) (2024-02-02 r85855) - Fedora 39
 * Status: OK
