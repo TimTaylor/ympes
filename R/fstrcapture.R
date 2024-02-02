@@ -43,7 +43,7 @@ fstrcapture <- function(pattern, x, proto, perl = TRUE, useBytes = FALSE) {
         m <- regexpr(pattern = pattern, text = x, perl = TRUE, useBytes = useBytes)
         nomatch <- is.na(m) | m == -1L
         ntokens <- length(proto)
-        if (any(!nomatch)) {
+        if (!all(nomatch)) {
             length <- attr(m, "match.length")
             start <- attr(m, "capture.start")
             length <- attr(m, "capture.length")
@@ -57,7 +57,7 @@ fstrcapture <- function(pattern, x, proto, perl = TRUE, useBytes = FALSE) {
         } else {
             out <- matrix(NA_character_, length(m), ntokens)
         }
-        conformToProto(out,proto)
+        conformToProto(out, proto)
     } else {
         utils::strcapture(pattern, x, proto, perl, useBytes)
     }
