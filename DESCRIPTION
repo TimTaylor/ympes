@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 0.5.0
+Version: 0.9.9.9999
 Authors@R: 
     c(
       person(
