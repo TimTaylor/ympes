@@ -2,23 +2,30 @@ Package: ympes
 Type: Package
 Title: Collection of Helper Functions
 Version: 0.9.9.9999
-Authors@R: 
-    c(
-      person(
+Authors@R: c(
+    person(
         given = "Tim",
         family = "Taylor",
         role = c("aut", "cre", "cph"),
         email = "tim.taylor@hiddenelephants.co.uk", 
         comment = c(ORCID = "0000-0002-8587-7113")
-      )
-    )
+    ),
+    person(
+        given = "R Core Team",
+        role = "cph",
+        comment = "fstrcapture uses code from strcapture"
+    ),
+    person(
+        given = "Toby",
+        family = "Hocking",
+        role = "cph",
+        comment = "fstrcapture uses code from nc::capture_first_vec"
+    ))
 Description: Provides a collection of lightweight helper functions (imps) both
   for interactive use and for inclusion within other packages. These include
-  minimal assertion functions with a focus on informative error messaging for
-  both missing and incorrect function arguments as well as other functions for
-  visualising colour palettes, quoting user input and searching rows of a data
-  frame.
-License: GPL-2
+  functions for visualising colour palettes, quoting user input, searching rows
+  of a data frame and capturing string tokens.
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
@@ -28,4 +35,5 @@ Suggests:
 URL: https://github.com/TimTaylor/ympes
 BugReports: https://github.com/TimTaylor/ympes/issues
 Imports: 
+    methods,
     utils
