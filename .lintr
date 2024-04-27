@@ -1,5 +1,3 @@
-TODO:update linters when new release arrives on fedora 40
-
 linters: linters_with_tags(
 	tags = NULL,
 	absolute_path_linter(),
@@ -8,7 +6,7 @@ linters: linters_with_tags(
 	assignment_linter(),
 	backport_linter(),
 	#boolean_arithmetic_linter(),
-	brace_linter(),
+	#brace_linter(),
 	class_equals_linter(),
 	commas_linter(),
 	commented_code_linter(),
@@ -39,7 +37,7 @@ linters: linters_with_tags(
 	ifelse_censor_linter(),
 	#implicit_assignment_linter(),
 	implicit_integer_linter = NULL,
-	#indentation_linter(4),
+	indentation_linter(4),
 	infix_spaces_linter(),
 	inner_combine_linter(),
 	#is_numeric_linter(),
