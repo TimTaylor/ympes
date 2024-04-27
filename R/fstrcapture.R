@@ -42,20 +42,17 @@ fstrcapture <- function(pattern, x, proto, perl = TRUE, useBytes = FALSE) {
     if (isTRUE(perl)) {
         m <- regexpr(pattern = pattern, text = x, perl = TRUE, useBytes = useBytes)
         nomatch <- is.na(m) | m == -1L
-        ntokens <- length(proto)
-        if (!all(nomatch)) {
-            length <- attr(m, "match.length")
+        if (all(nomatch)) {
+            out <- matrix(NA_character_, length(m), length(proto))
+        } else {
             start <- attr(m, "capture.start")
             length <- attr(m, "capture.length")
             end <- start + length - 1L
             end[nomatch, ] <- start[nomatch, ] <- NA
             res <- substring(x, start, end)
             out <- matrix(res, length(m))
-            if (ncol(out) != ntokens) {
-                stop("The number of captures in 'pattern' != 'length(proto)'")
-            }
-        } else {
-            out <- matrix(NA_character_, length(m), ntokens)
+            if (ncol(out) != length(proto))
+                stop("The number of captures in 'pattern' != 'length(proto)'.")
         }
         conformToProto(out, proto)
     } else {
@@ -66,16 +63,16 @@ fstrcapture <- function(pattern, x, proto, perl = TRUE, useBytes = FALSE) {
 conformToProto <- function(mat, proto) {
     ans <- lapply(seq_along(proto), function(i) {
         if (isS4(proto[[i]])) {
-            methods::as(mat[,i], class(proto[[i]]))
+            methods::as(mat[, i], class(proto[[i]]))
         } else {
             fun <- match.fun(paste0("as.", class(proto[[i]])))
-            fun(mat[,i])
+            fun(mat[, i])
         }
     })
     names(ans) <- names(proto)
     if (isS4(proto)) {
         methods::as(ans, class(proto))
     } else {
-        as.data.frame(ans, optional=TRUE, stringsAsFactors=FALSE)
+        as.data.frame(ans, optional = TRUE, stringsAsFactors = FALSE)
     }
 }
