@@ -43,9 +43,23 @@ cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
             message("Unable to copy to clipboard: install 'clipr' for this functionality.")
         } else if (clipr::clipr_available()) {
             clipr::write_clip(capture.output(dput(res, control = "all")))
-        } else {
+        } else if (Sys.info()["sysname"] != "Linux" || !.last_ditch(res)) {
             message("Unable to copy to clipboard.")
         }
     }
     res
 }
+
+.last_ditch <- function(res) {
+    display <- Sys.getenv("DISPLAY")
+    if (display == "")
+        return(FALSE)
+    cmd <- sprintf("xclip -selection clipboard -i  -display %s", display)
+    con <- pipe(cmd, open="w")
+    out <- try(writeChar(capture.output(dput(res, control = "all")), con))
+    close(con)
+    if(inherits(out, "try-error"))
+        return(FALSE)
+    TRUE
+}
+
