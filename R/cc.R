@@ -41,7 +41,7 @@ cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     if (interactive() && isTRUE(.clip)) {
         if (!requireNamespace("clipr", quietly = TRUE)) {
             message("Unable to copy to clipboard: install 'clipr' for this functionality.")
-        } else if (clipr::clipr_available()) {
+        } else if (suppressWarnings(clipr::clipr_available())) {
             clipr::write_clip(capture.output(dput(res, control = "all")))
         } else if (Sys.info()["sysname"] != "Linux" || !.last_ditch(res)) {
             message("Unable to copy to clipboard.")
