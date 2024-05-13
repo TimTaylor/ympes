@@ -3,6 +3,9 @@
 - Assertion functions are now (re)exported once again. Note they are all
   prefixed with a dot to emphasise their intended use (within other functions)
   and also to avoid common naming collisions.
+  
+- **breaking change**. `new_package()` now utilises an explicit `pkg` folder for
+  the R package.
 
 # ympes 1.0.0
 

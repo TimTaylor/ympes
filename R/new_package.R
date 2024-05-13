@@ -78,8 +78,8 @@ new_package <- function(
         stop(sprintf("Unable to create directory '%s'.", root))
     }
 
-    Rpath <- file.path(root, "R")
-    if (!dir.create(Rpath, showWarnings = FALSE)) {
+    Rpath <- file.path(root, "pkg", "R")
+    if (!dir.create(Rpath, recursive = TRUE, showWarnings = FALSE)) {
         .x()
         unlink(root, recursive = TRUE)
         stop(sprintf("Unable to create '%s' directory.", Rpath))
@@ -116,7 +116,7 @@ new_package <- function(
     message("Adding .Rbuildignore .............. ", appendLF = FALSE)
     tmp <- file.copy(
         system.file("skeletons", "pkg.Rbuildignore", package = "ympes"),
-        file.path(root, ".Rbuildignore")
+        file.path(root, "pkg", ".Rbuildignore")
     )
     if (!tmp) {
         .x()
@@ -130,7 +130,7 @@ new_package <- function(
     rprojname <- sprintf("%s.Rproj", name)
     tmp <- file.copy(
         system.file("skeletons", "rproj", package = "ympes"),
-        file.path(root, rprojname)
+        file.path(root, "pkg", rprojname)
     )
     if (!tmp) {
         .x()
@@ -149,7 +149,7 @@ new_package <- function(
 
     # This is slightly tweaked from utils::package.skeleton
     message("Creating DESCRIPTION .............. ", appendLF = FALSE)
-    description <- file(file.path(root, "DESCRIPTION"), "wt")
+    description <- file(file.path(root, "pkg", "DESCRIPTION"), "wt")
     on.exit({
         close(description)
         unlink(root, recursive = TRUE)
@@ -162,10 +162,11 @@ new_package <- function(
         role = c("aut", "cre", "cph"),
         email = "%s"
     )',
-firstname,
-surname,
-email
-)    } else {
+            firstname,
+            surname,
+            email
+        )
+    } else {
         author <- sprintf(
 '    person(
         given = "%s",
@@ -174,12 +175,12 @@ email
         email = "%s",
         comment = c(ORCID = "%s")
     )',
-firstname,
-surname,
-email,
-orcid
-)}
-
+            firstname,
+            surname,
+            email,
+            orcid
+        )
+    }
 
     tmp <- try(
         cat("Package: ", name, "\n",
@@ -208,7 +209,7 @@ orcid
     # Change directory
     if (interactive() && enter) {
         message("Entering package directory ........ ", appendLF = FALSE)
-        tmp <- try(setwd(root))
+        tmp <- try(setwd(file.path(root, "pkg")))
         if (inherits(tmp, "try-error")) {
             .x()
             unlink(root, recursive = TRUE)
