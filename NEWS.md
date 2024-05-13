@@ -1,11 +1,14 @@
 # ympes 1.1.0
 
 - Assertion functions are now (re)exported once again. Note they are all
-  prefixed with a dot to emphasise their intended use (within other functions)
-  and also to avoid common naming collisions.
-  
+  prefixed with a dot to avoid common naming collisions and, somewhat secondary,
+  to emphasise their intended use within other functions.
+
 - **breaking change**. `new_package()` now utilises an explicit `pkg` folder for
   the R package.
+  
+- Fixes (hopefully) an issue with the internal usage of clipr within `cc()` when
+  on a Wayland system.
 
 # ympes 1.0.0
 
