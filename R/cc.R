@@ -55,11 +55,10 @@ cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     if (display == "")
         return(FALSE)
     cmd <- sprintf("xclip -selection clipboard -i  -display %s", display)
-    con <- pipe(cmd, open="w")
+    con <- pipe(cmd, open = "w")
     out <- try(writeChar(capture.output(dput(res, control = "all")), con))
     close(con)
-    if(inherits(out, "try-error"))
+    if (inherits(out, "try-error"))
         return(FALSE)
     TRUE
 }
-
