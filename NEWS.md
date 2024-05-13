@@ -1,3 +1,9 @@
+# ympes 1.1.0
+
+- Assertion functions are now (re)exported once again. Note they are all
+  prefixed with a dot to emphasise their intended use (within other functions)
+  and also to avoid common naming collisions.
+
 # ympes 1.0.0
 
 - New function `fstrcapture()`. This is an (almost) drop-in replacement for

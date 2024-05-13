@@ -49,10 +49,12 @@
 #' try(external_fun(b = letters))
 #'
 # -------------------------------------------------------------------------
-#' @noRd
+#' @name assertions
 NULL
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -61,9 +63,14 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_int <- .assert_integer
 
+
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -72,9 +79,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_dbl <- .assert_double
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -83,9 +94,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_num <- .assert_numeric
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -94,9 +109,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_lgl <- .assert_logical
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -105,9 +124,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_chr <- .assert_character
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -116,6 +139,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -124,6 +149,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -132,9 +159,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_int <- .assert_scalar_integer
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_integer_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -143,9 +174,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_int_not_na <- .assert_scalar_integer_not_na
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -154,9 +189,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_dbl <- .assert_scalar_double
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_double_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -165,9 +204,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_dbl_not_na <- .assert_scalar_double_not_na
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -176,9 +219,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_num <- .assert_scalar_numeric
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_numeric_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -187,9 +234,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_num_not_na <- .assert_scalar_numeric_not_na
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -198,9 +249,13 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_lgl <- .assert_scalar_logical
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -209,21 +264,28 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_boolean <- .assert_bool
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
     if (!(is.character(x) && length(x) == 1L))
         stopf("`%s` must be a character vector of length 1.", arg, .call = call)
-
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_chr <- .assert_scalar_character
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_character_not_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -233,14 +295,20 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_scalar_chr_not_na <- .assert_scalar_character_not_na
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_scalar_chr(x = x, arg = arg, call = call)
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_non_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -253,6 +321,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_non_positive_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -265,6 +335,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_non_negative <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -277,6 +349,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_non_positive <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -289,6 +363,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_positive <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -301,6 +377,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_negative <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -313,6 +391,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_positive_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
@@ -325,6 +405,8 @@ NULL
 }
 
 # -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
 .assert_negative_or_na <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
     .assert_not_missing(x = x, arg = arg, call = call)
 
