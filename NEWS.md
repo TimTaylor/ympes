@@ -1,3 +1,15 @@
+# ympes 1.2.0
+
+- **breaking changes** in `fstrcapture()`:
+    - The `perl` and `useBytes` arguments have been removed. These are now set
+      internally to `TRUE` and `FALSE` respectively.
+    - The order of the `x` and `pattern` arguments has been switched to make the
+      function a little more pipe-friendly.
+    - If the captures in the given pattern are named then these names take
+      priority over any names present within the `proto` argument.
+    - If the `proto` argument is missing, then all captures will be treated
+      as character type.
+
 # ympes 1.1.0
 
 - Assertion functions are now (re)exported once again. Note they are all

@@ -6,7 +6,7 @@
 \alias{ympes-package}
 \title{ympes: Collection of Helper Functions}
 \description{
-Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include functions for visualising colour palettes, quoting user input, searching rows of a data frame and capturing string tokens.
+Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include functions for minimal input assertions, visualising colour palettes, quoting user input, searching rows of a data frame and capturing string tokens.
 }
 \seealso{
 Useful links:
