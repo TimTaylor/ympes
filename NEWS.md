@@ -1,5 +1,7 @@
 # ympes (development version)
 
+- New assertion function `.assert_scalar_whole()`.
+
 - Users can now set the condition subclass of returned errors via a  `.subclass`
   argument. In a similar vein it is now possible to specify additional fields in
   the returned error condition via the `...` arguments.

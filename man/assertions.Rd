@@ -28,6 +28,7 @@
 \alias{.assert_scalar_num_not_na}
 \alias{.assert_scalar_logical}
 \alias{.assert_scalar_lgl}
+\alias{.assert_scalar_whole}
 \alias{.assert_bool}
 \alias{.assert_boolean}
 \alias{.assert_scalar_character}
@@ -246,6 +247,14 @@
 )
 
 .assert_scalar_lgl(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+.assert_scalar_whole(
   x,
   ...,
   .arg = deparse(substitute(x)),

@@ -368,6 +368,23 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
+.assert_scalar_whole <- function(
+    x,
+    ...,
+    .arg = deparse(substitute(x)),
+    .call = sys.call(-1L),
+    .subclass = NULL
+) {
+    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+    if (!.is_scalar_whole(x)) {
+        msg <- sprintf("`%s` must be integerish and of length 1.", .arg)
+        .stop(msg, ..., .call = .call, .subclass = .subclass)
+    }
+}
+
+
+#' @rdname assertions
+#' @export
 .assert_bool <- function(
     x,
     ...,
@@ -717,6 +734,21 @@ NULL
 
 # -------------------------------------------------------------------------
 
+.is_scalar_whole <- function(x, tol = .Machine$double.eps^0.5) {
+    if (length(x) != 1L || is.na(x))
+        return(FALSE)
+
+    if (is.integer(x))
+        return(TRUE)
+
+    if (is.vector(x, "double") && (abs(x - round(x)) < tol))
+        return(TRUE)
+
+    FALSE
+}
+
+# -------------------------------------------------------------------------
+#
 .stop <- function(msg, ..., .call = sys.call(-1L), .subclass = NULL) {
     stop(errorCondition(msg, ..., class = .subclass, call = .call[1L]))
 }

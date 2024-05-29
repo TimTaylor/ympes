@@ -135,6 +135,17 @@ expect_null(.assert_num(w))
 expect_fixed_error(.assert_num(z), "`z` must be a numeric vector.")
 expect_fixed_error(.assert_num(.arg="TEST"), "argument `TEST` is missing, with no default.")
 
+# scalar whole assertions
+x <- 1
+y <- 1L
+z <- "cat"
+w <- 1:10
+expect_null(.assert_scalar_whole(x))
+expect_null(.assert_scalar_whole(y))
+expect_fixed_error(.assert_scalar_whole(z), "`z` must be integerish and of length 1.")
+expect_fixed_error(.assert_scalar_whole(w), "`w` must be integerish and of length 1.")
+expect_fixed_error(.assert_scalar_whole(.arg="TEST"), "argument `TEST` is missing, with no default.")
+
 # data frame assertions
 l <- .subset(mtcars)
 expect_null(.assert_data_frame(mtcars))
