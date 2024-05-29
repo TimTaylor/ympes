@@ -68,8 +68,11 @@ greprows <- function(
         cols <- vapply(dat, function(x) is.character(x) || is.factor(x), TRUE)
     } else if (is.character(cols)) {
         invalid <- cols[!cols %in% names(dat)]
-        if (length(invalid))
-            stopf("%s is not a valid column name", sQuote(invalid[1]))
+        if (length(invalid)) {
+            msg <- sprintf("%s is not a valid column name", sQuote(invalid[1]))
+            stop(msg)
+        }
+
     } else {
         stop("`cols` must be a character vector")
     }

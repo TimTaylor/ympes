@@ -135,7 +135,8 @@ new_package <- function(
     if (!tmp) {
         .x()
         unlink(root, recursive = TRUE)
-        stopf("Unable to create '%s.Rproj'.", name)
+        msg <- sprintf("Unable to create '%s.Rproj'.", name)
+        stop(msg)
     }
     .done()
 
