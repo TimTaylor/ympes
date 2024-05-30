@@ -33,7 +33,7 @@ RoxygenNote: 7.3.1
 Suggests: 
     clipr,
     tinytest
-URL: https://sr.ht/~tim-taylor/ympes/
+URL: https://sr.ht/~tim-taylor/ympes/, https://git.sr.ht/~tim-taylor/ympes
 BugReports: https://lists.sr.ht/~tim-taylor/ympes
 Imports: 
     methods,
