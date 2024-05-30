@@ -38,3 +38,4 @@ BugReports: https://lists.sr.ht/~tim-taylor/ympes
 Imports: 
     methods,
     utils
+Config/runiverse/noindex: true
