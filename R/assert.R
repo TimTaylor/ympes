@@ -37,7 +37,7 @@
 #'
 #' # Use in a user facing function
 #' fun <- function(i, d, l, chr, b) {
-#'     .assert_scalar_int(i)
+#'     assert_scalar_int(i)
 #'     TRUE
 #' }
 #' fun(i=1L)
@@ -46,7 +46,7 @@
 #'
 #' # Use in an internal function
 #' internal_fun <- function(a) {
-#'     .assert_string(
+#'     assert_string(
 #'         a,
 #'         .arg = deparse(substitute(x)),
 #'         .call = sys.call(-1L),
@@ -69,7 +69,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_integer <- function(
+assert_integer <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -86,13 +86,13 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_int <- .assert_integer
+assert_int <- assert_integer
 
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_double <- function(
+assert_double <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -109,12 +109,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_dbl <- .assert_double
+assert_dbl <- assert_double
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_numeric <- function(
+assert_numeric <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -131,12 +131,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_num <- .assert_numeric
+assert_num <- assert_numeric
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_logical <- function(
+assert_logical <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -153,12 +153,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_lgl <- .assert_logical
+assert_lgl <- assert_logical
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_character <- function(
+assert_character <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -175,12 +175,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_chr <- .assert_character
+assert_chr <- assert_character
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_data_frame <- function(
+assert_data_frame <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -197,7 +197,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_list <- function(
+assert_list <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -214,7 +214,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_integer <- function(
+assert_scalar_integer <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -231,12 +231,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_int <- .assert_scalar_integer
+assert_scalar_int <- assert_scalar_integer
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_integer_not_na <- function(
+assert_scalar_integer_not_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -253,12 +253,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_int_not_na <- .assert_scalar_integer_not_na
+assert_scalar_int_not_na <- assert_scalar_integer_not_na
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_double <- function(
+assert_scalar_double <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -275,12 +275,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_dbl <- .assert_scalar_double
+assert_scalar_dbl <- assert_scalar_double
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_double_not_na <- function(
+assert_scalar_double_not_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -297,12 +297,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_dbl_not_na <- .assert_scalar_double_not_na
+assert_scalar_dbl_not_na <- assert_scalar_double_not_na
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_numeric <- function(
+assert_scalar_numeric <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -319,12 +319,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_num <- .assert_scalar_numeric
+assert_scalar_num <- assert_scalar_numeric
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_numeric_not_na <- function(
+assert_scalar_numeric_not_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -341,12 +341,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_num_not_na <- .assert_scalar_numeric_not_na
+assert_scalar_num_not_na <- assert_scalar_numeric_not_na
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_logical <- function(
+assert_scalar_logical <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -363,12 +363,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_lgl <- .assert_scalar_logical
+assert_scalar_lgl <- assert_scalar_logical
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_whole <- function(
+assert_scalar_whole <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -385,7 +385,7 @@ NULL
 
 #' @rdname assertions
 #' @export
-.assert_bool <- function(
+assert_bool <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -402,12 +402,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_boolean <- .assert_bool
+assert_boolean <- assert_bool
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_character <- function(
+assert_scalar_character <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -424,12 +424,12 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_chr <- .assert_scalar_character
+assert_scalar_chr <- assert_scalar_character
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_character_not_na <- function(
+assert_scalar_character_not_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -446,17 +446,17 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_scalar_chr_not_na <- .assert_scalar_character_not_na
+assert_scalar_chr_not_na <- assert_scalar_character_not_na
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_string <- .assert_scalar_chr
+assert_string <- assert_scalar_chr
 
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_non_negative_or_na <- function(
+assert_non_negative_or_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -479,7 +479,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_non_positive_or_na <- function(
+assert_non_positive_or_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -502,7 +502,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_non_negative <- function(
+assert_non_negative <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -526,7 +526,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_non_positive <- function(
+assert_non_positive <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -550,7 +550,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_positive <- function(
+assert_positive <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -573,7 +573,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_negative <- function(
+assert_negative <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -596,7 +596,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_positive_or_na <- function(
+assert_positive_or_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
@@ -619,7 +619,7 @@ NULL
 # -------------------------------------------------------------------------
 #' @rdname assertions
 #' @export
-.assert_negative_or_na <- function(
+assert_negative_or_na <- function(
     x,
     ...,
     .arg = deparse(substitute(x)),
