@@ -752,4 +752,3 @@ assert_negative_or_na <- function(
 .stop <- function(msg, ..., .call = sys.call(-1L), .subclass = NULL) {
     stop(errorCondition(msg, ..., class = .subclass, call = .call[1L]))
 }
-
