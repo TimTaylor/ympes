@@ -11,3 +11,4 @@ artwork/*
 ^docs$
 ^pkgdown$
 ^\.lintr$
+^\.lintr.R$
