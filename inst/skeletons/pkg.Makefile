@@ -2,7 +2,7 @@ doc:
 	R -s -e "roxygen2::roxygenize('pkg', load_code = roxygen2::load_pkgload)"
 
 pkg: doc
-    rm -f *.tar.gz
+	rm -f *.tar.gz
 	R CMD build pkg
 
 install: pkg
