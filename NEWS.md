@@ -6,7 +6,7 @@
 - New function `greplrows()` returns a logical vector (match or not for each row
   of the supplied data frame).
 
-- **breaking change:** For consistency with `grep()`, the value argument of
+- **breaking change:** For consistency with `grep()`, the `value` argument of
   `greprows()` now defaults to `FALSE`. Please set the value explicitly or use
   the new `grepvrows()` function.
 
