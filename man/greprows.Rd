@@ -2,6 +2,8 @@
 % Please edit documentation in R/greprows.R
 \name{greprows}
 \alias{greprows}
+\alias{greplrows}
+\alias{grepvrows}
 \title{Pattern matching on data frame rows}
 \usage{
 greprows(
@@ -9,6 +11,27 @@ greprows(
   pattern,
   cols = NULL,
   value = FALSE,
+  ignore.case = FALSE,
+  perl = FALSE,
+  fixed = FALSE,
+  invert = FALSE
+)
+
+greplrows(
+  dat,
+  pattern,
+  cols = NULL,
+  ignore.case = FALSE,
+  perl = FALSE,
+  fixed = FALSE,
+  invert = FALSE
+)
+
+grepvrows(
+  dat,
+  pattern,
+  cols = NULL,
+  value = TRUE,
   ignore.case = FALSE,
   perl = FALSE,
   fixed = FALSE,
@@ -57,6 +80,12 @@ corresponding row numbers.
 \description{
 \code{greprows()} searches for pattern matches within a data frames columns and
 returns the related rows or row indices.
+}
+\details{
+\code{grepvrows()} is identical to \code{greprows()} except with the default
+\code{value = TRUE}.
+
+\code{greplrows()} returns a logical vector (match or not for each row of dat).
 }
 \examples{
 
