@@ -23,16 +23,6 @@ You can install the released version of ympes from
 install.packages("ympes")
 ```
 
-<div class="pkgdown-devel">
-
-The development version of ympes can be installed from sourcehut with:
-
-``` r
-remotes::install_git("https://git.sr.ht/~htgb/ympes")
-```
-
-</div>
-
 ------------------------------------------------------------------------
 
 Image from [Le grand Etteilla, ou, l’art de tirer les
