@@ -6,16 +6,16 @@ dat <- data.frame(
 
 # simple case
 expect_identical(
-    greprows(dat, "A|b"),
+    greprows(dat, "A|b", value = TRUE),
     dat[c(2L, 26L),]
 )
 
 # passing additional arguments through to grep
 
 expect_identical(
-    greprows(dat, "A|b", ignore.case = TRUE),
+    greprows(dat, "A|b", value = TRUE, ignore.case = TRUE),
     dat[c(1:2, 25:26), ]
 )
 
 # indices
-expect_identical(greprows(dat, "c", value = FALSE), 3L)
+expect_identical(greprows(dat, "c"), 3L)

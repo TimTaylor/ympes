@@ -17,7 +17,8 @@
 #'
 #' Should a data frame of rows be returned.
 #'
-#' If `FALSE` row indices will be returned instead of the rows themselves.
+#' If `FALSE` (defauly) row indices will be returned instead of the rows
+#' themselves.
 #'
 #' @inheritParams base::grep
 #'
@@ -48,7 +49,7 @@ greprows <- function(
     dat,
     pattern,
     cols = NULL,
-    value = TRUE,
+    value = FALSE,
     ignore.case = FALSE,
     perl = FALSE,
     fixed = FALSE,

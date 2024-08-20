@@ -1,5 +1,8 @@
 # ympes (development version)
 
+- **breaking change:** For consistency with `grep()`, the value argument of
+  `greprows()` now defaults to `FALSE`.
+
 # ympes 1.3.0
 
 - New assertion function `assert_scalar_whole()`.

@@ -8,7 +8,7 @@ greprows(
   dat,
   pattern,
   cols = NULL,
-  value = TRUE,
+  value = FALSE,
   ignore.case = FALSE,
   perl = FALSE,
   fixed = FALSE,
@@ -36,7 +36,8 @@ If \code{NULL} (default) all character and factor columns will be searched.}
 
 Should a data frame of rows be returned.
 
-If \code{FALSE} row indices will be returned instead of the rows themselves.}
+If \code{FALSE} (defauly) row indices will be returned instead of the rows
+themselves.}
 
 \item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
