@@ -10,7 +10,7 @@ reference:
 - contents:
   - cc
 
-- title: Grepping
+- title: Finding things
 - contents:
   - starts_with("grep")
   - fstrcapture
