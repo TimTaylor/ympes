@@ -80,8 +80,7 @@ corresponding row numbers.
 \description{
 \code{greprows()} searches for pattern matches within a data frames columns and
 returns the related rows or row indices.
-}
-\details{
+
 \code{grepvrows()} is identical to \code{greprows()} except with the default
 \code{value = TRUE}.
 

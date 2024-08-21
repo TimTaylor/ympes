@@ -1,6 +1,8 @@
 #' Pattern matching on data frame rows
 #'
 # -------------------------------------------------------------------------
+#' @description
+#'
 #' `greprows()` searches for pattern matches within a data frames columns and
 #' returns the related rows or row indices.
 #'
