@@ -36,5 +36,7 @@ Suggests:
 URL: https://timtaylor.github.io/ympes/
 BugReports: https://github.com/TimTaylor/ympes/issues
 Imports: 
+    graphics,
+    grDevices,
     methods,
     utils
