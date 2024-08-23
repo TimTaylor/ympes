@@ -2,7 +2,7 @@
 #'
 # -------------------------------------------------------------------------
 #' `cc()` quotes comma separated names whilst trimming outer whitespace. It is
-#'   intended for interactive use only.
+#' intended for interactive use only.
 #'
 # -------------------------------------------------------------------------
 #' @param ...
@@ -27,6 +27,7 @@
 #' @examples
 #'
 #' cc(dale, audrey, laura, hawk)
+#' cc("dale audrey laura hawk")
 #'
 # -------------------------------------------------------------------------
 #' @importFrom utils capture.output
