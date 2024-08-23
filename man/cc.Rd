@@ -28,6 +28,6 @@ intended for interactive use only.
 \examples{
 
 cc(dale, audrey, laura, hawk)
-cc("dale audrey laura hawk"),
+cc("dale audrey laura hawk")
 
 }
