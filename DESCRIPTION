@@ -31,7 +31,8 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
-    tinytest
+    tinytest,
+    litedown
 URL: https://timtaylor.github.io/ympes/
 BugReports: https://github.com/TimTaylor/ympes/issues
 Depends:
@@ -41,3 +42,4 @@ Imports:
     grDevices,
     methods,
     utils
+VignetteBuilder: litedown

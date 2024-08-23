@@ -1,0 +1,136 @@
+---
+title: "ympes"
+output:
+    litedown::html_format:
+        options:
+            embed_resources: ["all"]
+        
+vignette: >
+  %\VignetteEngine{litedown::vignette}
+  %\VignetteIndexEntry{ympes}
+  %\VignetteEncoding{UTF-8}
+---
+
+ympes provides a collection of lightweight helper functions (imps) both for
+interactive use and for inclusion within other packages. It's my attempt to save
+some functionality that would otherwise get lost in a script somewhere on my
+computer. To that end it's a bit of a hodgepodge of things that I've
+found useful at one time or another and, more importantly, remembered to include
+here!
+
+```{r}
+library(ympes)
+```
+
+## Visualising palettes
+
+I often want to quickly see what a palette looks like to ensure I can
+distinguish the different colours. The imaginatively named `plot_palette()`
+thus provides a quick overview
+
+```{r}
+#| fig.alt = "A plot with 3 rectangular regions, coloured green, red and black."
+plot_palette(c("#5FE756", "red", "black"))
+```
+
+We can make the plot square(ish) by setting the argument `square = TRUE`. A nice
+side effect of this is the automatic adjusting of labels to account for the
+underlying colour
+
+```{r}
+#| fig.alt = "A plot of the 8 colours that define the 'R4' palette. The plot is
+#|            divided in to a 3 by 3 square (one square is left blank)."
+plot_palette(palette.colors(palette = "R4"), square = TRUE)
+```
+
+## Finding strings
+
+Sometimes you just want to find rows of a data frame where a particular string
+occurs. `greprows()` searches for pattern matches within a data frames columns
+and returns the related rows or row indices. It is a thin wrapper around a 
+subset, lapply and reduce `grep()` based approach.
+
+```{r}
+dat <- data.frame(
+    first = letters,
+    second = factor(rev(LETTERS)),
+    third = "Q"
+)
+greprows(dat, "A|b")
+```
+
+grepvrows() is identical to greprows() except with the default value = TRUE.
+
+```{r}
+grepvrows(dat, "A|b")
+greprows(dat,  "A|b", value = TRUE)
+```
+
+greplrows() returns a logical vector (match or not for each row of dat).
+
+```{r}
+greplrows(dat, "A|b", ignore.case = TRUE)
+```
+
+## Capturing strings
+
+One of my favourite functions in \R is `strcapture()`. This function allows you
+to extract the captured elements of a regular expression in to a tabular data
+structure. Being able to parse input strings from a file to correctly split
+columns in a data frame in a single function call feels so elegant.
+
+To illustrate this, we generate some synthetic movement data which we pretend
+to have loaded in from a file. Each entry has the form "Name-Direction-Value"
+with the first two entries representing character strings and, the last entry,
+an integer value.
+
+```{r}
+movements <- function(length) {
+    x <- lapply(
+        list(c("Bob", "Mary", "Rose"), c("Up", "Down", "Right", "Left"), 1:10),
+        sample,
+        size = length,
+        replace = TRUE
+    )
+    do.call(paste, c(x, sep = "-"))
+}
+
+# just a small sample to begin with
+(dat <- movements(3))
+pattern <- "([[:alpha:]]+)-([[:alpha:]]+)-([[:digit:]]+)"
+proto   <- data.frame(Name = "", Direction = "", Value = 1L)
+strcapture(pattern, dat, proto = proto, perl = TRUE)
+```
+
+For small (define as you wish) data sets this works fine. Unfortunately as the
+number of entries increases the performance decays (see
+https://bugs.r-project.org/show_bug.cgi?id=18728 for a more detailed analysis).
+`fstrapture()` attempts to improve upon this by utilising an approach I saw
+implemented by Toby Hocking in the [nc](https://cran.r-project.org/package=nc)
+and the function `nc::capture_first_vec()`.
+
+```{r}
+# Now a larger number of strings
+dat <- movements(1e5)
+(t  <- system.time(r <- strcapture(pattern, dat, proto = proto, perl = TRUE)))
+(t2 <- system.time(r2 <- fstrcapture(dat, pattern, proto = proto)))
+t[["elapsed"]] / t2[["elapsed"]]
+```
+
+As well as the improved performance you will notice two other differences
+between the two function signatures. Firstly, to make things more pipeable, the
+data parameter `x` appears before the `pattern` parameter. Secondly,
+`fstrcapture()` works only with Perl-compatible regular expressions.
+
+# Combining values for lazy people
+
+`cc()` is for those of us that get fed up typeing quotation marks. It accepts
+either unquoted names (separated by commas) that you wish to quote or a
+length one character vector you wish to split by whitespace. Intended mainly for 
+interactive use only, an example is probably more enlightening than my 
+description
+
+```{r}
+cc(dale, audrey, laura, hawk)
+cc("dale audrey laura hawk")
+```
