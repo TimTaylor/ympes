@@ -1,5 +1,12 @@
 # ympes (development version)
 
+- `cc()` now allows you to split length one character vectors by whitespace.
+
+- **breaking change:** `cc()` no longer allows the user to send generative code
+  for the output to the system clipboard with the `.clip` argument. This
+  functionality was unreliable on some systems so has been removed until a
+  reliable implementation can be provided.
+
 - Minor documentation updates.
 
 # ympes 1.4.0

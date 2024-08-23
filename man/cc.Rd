@@ -4,22 +4,19 @@
 \alias{cc}
 \title{Quote names}
 \usage{
-cc(..., .clip = getOption("imp.clipboard", FALSE))
+cc(..., .clip = FALSE)
 }
 \arguments{
-\item{...}{Unquoted names (separated by commas) that you wish to quote.
+\item{...}{Either unquoted names (separated by commas) that you wish to quote or a
+length one character vector you wish to split by whitespace.
 
-Empty arguments (e.g. third item in \verb{one,two,,four}) will be returned as \code{""}.}
+Empty arguments (e.g. third item in \verb{one,two,,four}) will be returned as \code{""}.
+
+Character vectors not of length one are returned as is.}
 
 \item{.clip}{\verb{[bool]}
 
-Should the code to generate the constructed character vector be copied to
-your system clipboard.
-
-Defaults to FALSE unless the option "imp.clipboard" is set to TRUE.
-
-Note that copying to clipboard requires the availability of package
-\href{https://cran.r-project.org/package=clipr}{clipr}.}
+Not currently used.}
 }
 \value{
 A character vector of the quoted input.
