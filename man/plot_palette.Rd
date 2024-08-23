@@ -31,6 +31,6 @@ The input (invisibly).
 \examples{
 
 plot_palette(c("#5FE756", "red", "black"))
-plot_palette(c("#5FE756", "red", "black"), square=TRUE)
+plot_palette(c("#5FE756", "red", "black"), square = TRUE)
 
 }
