@@ -6,8 +6,11 @@
   for the output to the system clipboard with the `.clip` argument. This
   functionality was unreliable on some systems so has been removed until a
   reliable implementation can be provided.
+  
+- Assertions and the `new_package()` functionality have been marked
+  experimental. Breaking changes to these functions should be considered likely.
 
-- Minor documentation updates.
+- Added an overview vignette (see `vignette("ympes", package = "ympes")`).
 
 # ympes 1.4.0
 
