@@ -1,8 +1,9 @@
-#' Create a package skeleton
+#' Create a package skeleton (Experimental)
 #'
 # -------------------------------------------------------------------------
 #' `new_package()` create a package skeleton based on my preferred folder
-#' structure.
+#' structure. It is somewhat experimental in nature and should be treated
+#' accordingly.
 #'
 # -------------------------------------------------------------------------
 #'

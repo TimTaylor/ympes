@@ -1,10 +1,11 @@
-#' Argument assertions
+#' Argument assertions (Experimental)
 #'
 # -------------------------------------------------------------------------
 #' Assertions for function arguments. Motivated by `vctrs::vec_assert()` but
 #' with lower overhead at a cost of less informative error messages. Designed to
 #' make it easy to identify the top level calling function whether used within a
-#' user facing function or internally.
+#' user facing function or internally. They are somewhat experimental in nature
+#' and should be treated accordingly.
 #'
 # -------------------------------------------------------------------------
 #' @param x

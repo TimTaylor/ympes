@@ -44,7 +44,7 @@
 \alias{assert_negative}
 \alias{assert_positive_or_na}
 \alias{assert_negative_or_na}
-\title{Argument assertions}
+\title{Argument assertions (Experimental)}
 \usage{
 assert_integer(
   x,
@@ -406,7 +406,8 @@ NULL if the assertion succeeds (error otherwise).
 Assertions for function arguments. Motivated by \code{vctrs::vec_assert()} but
 with lower overhead at a cost of less informative error messages. Designed to
 make it easy to identify the top level calling function whether used within a
-user facing function or internally.
+user facing function or internally. They are somewhat experimental in nature
+and should be treated accordingly.
 }
 \examples{
 

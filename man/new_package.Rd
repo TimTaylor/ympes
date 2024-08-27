@@ -3,7 +3,7 @@
 \name{new_package}
 \alias{new_package}
 \alias{np}
-\title{Create a package skeleton}
+\title{Create a package skeleton (Experimental)}
 \usage{
 new_package(
   name = "mypackage",
@@ -61,7 +61,8 @@ Created directory (invisibly)
 }
 \description{
 \code{new_package()} create a package skeleton based on my preferred folder
-structure.
+structure. It is somewhat experimental in nature and should be treated
+accordingly.
 }
 \examples{
 
