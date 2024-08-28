@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ympes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,8 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/ympes.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -32,6 +33,13 @@
       <small>Source: <a href="https://github.com/TimTaylor/ympes/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.0" id="ympes-150">ympes 1.5.0<a class="anchor" aria-label="anchor" href="#ympes-150"></a></h2>
+<ul><li><p><code><a href="../reference/cc.html">cc()</a></code> now allows you to split length one character vectors by whitespace.</p></li>
+<li><p><strong>breaking change:</strong> <code><a href="../reference/cc.html">cc()</a></code> no longer allows the user to send generative code for the output to the system clipboard with the <code>.clip</code> argument. This functionality was unreliable on some systems so has been removed until a reliable implementation can be provided.</p></li>
+<li><p>Assertions and the <code><a href="../reference/new_package.html">new_package()</a></code> functionality have been marked experimental. Breaking changes to these functions should be considered likely.</p></li>
+<li><p>Added an overview vignette (see <code><a href="../articles/ympes.html">vignette("ympes", package = "ympes")</a></code>).</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="ympes-140">ympes 1.4.0<a class="anchor" aria-label="anchor" href="#ympes-140"></a></h2><p class="text-muted">CRAN release: 2024-08-20</p>
 <ul><li><p>New function <code><a href="../reference/greprows.html">grepvrows()</a></code> which is identical to <code><a href="../reference/greprows.html">greprows()</a></code> except with the default <code>value = TRUE</code>.</p></li>

@@ -1,16 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>/404.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
-<url><loc>/authors.html</loc></url>
-<url><loc>/index.html</loc></url>
-<url><loc>/news/index.html</loc></url>
-<url><loc>/reference/assertions.html</loc></url>
-<url><loc>/reference/cc.html</loc></url>
-<url><loc>/reference/fstrcapture.html</loc></url>
-<url><loc>/reference/greprows.html</loc></url>
-<url><loc>/reference/index.html</loc></url>
-<url><loc>/reference/new_package.html</loc></url>
-<url><loc>/reference/plot_palette.html</loc></url>
-<url><loc>/reference/ympes-package.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/404.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/LICENSE.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/articles/index.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/articles/ympes.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/authors.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/index.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/news/index.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/assertions.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/cc.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/fstrcapture.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/greprows.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/index.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/new_package.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/plot_palette.html</loc></url>
+<url><loc>https://timtaylor.github.io/ympes/reference/ympes-package.html</loc></url>
 </urlset>
 
