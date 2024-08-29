@@ -122,7 +122,7 @@ between the two function signatures. Firstly, to make things more pipeable, the
 data parameter `x` appears before the `pattern` parameter. Secondly,
 `fstrcapture()` works only with Perl-compatible regular expressions.
 
-# Combining values for lazy people
+## Combining values for lazy people
 
 `cc()` is for those of us that get fed up typeing quotation marks. It accepts
 either comma-separated, unquoted names that you wish to quote or, a
