@@ -124,7 +124,7 @@ data parameter `x` appears before the `pattern` parameter. Secondly,
 
 ## Combining values for lazy people
 
-`cc()` is for those of us that get fed up typeing quotation marks. It accepts
+`cc()` is for those of us that get fed up typing quotation marks. It accepts
 either comma-separated, unquoted names that you wish to quote or, a
 length one character vector that you wish to split by whitespace. Intended
 mainly for interactive use only, an example is likely more enlightening than
