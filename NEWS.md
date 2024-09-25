@@ -1,5 +1,8 @@
 # ympes (development version)
 
+- New function `new_name()` which generates unique names for additional data
+  frame variables (ensuring they are not already present).
+
 # ympes 1.5.0
 
 - `cc()` now allows you to split length one character vectors by whitespace.

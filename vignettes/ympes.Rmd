@@ -134,3 +134,16 @@ my description
 cc(dale, audrey, laura, hawk)
 cc("dale audrey laura hawk")
 ```
+
+## Avoid overwriting data frame columns
+
+Sometimes I find myself needing to add a temporary variable to a data frame
+without kaboshing a variable already present. `new_name()` provides a simple
+wrapper around `tempfile()` that generates random column names and checks for
+their suitability. Not normally the sort of thing I'd wrap but I find myself
+writing the same code a lot so here we are
+
+```{r}
+new_name(mtcars)
+new_name(mtcars, 3L)
+```
