@@ -28,9 +28,16 @@ new_name <- function(x, n = 1L) {
     assert_positive(n)
 
     # TODO - I'm 99% sure we do not need to use make.names here but ...
-    possible <- make.names(basename(tempfile(pattern = rep("new", n))))
+    pattern <- rep("new", n)
+    .possible_names <- function() {
+        names <- basename(tempfile(pattern = pattern))
+        make.names(names)
+    }
+
+    # loop until names not in use are found
+    possible <- .possible_names()
     while (any(possible %in% names(x))) {
-        possible <- make.names(basename(tempfile(pattern = rep("new", n))))
+        possible <- .possible_names()
     }
 
     possible
