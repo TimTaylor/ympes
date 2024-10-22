@@ -77,7 +77,7 @@ assert_integer <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.integer(x)) {
         msg <- sprintf("`%s` must be an integer vector.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -100,7 +100,7 @@ assert_double <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.double(x)) {
         msg <- sprintf("`%s` must be a double vector.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -122,7 +122,7 @@ assert_numeric <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -144,7 +144,7 @@ assert_logical <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.logical(x)) {
         msg <- sprintf("`%s` must be a logical vector.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -166,7 +166,7 @@ assert_character <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.character(x)) {
         msg <- sprintf("`%s` must be a character vector.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -188,7 +188,7 @@ assert_data_frame <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.data.frame(x)) {
         msg <- sprintf("`%s` must be a data frame.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -205,7 +205,7 @@ assert_list <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!is.list(x)) {
         msg <- sprintf("`%s` must be a list.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -222,7 +222,7 @@ assert_scalar_integer <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.integer(x) && length(x) == 1L)) {
         msg <- sprintf("`%s` must be an integer vector of length 1.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -244,7 +244,7 @@ assert_scalar_integer_not_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.integer(x) && length(x) == 1L) || is.na(x)) {
         msg <- sprintf("`%s` must be an integer vector of length 1 and not NA.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -266,7 +266,7 @@ assert_scalar_double <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.double(x) && length(x) == 1L)) {
         msg <- sprintf("`%s` must be a double vector of length 1.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -288,7 +288,7 @@ assert_scalar_double_not_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.double(x) && length(x) == 1L) || is.na(x)) {
         msg <- sprintf("`%s` must be a double vector of length 1 and not NA.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -310,7 +310,7 @@ assert_scalar_numeric <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.numeric(x) && length(x) == 1L)) {
         msg <- sprintf("`%s` must be a numeric vector of length 1.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -332,7 +332,7 @@ assert_scalar_numeric_not_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.numeric(x) && length(x) == 1L) || is.na(x)) {
         msg <- sprintf("`%s` must be a numeric vector of length 1 and not NA.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -354,7 +354,7 @@ assert_scalar_logical <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.logical(x) && length(x) == 1L)) {
         msg <- sprintf("`%s` must be a logical vector of length 1.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -376,7 +376,7 @@ assert_scalar_whole <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!.is_scalar_whole(x)) {
         msg <- sprintf("`%s` must be integerish and of length 1.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -393,7 +393,7 @@ assert_bool <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.logical(x) && length(x) == 1L) || is.na(x)) {
         msg <- sprintf("`%s` must be boolean (TRUE/FALSE).", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -415,7 +415,7 @@ assert_scalar_character <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.character(x) && length(x) == 1L)) {
         msg <- sprintf("`%s` must be a character vector of length 1.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -437,7 +437,7 @@ assert_scalar_character_not_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
     if (!(is.character(x) && length(x) == 1L) || is.na(x)) {
         msg <- sprintf("`%s` must be a character vector of length 1 and not NA.", .arg)
         .stop(msg, ..., .call = .call, .subclass = .subclass)
@@ -464,7 +464,7 @@ assert_non_negative_or_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -487,7 +487,7 @@ assert_non_positive_or_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -510,7 +510,7 @@ assert_non_negative <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -534,7 +534,7 @@ assert_non_positive <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -558,7 +558,7 @@ assert_positive <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -581,7 +581,7 @@ assert_negative <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -604,7 +604,7 @@ assert_positive_or_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -627,7 +627,7 @@ assert_negative_or_na <- function(
     .call = sys.call(-1L),
     .subclass = NULL
 ) {
-    .assert_not_missing(x, ..., .arg = .arg, .call = .call, .subclass = .subclass)
+
 
     if (!is.numeric(x)) {
         msg <- sprintf("`%s` must be a numeric vector.", .arg)
@@ -647,15 +647,6 @@ assert_negative_or_na <- function(
 # -------------------------------- INTERNALS ------------------------------ #
 # ------------------------------------------------------------------------- #
 # ------------------------------------------------------------------------- #
-
-.assert_not_missing <- function(x, ..., .arg, .call, .subclass) {
-    if (missing(x)) {
-        msg <- sprintf("argument `%s` is missing, with no default.", .arg)
-        .stop(msg, .call = .call, .subclass = .subclass)
-    }
-}
-
-# -------------------------------------------------------------------------
 
 .all_non_negative_or_na <- function(x) {
     min(0, x, na.rm = TRUE) >= 0
