@@ -2,6 +2,23 @@
 
 - New function `new_name()` which generates unique names for additional data
   frame variables (ensuring they are not already present).
+  
+- New assertion functions:
+    - `assert_character_not_na()`, `assert_chr_not_na()`
+    - `assert_double_not_na()`, `assert_dbl_not_na()`
+    - `assert_integer_not_na()`, `assert_int_not_na()`
+    - `assert_integerish()`, `assert_whole()`
+    - `assert_logical_not_na()`, `assert_lgl_not_na()`
+    - `assert_numeric_not_na()`, `assert_num_not_na()`
+    - `assert_scalar_logical_not_na()`, `assert_scalar_lgl_not_na()`
+    - `assert_string_not_na()`
+  
+- Assertions errors are now given the class "ympes-error".
+  
+- **breaking change:** Assertions no longer use `...` to add attributes to
+  the resulting error conditions.
+  
+
 
 # ympes 1.5.0
 

@@ -4,16 +4,28 @@
 \alias{assertions}
 \alias{assert_integer}
 \alias{assert_int}
+\alias{assert_integer_not_na}
+\alias{assert_int_not_na}
 \alias{assert_double}
 \alias{assert_dbl}
+\alias{assert_double_not_na}
+\alias{assert_dbl_not_na}
 \alias{assert_numeric}
 \alias{assert_num}
+\alias{assert_numeric_not_na}
+\alias{assert_num_not_na}
 \alias{assert_logical}
 \alias{assert_lgl}
+\alias{assert_logical_not_na}
+\alias{assert_lgl_not_na}
 \alias{assert_character}
 \alias{assert_chr}
+\alias{assert_character_not_na}
+\alias{assert_chr_not_na}
 \alias{assert_data_frame}
 \alias{assert_list}
+\alias{assert_whole}
+\alias{assert_integerish}
 \alias{assert_scalar_integer}
 \alias{assert_scalar_int}
 \alias{assert_scalar_integer_not_na}
@@ -28,14 +40,17 @@
 \alias{assert_scalar_num_not_na}
 \alias{assert_scalar_logical}
 \alias{assert_scalar_lgl}
+\alias{assert_scalar_logical_not_na}
+\alias{assert_scalar_lgl_not_na}
 \alias{assert_scalar_whole}
 \alias{assert_bool}
 \alias{assert_boolean}
 \alias{assert_scalar_character}
 \alias{assert_scalar_chr}
+\alias{assert_string}
 \alias{assert_scalar_character_not_na}
 \alias{assert_scalar_chr_not_na}
-\alias{assert_string}
+\alias{assert_string_not_na}
 \alias{assert_non_negative_or_na}
 \alias{assert_non_positive_or_na}
 \alias{assert_non_negative}
@@ -48,7 +63,6 @@
 \usage{
 assert_integer(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -56,7 +70,20 @@ assert_integer(
 
 assert_int(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_integer_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_int_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -64,7 +91,6 @@ assert_int(
 
 assert_double(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -72,7 +98,20 @@ assert_double(
 
 assert_dbl(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_double_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_dbl_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -80,7 +119,6 @@ assert_dbl(
 
 assert_numeric(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -88,7 +126,27 @@ assert_numeric(
 
 assert_num(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_dbl_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_numeric_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_num_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -96,7 +154,6 @@ assert_num(
 
 assert_logical(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -104,7 +161,20 @@ assert_logical(
 
 assert_lgl(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_logical_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_lgl_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -112,7 +182,6 @@ assert_lgl(
 
 assert_character(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -120,7 +189,20 @@ assert_character(
 
 assert_chr(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_character_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_chr_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -128,7 +210,6 @@ assert_chr(
 
 assert_data_frame(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -136,7 +217,20 @@ assert_data_frame(
 
 assert_list(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_whole(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_integerish(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -144,7 +238,6 @@ assert_list(
 
 assert_scalar_integer(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -152,7 +245,6 @@ assert_scalar_integer(
 
 assert_scalar_int(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -160,7 +252,6 @@ assert_scalar_int(
 
 assert_scalar_integer_not_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -168,7 +259,6 @@ assert_scalar_integer_not_na(
 
 assert_scalar_int_not_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -176,7 +266,6 @@ assert_scalar_int_not_na(
 
 assert_scalar_double(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -184,7 +273,6 @@ assert_scalar_double(
 
 assert_scalar_dbl(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -192,7 +280,6 @@ assert_scalar_dbl(
 
 assert_scalar_double_not_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -200,7 +287,6 @@ assert_scalar_double_not_na(
 
 assert_scalar_dbl_not_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -208,7 +294,6 @@ assert_scalar_dbl_not_na(
 
 assert_scalar_numeric(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -216,7 +301,6 @@ assert_scalar_numeric(
 
 assert_scalar_num(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -224,7 +308,6 @@ assert_scalar_num(
 
 assert_scalar_numeric_not_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -232,7 +315,6 @@ assert_scalar_numeric_not_na(
 
 assert_scalar_num_not_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -240,7 +322,6 @@ assert_scalar_num_not_na(
 
 assert_scalar_logical(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -248,7 +329,20 @@ assert_scalar_logical(
 
 assert_scalar_lgl(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_logical_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_lgl_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -256,7 +350,6 @@ assert_scalar_lgl(
 
 assert_scalar_whole(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -264,7 +357,6 @@ assert_scalar_whole(
 
 assert_bool(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -272,7 +364,6 @@ assert_bool(
 
 assert_boolean(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -280,7 +371,6 @@ assert_boolean(
 
 assert_scalar_character(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -288,23 +378,6 @@ assert_scalar_character(
 
 assert_scalar_chr(
   x,
-  ...,
-  .arg = deparse(substitute(x)),
-  .call = sys.call(-1L),
-  .subclass = NULL
-)
-
-assert_scalar_character_not_na(
-  x,
-  ...,
-  .arg = deparse(substitute(x)),
-  .call = sys.call(-1L),
-  .subclass = NULL
-)
-
-assert_scalar_chr_not_na(
-  x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -312,7 +385,27 @@ assert_scalar_chr_not_na(
 
 assert_string(
   x,
-  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_character_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_chr_not_na(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_string_not_na(
+  x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -320,7 +413,6 @@ assert_string(
 
 assert_non_negative_or_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -328,7 +420,6 @@ assert_non_negative_or_na(
 
 assert_non_positive_or_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -336,7 +427,6 @@ assert_non_positive_or_na(
 
 assert_non_negative(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -344,7 +434,6 @@ assert_non_negative(
 
 assert_non_positive(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -352,7 +441,6 @@ assert_non_positive(
 
 assert_positive(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -360,7 +448,6 @@ assert_positive(
 
 assert_negative(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -368,7 +455,6 @@ assert_negative(
 
 assert_positive_or_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -376,7 +462,6 @@ assert_positive_or_na(
 
 assert_negative_or_na(
   x,
-  ...,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),
   .subclass = NULL
@@ -384,8 +469,6 @@ assert_negative_or_na(
 }
 \arguments{
 \item{x}{Argument to check.}
-
-\item{...}{Additional fields that will be added to the resulting error condition}
 
 \item{.arg}{\verb{[character]}
 
@@ -400,7 +483,10 @@ Call to use in error message.}
 The (optional) subclass of the returned error condition.}
 }
 \value{
-NULL if the assertion succeeds (error otherwise).
+NULL if the assertion succeeds.
+
+Otherwise an error of class "ympes-error" (with option subclass if supplied
+when calling the assertion).
 }
 \description{
 Assertions for function arguments. Motivated by \code{vctrs::vec_assert()} but

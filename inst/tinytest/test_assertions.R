@@ -63,44 +63,69 @@ expect_fixed_error( external_fun(i=1L,  d=1,       l=NA,        chr="cat",   b=c
 x <- 1
 y <- 1L
 z <- NA_integer_
+u <- c(y, z)
 expect_null(assert_int(y))
 expect_null(assert_scalar_int_not_na(y))
 expect_fixed_error(assert_int(x), "`x` must be an integer vector.")
 expect_fixed_error(assert_scalar_int_not_na(z), "`z` must be an integer vector of length 1 and not NA.")
+expect_fixed_error(assert_int_not_na(u), "`u` must be a non-missing integer vector.")
 
 
 # double assertions
 x <- 1
 y <- 1L
 z <- NA_real_
+u <- c(x, z)
 expect_null(assert_dbl(x))
 expect_fixed_error(assert_dbl(y), "`y` must be a double vector.")
 expect_null(assert_scalar_dbl_not_na(x))
 expect_fixed_error(assert_scalar_dbl_not_na(z), "`z` must be a double vector of length 1 and not NA.")
+expect_fixed_error(assert_dbl_not_na(u), "`u` must be a non-missing double vector.")
 
 # numeric assertions
 x <- 1
 y <- "cat"
 z <- NA_real_
+u <- c(x, z)
+v <- c(1L, NA_integer_)
 expect_null(assert_num(x))
+expect_null(assert_num(c(1:2)))
 expect_fixed_error(assert_num(y), "`y` must be a numeric vector.")
 expect_null(assert_scalar_num_not_na(x))
 expect_fixed_error(assert_scalar_num_not_na(z), "`z` must be a numeric vector of length 1 and not NA.")
+expect_fixed_error(assert_num_not_na(u), "`u` must be a non-missing numeric vector.")
+expect_fixed_error(assert_num_not_na(v), "`v` must be a non-missing numeric vector.")
 
 # character assertions
 x <- 1
 y <- "cat"
 z <- NA_character_
+u <- c(y, z)
 expect_null(assert_chr(y))
 expect_fixed_error(assert_chr(x), "`x` must be a character vector.")
 expect_null(assert_scalar_chr_not_na(y))
 expect_fixed_error(assert_scalar_chr_not_na(z), "`z` must be a character vector of length 1 and not NA.")
+expect_fixed_error(assert_character_not_na(u), "`u` must be a non-missing character vector.")
 
 # logical assertions work
 x <- 1
 y <- NA
-expect_null(assert_lgl(y))
+u <- c(TRUE, NA)
+v <- c(y, y)
+expect_null(assert_scalar_lgl(y))
+expect_null(assert_lgl(v))
 expect_fixed_error(assert_lgl(x), "`x` must be a logical vector.")
+expect_fixed_error(assert_logical_not_na(u), "`u` must be a non-missing logical vector.")
+expect_fixed_error(assert_scalar_logical_not_na(y), "`y` must be a logical vector of length 1 and not NA.")
+
+# whole assertions
+x <- as.double(1:10)
+y <- x + 0.1
+v <- c(x, NA_real_)
+expect_null(assert_whole(x))
+expect_null(assert_whole(1L))
+expect_fixed_error(assert_whole(y), "`y` must be integerish.")
+expect_fixed_error(assert_whole(v), "`v` must be integerish.")
 
 # numeric assertions
 x <- 1
@@ -215,3 +240,4 @@ expect_fixed_error(assert_non_negative(pos_single_na), "`pos_single_na` values m
 expect_fixed_error(assert_non_positive(pos_single_na), "`pos_single_na` values must be non-positive and not NA.")
 expect_fixed_error(assert_positive(pos_single_na), "`pos_single_na` values must be positive and not NA.")
 expect_fixed_error(assert_negative(pos_single_na), "`pos_single_na` values must be negative and not NA.")
+
