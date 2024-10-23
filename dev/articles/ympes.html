@@ -168,14 +168,14 @@ function <code>nc::capture_first_vec()</code>.</p>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">movements</span><span class="op">(</span><span class="fl">1e5</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">t</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/strcapture.html" class="external-link">strcapture</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="va">dat</span>, proto <span class="op">=</span> <span class="va">proto</span>, perl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   1.598   0.019   1.618</span></span></code></pre>
+<span><span class="co">##   1.496   0.027   1.523</span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">r2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fstrcapture.html">fstrcapture</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">pattern</span>, proto <span class="op">=</span> <span class="va">proto</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.036   0.000   0.035</span></span></code></pre>
+<span><span class="co">##   0.034   0.000   0.034</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span> <span class="op">/</span> <span class="va">t2</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 46.22857</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 44.79412</span></span></code></pre>
 <p>As well as the improved performance you will notice two other
 differences between the two function signatures. Firstly, to make things
 more pipeable, the data parameter <code>x</code> appears before the
@@ -208,10 +208,102 @@ for their suitability. Not normally the sort of thing I’d wrap but I
 find myself writing the same code a lot so here we are</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/new_name.html">new_name</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "new177b30f6b49"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "new17f552e2c832"</span></span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/new_name.html">new_name</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">3L</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "new177b52d1f425" "new177b721d1b4a" "new177b7eaf73b2"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "new17f560eae23a" "new17f539fea6d3" "new17f510f25241"</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="assertions-experimental">Assertions (Experimental)<a class="anchor" aria-label="anchor" href="#assertions-experimental"></a>
+</h2>
+<p>Where better place for yet another implementation of bespoke
+assertion functions than a small helper package!. Motivated by
+<code><a href="https://vctrs.r-lib.org/reference/vec_assert.html" class="external-link">vctrs::vec_assert()</a></code> but with lower overhead at a cost of
+less flexibility. The assertion functions in ympes are designed to make
+it easy to identify the top level calling function whether used within a
+user facing function or internally. They are somewhat experimental in
+nature and should be treated accordingly!</p>
+<p>Currently implemented are:</p>
+<p><code><a href="../reference/assertions.html">assert_character()</a></code>, <code><a href="../reference/assertions.html">assert_chr()</a></code>,
+<code><a href="../reference/assertions.html">assert_character_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_chr_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_character()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_chr()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_character_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_chr_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_string()</a></code>,
+<code><a href="../reference/assertions.html">assert_string_not_na()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_double()</a></code>, <code><a href="../reference/assertions.html">assert_dbl()</a></code>,
+<code><a href="../reference/assertions.html">assert_double_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_dbl_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_double()</a></code>, <code><a href="../reference/assertions.html">assert_scalar_dbl()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_double_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_dbl_not_na()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_integer()</a></code>, <code><a href="../reference/assertions.html">assert_int()</a></code>,
+<code><a href="../reference/assertions.html">assert_integer_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_int_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_integer()</a></code>, <code><a href="../reference/assertions.html">assert_scalar_int()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_integer_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_int_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_integerish()</a></code>, <code><a href="../reference/assertions.html">assert_whole()</a></code>
+<code><a href="../reference/assertions.html">assert_scalar_whole()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_integerish()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_logical()</a></code>, <code><a href="../reference/assertions.html">assert_lgl()</a></code>,
+<code><a href="../reference/assertions.html">assert_logical_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_lgl_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_logical()</a></code>, <code><a href="../reference/assertions.html">assert_scalar_lgl()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_logical_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_lgl_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_bool()</a></code>,
+<code><a href="../reference/assertions.html">assert_boolean()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_list()</a></code>, <code><a href="../reference/assertions.html">assert_data_frame()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_negative()</a></code>, <code><a href="../reference/assertions.html">assert_negative_or_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_positive()</a></code>, <code><a href="../reference/assertions.html">assert_positive_or_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_non_negative()</a></code>,
+<code><a href="../reference/assertions.html">assert_non_negative_or_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_non_positive()</a></code>,
+<code><a href="../reference/assertions.html">assert_non_positive_or_na()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_numeric()</a></code>, <code><a href="../reference/assertions.html">assert_num()</a></code>,
+<code><a href="../reference/assertions.html">assert_numeric_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_num_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_numeric()</a></code>, <code><a href="../reference/assertions.html">assert_scalar_num()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_numeric_not_na()</a></code>,
+<code><a href="../reference/assertions.html">assert_scalar_num_not_na()</a></code>,</p>
+<p><code><a href="../reference/assertions.html">assert_between()</a></code></p>
+<p>Hopefully most of these are self-explanatory but there is some
+opinionated (currently undocumented) handling of NA so care should be
+taken to inspect the underlying source code before using.</p>
+<p>Currently these assertions return NULL if the assertion succeeds.
+Otherwise an error of class “ympes-error” (with optional subclass if
+supplied when calling the assertion).</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use in a user facing function</span></span>
+<span><span class="va">fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">i</span>, <span class="va">d</span>, <span class="va">l</span>, <span class="va">chr</span>, <span class="va">b</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/assertions.html">assert_scalar_int</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
+<span>    <span class="cn">TRUE</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">fun</span><span class="op">(</span>i<span class="op">=</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">fun</span><span class="op">(</span>i<span class="op">=</span><span class="st">"cat"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in fun() : `i` must be an integer vector of length 1.</span></span></code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use in an internal function</span></span>
+<span><span class="va">internal_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/assertions.html">assert_string</a></span><span class="op">(</span></span>
+<span>        <span class="va">a</span>,</span>
+<span>        .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>        .subclass <span class="op">=</span> <span class="st">"example_error"</span></span>
+<span>    <span class="op">)</span></span>
+<span>    <span class="cn">TRUE</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">external_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">b</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">internal_fun</span><span class="op">(</span>a<span class="op">=</span><span class="va">b</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">external_fun</span><span class="op">(</span>b<span class="op">=</span><span class="st">"cat"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span>b <span class="op">=</span> <span class="va">letters</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in external_fun() : `x` must be a character vector of length 1.</span></span></code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span>b <span class="op">=</span> <span class="va">letters</span><span class="op">)</span>, error <span class="op">=</span> <span class="va">class</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "example_error" "ympes-error"   "error"         "condition"</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
