@@ -168,14 +168,14 @@ function <code>nc::capture_first_vec()</code>.</p>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">movements</span><span class="op">(</span><span class="fl">1e5</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">t</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/strcapture.html" class="external-link">strcapture</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="va">dat</span>, proto <span class="op">=</span> <span class="va">proto</span>, perl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   1.496   0.027   1.523</span></span></code></pre>
+<span><span class="co">##   1.463   0.036   1.499</span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">r2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fstrcapture.html">fstrcapture</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">pattern</span>, proto <span class="op">=</span> <span class="va">proto</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.034   0.000   0.034</span></span></code></pre>
+<span><span class="co">##   0.035   0.000   0.035</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span> <span class="op">/</span> <span class="va">t2</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 44.79412</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 42.82857</span></span></code></pre>
 <p>As well as the improved performance you will notice two other
 differences between the two function signatures. Firstly, to make things
 more pipeable, the data parameter <code>x</code> appears before the
@@ -208,10 +208,10 @@ for their suitability. Not normally the sort of thing I’d wrap but I
 find myself writing the same code a lot so here we are</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/new_name.html">new_name</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "new17f552e2c832"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "new181b3fab57d7"</span></span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/new_name.html">new_name</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">3L</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "new17f560eae23a" "new17f539fea6d3" "new17f510f25241"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "new181b158f0a42" "new181b36c8e18b" "new181b21eef6be"</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="assertions-experimental">Assertions (Experimental)<a class="anchor" aria-label="anchor" href="#assertions-experimental"></a>
