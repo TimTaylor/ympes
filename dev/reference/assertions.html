@@ -456,6 +456,17 @@ and should be treated accordingly.</p>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_between</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  lower <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>  upper <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  left_inclusive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  right_inclusive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -480,6 +491,26 @@ and should be treated accordingly.</p>
 <dt id="arg--subclass">.subclass<a class="anchor" aria-label="anchor" href="#arg--subclass"></a></dt>
 <dd><p><code>[character]</code></p>
 <p>The (optional) subclass of the returned error condition.</p></dd>
+
+
+<dt id="arg-lower">lower<a class="anchor" aria-label="anchor" href="#arg-lower"></a></dt>
+<dd><p><code>[numeric]</code></p>
+<p>The lower bound to compare against.</p></dd>
+
+
+<dt id="arg-upper">upper<a class="anchor" aria-label="anchor" href="#arg-upper"></a></dt>
+<dd><p><code>[numeric]</code></p>
+<p>The upper bound to compare against.</p></dd>
+
+
+<dt id="arg-left-inclusive">left_inclusive<a class="anchor" aria-label="anchor" href="#arg-left-inclusive"></a></dt>
+<dd><p><code>[bool]</code></p>
+<p>Should the left (lower) bound be compared inclusively (<code>&lt;=</code>) or exclusive (<code>&lt;</code>).</p></dd>
+
+
+<dt id="arg-right-inclusive">right_inclusive<a class="anchor" aria-label="anchor" href="#arg-right-inclusive"></a></dt>
+<dd><p><code>[bool]</code></p>
+<p>Should the right (upper) bound be compared inclusively (<code>&gt;=</code>) or exclusive (<code>&gt;</code>).</p></dd>
 
 </dl></div>
     <div class="section level2">

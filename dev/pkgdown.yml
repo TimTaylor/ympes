@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   ympes: ympes.html
-last_built: 2024-10-23T09:25Z
+last_built: 2024-10-23T10:16Z
 urls:
   reference: https://timtaylor.github.io/ympes/reference
   article: https://timtaylor.github.io/ympes/articles
