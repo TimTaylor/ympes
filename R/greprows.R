@@ -67,14 +67,9 @@ greprows <- function(
     fixed = FALSE,
     invert = FALSE
 ) {
-    if (!is.data.frame(dat))
-        stop("`dat` must be a data frame.")
-
-    if (!(is.character(pattern) && length(pattern) == 1L))
-        stop("`pattern` must be a character string.")
-
-    if (!(is.logical(value) && length(value) == 1L && !is.na(value)))
-        stop("`value` must be TRUE or FALSE.")
+    assert_data_frame(dat)
+    assert_string(pattern)
+    assert_bool(value)
 
     # pull out specified columns or characters and factors if NULL
     if (is.null(cols)) {

@@ -23,8 +23,7 @@
 new_name <- function(x, n = 1L) {
 
     assert_data_frame(x)
-    n <- as.integer(n)
-    assert_scalar_integer_not_na(n)
+    assert_scalar_whole(n)
     assert_positive(n)
 
     # TODO - I'm 99% sure we do not need to use make.names here but ...
