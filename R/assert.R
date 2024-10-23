@@ -57,7 +57,6 @@
 #'     TRUE
 #' }
 #' fun(i=1L)
-#' try(fun())
 #' try(fun(i="cat"))
 #'
 #' # Use in an internal function
@@ -74,7 +73,6 @@
 #'     internal_fun(a=b)
 #' }
 #' external_fun(b="cat")
-#' try(external_fun())
 #' try(external_fun(b = letters))
 #' tryCatch(external_fun(b = letters), error = class)
 #'
