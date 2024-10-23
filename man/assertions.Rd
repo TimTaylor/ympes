@@ -43,6 +43,7 @@
 \alias{assert_scalar_logical_not_na}
 \alias{assert_scalar_lgl_not_na}
 \alias{assert_scalar_whole}
+\alias{assert_scalar_integerish}
 \alias{assert_bool}
 \alias{assert_boolean}
 \alias{assert_scalar_character}
@@ -350,6 +351,13 @@ assert_scalar_lgl_not_na(
 )
 
 assert_scalar_whole(
+  x,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_integerish(
   x,
   .arg = deparse(substitute(x)),
   .call = sys.call(-1L),

@@ -8,6 +8,7 @@
     - `assert_double_not_na()`, `assert_dbl_not_na()`
     - `assert_integer_not_na()`, `assert_int_not_na()`
     - `assert_integerish()`, `assert_whole()`
+    - `assert_scalar_integerish()`,
     - `assert_logical_not_na()`, `assert_lgl_not_na()`
     - `assert_numeric_not_na()`, `assert_num_not_na()`
     - `assert_scalar_logical_not_na()`, `assert_scalar_lgl_not_na()`

@@ -581,6 +581,11 @@ assert_scalar_whole <- function(
     }
 }
 
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_scalar_integerish <- assert_scalar_whole
+
 
 #' @rdname assertions
 #' @export
