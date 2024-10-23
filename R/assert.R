@@ -24,6 +24,22 @@
 #'
 #' The (optional) subclass of the returned error condition.
 #'
+#' @param lower `[numeric]`
+#'
+#' The lower bound to compare against.
+#'
+#' @param upper `[numeric]`
+#'
+#' The upper bound to compare against.
+#'
+#' @param left_inclusive `[bool]`
+#'
+#' Should the left (lower) bound be compared inclusively (`<=`) or exclusive (`<`).
+#'
+#' @param right_inclusive `[bool]`
+#'
+#' Should the right (upper) bound be compared inclusively (`>=`) or exclusive (`>`).
+#'
 # -------------------------------------------------------------------------
 #' @return
 #'
@@ -795,9 +811,57 @@ assert_negative_or_na <- function(
             .subclass = .subclass
         )
     }
+}
 
+
+# -------------------------------------------------------------------------
+#' @rdname assertions
+#' @export
+assert_between <- function(
+    x,
+    lower = -Inf,
+    upper = Inf,
+    left_inclusive = TRUE,
+    right_inclusive = TRUE,
+    .arg = deparse(substitute(x)),
+    .call = sys.call(-1L),
+    .subclass = NULL
+) {
+
+    assert_numeric_not_na(x, .arg = .arg, .call = .call, .subclass = .subclass)
+    assert_scalar_numeric_not_na(lower, .arg = .arg, .call = .call, .subclass = .subclass)
+    assert_scalar_numeric_not_na(upper, .arg = .arg, .call = .call, .subclass = .subclass)
+    assert_bool(left_inclusive)
+    assert_bool(right_inclusive)
+
+    if (left_inclusive) {
+        left_condition <- lower <= x
+        left_char <- "<="
+    } else {
+        left_condition <- lower < x
+        left_char <- "<"
+    }
+
+    if (right_inclusive) {
+        right_condition <- x <= upper
+        right_char <- "<="
+    } else {
+        right_condition <- x < upper
+        right_char <- "<"
+    }
+
+    if (!all(left_condition & right_condition)) {
+        condition_char <- sprintf("lower %s value %s upper", left_char, right_char)
+        .stopf(
+            gettextf("`%s` does not for all values in `%s`.", condition_char, .arg, domain = "R-ympes"),
+            .call = .call,
+            .subclass = .subclass
+        )
+    }
 
 }
+
+
 
 # ------------------------------------------------------------------------- #
 # ------------------------------------------------------------------------- #

@@ -12,14 +12,13 @@
     - `assert_numeric_not_na()`, `assert_num_not_na()`
     - `assert_scalar_logical_not_na()`, `assert_scalar_lgl_not_na()`
     - `assert_string_not_na()`
-  
+    - `assert_between()`
+
 - Assertions errors are now given the class "ympes-error".
-  
+
 - **breaking change:** Assertions no longer use `...` to add attributes to
   the resulting error conditions.
   
-
-
 # ympes 1.5.0
 
 - `cc()` now allows you to split length one character vectors by whitespace.

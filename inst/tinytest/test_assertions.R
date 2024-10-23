@@ -241,3 +241,20 @@ expect_fixed_error(assert_non_positive(pos_single_na), "`pos_single_na` values m
 expect_fixed_error(assert_positive(pos_single_na), "`pos_single_na` values must be positive and not NA.")
 expect_fixed_error(assert_negative(pos_single_na), "`pos_single_na` values must be negative and not NA.")
 
+# between
+fun <- function(q, lower = -Inf, upper = Inf, left = TRUE, right = TRUE) {
+    assert_between(q,lower,upper,left,right)
+}
+
+a <- 1
+expect_null(fun(a, 1, 1))
+expect_null(fun(a, 0, 1, left = FALSE,  right = TRUE))
+expect_null(fun(a, 1, 2, left =  TRUE, right = FALSE))
+expect_null(fun(a, 0, 2, left = FALSE, right = FALSE))
+expect_fixed_error(fun(a, 2, 3, left =  TRUE, right =  TRUE), "`lower <= value <= upper` does not for all values in `q`.")
+expect_fixed_error(fun(a, 1, 1, left = FALSE, right =  TRUE), "`lower < value <= upper` does not for all values in `q`.")
+expect_fixed_error(fun(a, 1, 1, left =  TRUE, right = FALSE), "`lower <= value < upper` does not for all values in `q`.")
+expect_fixed_error(fun(a, 1, 1, left = FALSE, right = FALSE), "`lower < value < upper` does not for all values in `q`.")
+
+
+

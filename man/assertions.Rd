@@ -59,6 +59,7 @@
 \alias{assert_negative}
 \alias{assert_positive_or_na}
 \alias{assert_negative_or_na}
+\alias{assert_between}
 \title{Argument assertions (Experimental)}
 \usage{
 assert_integer(
@@ -466,6 +467,17 @@ assert_negative_or_na(
   .call = sys.call(-1L),
   .subclass = NULL
 )
+
+assert_between(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  left_inclusive = TRUE,
+  right_inclusive = TRUE,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 }
 \arguments{
 \item{x}{Argument to check.}
@@ -481,6 +493,22 @@ Call to use in error message.}
 \item{.subclass}{\verb{[character]}
 
 The (optional) subclass of the returned error condition.}
+
+\item{lower}{\verb{[numeric]}
+
+The lower bound to compare against.}
+
+\item{upper}{\verb{[numeric]}
+
+The upper bound to compare against.}
+
+\item{left_inclusive}{\verb{[bool]}
+
+Should the left (lower) bound be compared inclusively (\code{<=}) or exclusive (\code{<}).}
+
+\item{right_inclusive}{\verb{[bool]}
+
+Should the right (upper) bound be compared inclusively (\code{>=}) or exclusive (\code{>}).}
 }
 \value{
 NULL if the assertion succeeds.
