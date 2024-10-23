@@ -54,7 +54,6 @@ and should be treated accordingly.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assert_integer</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -62,7 +61,20 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_int</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_integer_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_int_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -70,7 +82,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_double</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -78,7 +89,20 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_dbl</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_double_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_dbl_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -86,7 +110,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_numeric</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -94,7 +117,27 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_num</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_dbl_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_numeric_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_num_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -102,7 +145,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_logical</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -110,7 +152,20 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_lgl</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_logical_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_lgl_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -118,7 +173,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_character</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -126,7 +180,20 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_chr</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_character_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_chr_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -134,7 +201,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_data_frame</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -142,7 +208,20 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_list</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_whole</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_integerish</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -150,7 +229,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_integer</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -158,7 +236,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_int</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -166,7 +243,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_integer_not_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -174,7 +250,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_int_not_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -182,7 +257,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_double</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -190,7 +264,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_dbl</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -198,7 +271,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_double_not_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -206,7 +278,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_dbl_not_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -214,7 +285,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_numeric</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -222,7 +292,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_num</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -230,7 +299,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_numeric_not_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -238,7 +306,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_num_not_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -246,7 +313,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_logical</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -254,7 +320,20 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_lgl</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_scalar_logical_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_scalar_lgl_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -262,7 +341,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_whole</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -270,7 +348,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_bool</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -278,7 +355,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_boolean</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -286,7 +362,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_character</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -294,23 +369,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_scalar_chr</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
-<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
-<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">assert_scalar_character_not_na</span><span class="op">(</span></span>
-<span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
-<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
-<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">assert_scalar_chr_not_na</span><span class="op">(</span></span>
-<span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -318,7 +376,27 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_string</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_scalar_character_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_scalar_chr_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_string_not_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -326,7 +404,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_non_negative_or_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -334,7 +411,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_non_positive_or_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -342,7 +418,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_non_negative</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -350,7 +425,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_non_positive</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -358,7 +432,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_positive</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -366,7 +439,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_negative</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -374,7 +446,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_positive_or_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -382,7 +453,6 @@ and should be treated accordingly.</p>
 <span></span>
 <span><span class="fu">assert_negative_or_na</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">...</span>,</span>
 <span>  .arg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html" class="external-link">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html" class="external-link">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  .call <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">sys.call</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span>,</span>
 <span>  .subclass <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -395,10 +465,6 @@ and should be treated accordingly.</p>
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>Argument to check.</p></dd>
-
-
-<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Additional fields that will be added to the resulting error condition</p></dd>
 
 
 <dt id="arg--arg">.arg<a class="anchor" aria-label="anchor" href="#arg--arg"></a></dt>
@@ -418,7 +484,9 @@ and should be treated accordingly.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>NULL if the assertion succeeds (error otherwise).</p>
+    <p>NULL if the assertion succeeds.</p>
+<p>Otherwise an error of class "ympes-error" (with option subclass if supplied
+when calling the assertion).</p>
     </div>
 
     <div class="section level2">
@@ -432,7 +500,7 @@ and should be treated accordingly.</p>
 <span class="r-in"><span><span class="fu">fun</span><span class="op">(</span>i<span class="op">=</span><span class="fl">1L</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">fun</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in fun() : argument `i` is missing, with no default.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in fun() : argument "i" is missing, with no default</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">fun</span><span class="op">(</span>i<span class="op">=</span><span class="st">"cat"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in fun() : `i` must be an integer vector of length 1.</span>
 <span class="r-in"><span></span></span>
@@ -452,11 +520,11 @@ and should be treated accordingly.</p>
 <span class="r-in"><span><span class="fu">external_fun</span><span class="op">(</span>b<span class="op">=</span><span class="st">"cat"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in external_fun() : argument `x` is missing, with no default.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in external_fun() : argument "b" is missing, with no default</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span>b <span class="op">=</span> <span class="va">letters</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in external_fun() : `x` must be a character vector of length 1.</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span><span class="fu">external_fun</span><span class="op">(</span>b <span class="op">=</span> <span class="va">letters</span><span class="op">)</span>, error <span class="op">=</span> <span class="va">class</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "example_error" "error"         "condition"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "example_error" "ympes-error"   "error"         "condition"    </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

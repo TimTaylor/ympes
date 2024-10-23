@@ -35,7 +35,34 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="ympes-development-version">ympes (development version)<a class="anchor" aria-label="anchor" href="#ympes-development-version"></a></h2>
-<ul><li>New function <code><a href="../reference/new_name.html">new_name()</a></code> which generates unique names for additional data frame variables (ensuring they are not already present).</li>
+<ul><li><p>New function <code><a href="../reference/new_name.html">new_name()</a></code> which generates unique names for additional data frame variables (ensuring they are not already present).</p></li>
+<li>
+<p>New assertion functions:</p>
+<ul><li>
+<code><a href="../reference/assertions.html">assert_character_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_chr_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_double_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_dbl_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_integer_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_int_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_integerish()</a></code>, <code><a href="../reference/assertions.html">assert_whole()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_logical_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_lgl_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_numeric_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_num_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_scalar_logical_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_scalar_lgl_not_na()</a></code>
+</li>
+<li><code><a href="../reference/assertions.html">assert_string_not_na()</a></code></li>
+</ul></li>
+<li><p>Assertions errors are now given the class “ympes-error”.</p></li>
+<li><p><strong>breaking change:</strong> Assertions no longer use <code>...</code> to add attributes to the resulting error conditions.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.0" id="ympes-150">ympes 1.5.0<a class="anchor" aria-label="anchor" href="#ympes-150"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
