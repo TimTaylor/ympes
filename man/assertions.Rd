@@ -521,7 +521,7 @@ Should the right (upper) bound be compared inclusively (\code{>=}) or exclusive 
 \value{
 NULL if the assertion succeeds.
 
-Otherwise an error of class "ympes-error" (with option subclass if supplied
+Otherwise an error of class "ympes-error" (with optional subclass if supplied
 when calling the assertion).
 }
 \description{
