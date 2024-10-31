@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ympes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,41 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.5.0" id="ympes-150">ympes 1.5.0<a class="anchor" aria-label="anchor" href="#ympes-150"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.6.0" id="ympes-160">ympes 1.6.0<a class="anchor" aria-label="anchor" href="#ympes-160"></a></h2>
+<ul><li><p>New function <code><a href="../reference/new_name.html">new_name()</a></code> which generates unique names for additional data frame variables (ensuring they are not already present).</p></li>
+<li>
+<p>New assertion functions:</p>
+<ul><li>
+<code><a href="../reference/assertions.html">assert_character_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_chr_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_double_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_dbl_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_integer_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_int_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_integerish()</a></code>, <code><a href="../reference/assertions.html">assert_whole()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_scalar_integerish()</a></code>,</li>
+<li>
+<code><a href="../reference/assertions.html">assert_logical_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_lgl_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_numeric_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_num_not_na()</a></code>
+</li>
+<li>
+<code><a href="../reference/assertions.html">assert_scalar_logical_not_na()</a></code>, <code><a href="../reference/assertions.html">assert_scalar_lgl_not_na()</a></code>
+</li>
+<li><code><a href="../reference/assertions.html">assert_string_not_na()</a></code></li>
+<li><code><a href="../reference/assertions.html">assert_between()</a></code></li>
+</ul></li>
+<li><p>Assertions errors are now given the class “ympes-error”.</p></li>
+<li><p><strong>breaking change:</strong> Assertions no longer use <code>...</code> to add attributes to the resulting error conditions.</p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.0" id="ympes-150">ympes 1.5.0<a class="anchor" aria-label="anchor" href="#ympes-150"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
 <ul><li><p><code><a href="../reference/cc.html">cc()</a></code> now allows you to split length one character vectors by whitespace.</p></li>
 <li><p><strong>breaking change:</strong> <code><a href="../reference/cc.html">cc()</a></code> no longer allows the user to send generative code for the output to the system clipboard with the <code>.clip</code> argument. This functionality was unreliable on some systems so has been removed until a reliable implementation can be provided.</p></li>
 <li><p>Assertions and the <code><a href="../reference/new_package.html">new_package()</a></code> functionality have been marked experimental. Breaking changes to these functions should be considered likely.</p></li>
@@ -167,7 +201,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
