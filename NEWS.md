@@ -1,8 +1,8 @@
-# ympes (development version)
+# ympes 1.6.0
 
 - New function `new_name()` which generates unique names for additional data
   frame variables (ensuring they are not already present).
-  
+
 - New assertion functions:
     - `assert_character_not_na()`, `assert_chr_not_na()`
     - `assert_double_not_na()`, `assert_dbl_not_na()`
@@ -19,7 +19,7 @@
 
 - **breaking change:** Assertions no longer use `...` to add attributes to
   the resulting error conditions.
-  
+
 # ympes 1.5.0
 
 - `cc()` now allows you to split length one character vectors by whitespace.
@@ -28,7 +28,7 @@
   for the output to the system clipboard with the `.clip` argument. This
   functionality was unreliable on some systems so has been removed until a
   reliable implementation can be provided.
-  
+
 - Assertions and the `new_package()` functionality have been marked
   experimental. Breaking changes to these functions should be considered likely.
 
@@ -38,7 +38,7 @@
 
 - New function `grepvrows()` which is identical to `greprows()` except with the
   default `value = TRUE`.
-  
+
 - New function `greplrows()` returns a logical vector (match or not for each row
   of the supplied data frame).
 
@@ -53,21 +53,21 @@
 - Users can now set the condition subclass of returned errors via a  `.subclass`
   argument. In a similar vein it is now possible to specify additional fields in
   the returned error condition via the `...` arguments.
-  
+
 - **breaking change:** Exported assertion functions are no longer prefixed with
   a dot.
 
-- **breaking change:** To allow for the additional `...` arguments in the 
+- **breaking change:** To allow for the additional `...` arguments in the
   aforementioned assertions the parameters `arg`/`call` have been renamed to
   `.arg`/`.call` respectively and have also been shifted (position-wise) within
   the function signatures. For example
-  
+
   ```
   assert_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
   ```
-  
+
   becomes
-  
+
   ```
   assert_int(x, ..., .arg = deparse(substitute(x)), .call = sys.call(-1L), .subclass = NULL)
   ```
@@ -92,7 +92,7 @@
 
 - **breaking change**. `new_package()` now utilises an explicit `pkg` folder for
   the R package.
-  
+
 - Fixes (hopefully) an issue with the internal usage of clipr within `cc()` when
   on a Wayland system.
 
@@ -104,7 +104,7 @@
 - **breaking change**. Assertion functions have been removed. They can still be
   found internally (and are checked by tests) but the intention is to use them
   as a standalone file that is copy and pasted between packages as needed.
-  
+
 - **Licence change**. Licence bumped from GPL-2 to GPL-3.
 
 # ympes 0.5.0
@@ -117,18 +117,18 @@
 - New assertion functions:
     - `assert_negative()`, `assert_negative_or_na()`
     - `assert_positive()`, `assert_positive_or_na()`
-    
+
     - `assert_non_negative()`, `assert_non_negative_or_na()`
     - `assert_non_positive()`, `assert_non_positive_or_na()`
-    
+
     - `assert_scalar_character_not_na()`, `assert_scalar_chr_not_na()`
     - `assert_scalar_integer_not_na()`, `assert_scalar_int_not_na()`
     - `assert_scalar_double_not_na()`, `assert_scalar_dbl_not_na()`
     - `assert_scalar_numeric_not_na()`, `assert_scalar_num_not_na()`
-    
+
 - Functions defunct in earlier versions of {ympes} have been removed from the
   package namespace.
-    
+
 
 # ympes 0.4.0
 
@@ -138,7 +138,7 @@
 - The old format for assertions (with the `imp_` prefix;
   e.g. `imp_assert_int()`) are now defunct and calling them will result in an
   error.
-  
+
 - Age utility functions `breaks_to_interval()`, `cut_ages()`,
   `split_interval_counts()`, `aggregate_age_counts()`,
   `reaggregate_interval_counts()` and `ages_to_interval()` are now defunct.
@@ -151,25 +151,25 @@
 - New assertion functions that do not require the `imp_` prefix and return NULL
   on success. Note that returning NULL means the new assertions are not pipe
   friendly but the implementation is slightly more efficient.
-  
+
 - The old format for assertions (with the `imp_` prefix;
   e.g. `imp_assert_int()`) are now deprecated and will be removed in a future
   release.
-  
+
 - `ages_to_interval()` has been deprecated and replaced with the function
   `cut_ages()`. This has a slightly different API (see `help(cut_ages)` for
   more information).
-  
+
 - New function `breaks_to_interval()` for transforming breaks in to
   corresponding intervals (see `help(breaks_to_interval)`).
-  
+
 - **breaking change**. The `limits` parameter has been removed from both
   `aggregate_age_counts()` and `reaggregate_age_counts()`. It has been replaced
   by a `breaks` which represents the left-hand side of your desired interval
   bounds (i.e. the `x` value in `[x, y)`). Intervals no longer span the natural
   numbers by default but will begin from the minimum break input. Any ages
   below this value will be treated as NA.
-   
+
 - New function `greprows()` for searching rows of a data frame.
 
 # ympes 0.2.1
@@ -185,13 +185,13 @@ Valgrind checks.
 
     - `ages_to_interval()` provides categorisation of ages based on specified
       right-hand interval limits.
-      
+
     - `split_interval_counts()` splits counts within a age interval in to counts
       for individuals years based on a given weighting.
-      
+
     - `aggregate_age_counts()` provides aggregation of counts across ages (in
       years).
-    
+
     - `reaggregate_interval_counts()` which is equivalent to calling
       `split_interval_counts()` followed by `aggregate_age_counts()`.
 
@@ -209,7 +209,7 @@ packages.
 
 - assertions for integer, double, numeric, logical, bool, character (string),
   list and data frame values
-    
+
     - `imp_assert_integer()`, `imp_assert_int()`
     - `imp_assert_double()` , `imp_assert_dbl()`
     - `imp_assert_numeric()`, `imp_assert_num()`
@@ -217,7 +217,7 @@ packages.
     - `imp_assert_character()`, `imp_assert_chr()`
     - `imp_assert_list()`
     - `imp_assert_data_frame()`
-    
+
     - `imp_assert_scalar_integer()`, `imp_assert_scalar_int()`
     - `imp_assert_scalar_double()`, `imp_assert_scalar_dbl()`
     - `imp_assert_scalar_numeric()`, `imp_assert_scalar_num()`
@@ -226,6 +226,6 @@ packages.
     - `imp_assert_scalar_character()`, `imp_assert_scalar_chr()`, `imp_assert_string()`
 
 - `cc()` for interactive quoting of comma separated names.
-  
+
 - `plot_palette()` for visualising colour palettes.
 
