@@ -43,7 +43,7 @@
 # -------------------------------------------------------------------------
 #' @return
 #'
-#' NULL if the assertion succeeds.
+#' If the assertion succeeds then the input is returned invisibly.
 #'
 #' Otherwise an error of class "ympes-error" (with optional subclass if supplied
 #' when calling the assertion).
@@ -97,6 +97,7 @@ assert_integer <- function(
 
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -121,6 +122,7 @@ assert_integer_not_na <- function(
 
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -144,6 +146,7 @@ assert_double <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -167,6 +170,7 @@ assert_double_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -190,6 +194,7 @@ assert_numeric <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -218,6 +223,7 @@ assert_numeric_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -241,6 +247,7 @@ assert_logical <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -264,6 +271,7 @@ assert_logical_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -287,6 +295,7 @@ assert_character <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -310,6 +319,7 @@ assert_character_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -333,6 +343,7 @@ assert_data_frame <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -351,6 +362,7 @@ assert_list <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -369,6 +381,7 @@ assert_whole <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -393,6 +406,7 @@ assert_scalar_integer <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -416,6 +430,7 @@ assert_scalar_integer_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -439,6 +454,7 @@ assert_scalar_double <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -462,6 +478,7 @@ assert_scalar_double_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -485,6 +502,7 @@ assert_scalar_numeric <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -508,6 +526,7 @@ assert_scalar_numeric_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -531,6 +550,7 @@ assert_scalar_logical <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -554,6 +574,7 @@ assert_scalar_logical_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -577,6 +598,7 @@ assert_scalar_whole <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -600,6 +622,7 @@ assert_bool <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -623,6 +646,7 @@ assert_scalar_character <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -651,6 +675,7 @@ assert_scalar_character_not_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -680,6 +705,7 @@ assert_non_negative_or_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -699,6 +725,7 @@ assert_non_positive_or_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -718,6 +745,7 @@ assert_non_negative <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 
 }
 
@@ -738,6 +766,7 @@ assert_non_positive <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -757,6 +786,7 @@ assert_positive <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -776,6 +806,7 @@ assert_negative <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -795,6 +826,7 @@ assert_positive_or_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 # -------------------------------------------------------------------------
@@ -814,6 +846,7 @@ assert_negative_or_na <- function(
             .subclass = .subclass
         )
     }
+    invisible(x)
 }
 
 
@@ -861,7 +894,7 @@ assert_between <- function(
             .subclass = .subclass
         )
     }
-
+    invisible(x)
 }
 
 

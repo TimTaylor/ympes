@@ -1,5 +1,13 @@
 # ympes (development version)
 
+- **breaking change:** If an assertion succeeds it now returns it's input
+  invisibly. This was to enable more concise casting, e.g
+  
+  ```
+  x <- 1.0
+  x <- as.integer(assert_integerish(x))
+  ```
+
 # ympes 1.6.0
 
 - New function `new_name()` which generates unique names for additional data

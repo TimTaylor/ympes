@@ -519,7 +519,7 @@ Should the left (lower) bound be compared inclusively (\code{<=}) or exclusive (
 Should the right (upper) bound be compared inclusively (\code{>=}) or exclusive (\code{>}).}
 }
 \value{
-NULL if the assertion succeeds.
+If the assertion succeeds then the input is returned invisibly.
 
 Otherwise an error of class "ympes-error" (with optional subclass if supplied
 when calling the assertion).
