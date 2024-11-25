@@ -4,7 +4,7 @@
 \alias{cc}
 \title{Quote names}
 \usage{
-cc(..., .clip = FALSE)
+cc(..., .clip = getOption("imp.clipboard", FALSE))
 }
 \arguments{
 \item{...}{Either unquoted names (separated by commas) that you wish to quote or a
@@ -16,7 +16,13 @@ Character vectors not of length one are returned as is.}
 
 \item{.clip}{\verb{[bool]}
 
-Not currently used.}
+Should the code to generate the constructed character vector be copied to
+your system clipboard.
+
+Defaults to \code{FALSE} unless the option "imp.clipboard" is set to TRUE.
+
+Note that copying to clipboard requires the availability of package
+\href{https://cran.r-project.org/package=clipr}{clipr}.}
 }
 \value{
 A character vector of the quoted input.
