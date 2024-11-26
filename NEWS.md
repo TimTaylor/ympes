@@ -13,6 +13,10 @@
   x <- 1.0
   x <- as.integer(assert_integerish(x))
   ```
+  
+- **breaking change:** `new_package()` and it's alias `np()` have been
+  completely removed from the package.
+  
 
 # ympes 1.6.0
 

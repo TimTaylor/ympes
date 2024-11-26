@@ -15,11 +15,6 @@ reference:
   - starts_with("grep")
   - fstrcapture
 
-- title: Package development (Experimental)
-- contents:
-  - np
-  - new_package
-
 - title: Plotting
 - contents:
   - plot_palette
