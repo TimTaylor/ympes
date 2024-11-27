@@ -1,4 +1,4 @@
-# ympes (development version)
+# ympes 1.7.0
 
 - `cc()` can once again send generative code for its output to the system
   clipboard via the `.clip` argument. This functionality was previously 
@@ -16,7 +16,6 @@
   
 - **breaking change:** `new_package()` and it's alias `np()` have been
   completely removed from the package.
-  
 
 # ympes 1.6.0
 
