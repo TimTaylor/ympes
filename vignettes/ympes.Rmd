@@ -1,10 +1,8 @@
 ---
 title: "ympes"
 output:
-    litedown::html_format:
-        options:
-            embed_resources: ["all"]
-        
+    litedown::html_format
+
 vignette: >
   %\VignetteEngine{litedown::vignette}
   %\VignetteIndexEntry{ympes}
