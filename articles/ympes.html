@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ympes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,7 @@
       <h1>ympes</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/TimTaylor/ympes/blob/v1.7.0/vignettes/ympes.Rmd" class="external-link"><code>vignettes/ympes.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/TimTaylor/ympes/blob/main/vignettes/ympes.Rmd" class="external-link"><code>vignettes/ympes.Rmd</code></a></small>
       <div class="d-none name"><code>ympes.Rmd</code></div>
     </div>
 
@@ -146,15 +146,15 @@ strings and, the last entry, an integer value.</p>
 <span></span>
 <span><span class="co"># just a small sample to begin with</span></span>
 <span><span class="op">(</span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">movements</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "Mary-Up-2"   "Bob-Right-7" "Bob-Left-5"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "Bob-Up-4"     "Rose-Down-6"  "Rose-Right-9"</span></span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pattern</span> <span class="op">&lt;-</span> <span class="st">"([[:alpha:]]+)-([[:alpha:]]+)-([[:digit:]]+)"</span></span>
 <span><span class="va">proto</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Name <span class="op">=</span> <span class="st">""</span>, Direction <span class="op">=</span> <span class="st">""</span>, Value <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/strcapture.html" class="external-link">strcapture</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="va">dat</span>, proto <span class="op">=</span> <span class="va">proto</span>, perl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   Name Direction Value</span></span>
-<span><span class="co">## 1 Mary        Up     2</span></span>
-<span><span class="co">## 2  Bob     Right     7</span></span>
-<span><span class="co">## 3  Bob      Left     5</span></span></code></pre>
+<span><span class="co">## 1  Bob        Up     4</span></span>
+<span><span class="co">## 2 Rose      Down     6</span></span>
+<span><span class="co">## 3 Rose     Right     9</span></span></code></pre>
 <p>For small (define as you wish) data sets this works fine.
 Unfortunately as the number of entries increases the performance decays
 (see <a href="https://bugs.r-project.org/show_bug.cgi?id=18728" class="external-link uri">https://bugs.r-project.org/show_bug.cgi?id=18728</a> for a
@@ -167,11 +167,11 @@ function <code>nc::capture_first_vec()</code>.</p>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">movements</span><span class="op">(</span><span class="fl">1e5</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">t</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/strcapture.html" class="external-link">strcapture</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="va">dat</span>, proto <span class="op">=</span> <span class="va">proto</span>, perl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   1.498   0.036   1.534</span></span></code></pre>
+<span><span class="co">##   1.499   0.035   1.534</span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">r2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fstrcapture.html">fstrcapture</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">pattern</span>, proto <span class="op">=</span> <span class="va">proto</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.034   0.000   0.035</span></span></code></pre>
+<span><span class="co">##   0.035   0.000   0.035</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span> <span class="op">/</span> <span class="va">t2</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 43.82857</span></span></code></pre>
@@ -207,10 +207,10 @@ for their suitability. Not normally the sort of thing I’d wrap but I
 find myself writing the same code a lot so here we are</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/new_name.html">new_name</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "new17af364eeaa3"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "new213d2276de34"</span></span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/new_name.html">new_name</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">3L</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "new17af4f299dba" "new17af6204eb1"  "new17af3865bbd"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "new213d79294c9b" "new213d2415a411" "new213d44028d86"</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="assertions-experimental">Assertions (Experimental)<a class="anchor" aria-label="anchor" href="#assertions-experimental"></a>

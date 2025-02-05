@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ympes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,11 +30,16 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/TimTaylor/ympes/blob/v1.7.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/TimTaylor/ympes/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.7.0" id="ympes-170">ympes 1.7.0<a class="anchor" aria-label="anchor" href="#ympes-170"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.8.0" id="ympes-180">ympes 1.8.0<a class="anchor" aria-label="anchor" href="#ympes-180"></a></h2>
+<ul><li><p>New function <code><a href="../reference/fstrcapture.html">gstrcapture()</a></code>.</p></li>
+<li><p>No longer download css when building vignette.</p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.7.0" id="ympes-170">ympes 1.7.0<a class="anchor" aria-label="anchor" href="#ympes-170"></a></h2><p class="text-muted">CRAN release: 2024-11-27</p>
 <ul><li><p><code><a href="../reference/cc.html">cc()</a></code> can once again send generative code for its output to the system clipboard via the <code>.clip</code> argument. This functionality was previously removed in the 1.5.0 release due to unreliability in it’s use on some environments (e.g. RStudio on Fedora KDE Wayland session). Time seems to have remedied the issue.</p></li>
 <li>
 <p><strong>breaking change:</strong> If an assertion succeeds it now returns it’s input invisibly. This was to enable more concise casting, e.g</p>
