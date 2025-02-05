@@ -27,11 +27,16 @@ A tabular data structure of the same type as proto, so typically a data.frame,
 containing a column for each capture expression. The column types are
 inherited from proto, as are the names unless the captures themselves are
 named (in which case these are prioritised). Cases in x that do not match
-the pattern have NA in every column.
+the pattern have NA in every column. For \code{\link[=gstrcapture]{gstrcapture()}} there is an
+additional column, \code{string_id}, which links the output to the relevant
+element of the input vector.
 }
 \description{
-\code{fstrcapture()} is a more efficient alternative for \code{\link[=strcapture]{strcapture()}} when
-using Perl-compatible regular expressions
+\code{\link[=fstrcapture]{fstrcapture()}} is a more efficient alternative for \code{\link[=strcapture]{strcapture()}} when
+using Perl-compatible regular expressions. It is underpinned by the
+\code{\link[=regexpr]{regexpr()}} function. Whilst \code{\link[=fstrcapture]{fstrcapture()}} only returns the first
+occurrence of the captures in a string, \code{\link[=gstrcapture]{gstrcapture()}}, built upon
+\code{\link[=gregexpr]{gregexpr()}}, will return all.
 }
 \examples{
 
@@ -42,6 +47,7 @@ notables <- c("  Ben Franklin and Jefferson Davis", "\tMillard Fillmore")
 pattern <- "(?<first>[[:upper:]][[:lower:]]+) (?<last>[[:upper:]][[:lower:]]+)"
 proto <- data.frame(a="", b="")
 fstrcapture(notables, pattern, proto)
+gstrcapture(notables, pattern, proto)
 
 # from strcapture example ----------------------------------------------
 # if unnamed capture then proto names used
