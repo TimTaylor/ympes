@@ -2,9 +2,12 @@
 % Please edit documentation in R/fstrcapture.R
 \name{fstrcapture}
 \alias{fstrcapture}
+\alias{gstrcapture}
 \title{Capture string tokens into a data frame}
 \usage{
 fstrcapture(x, pattern, proto)
+
+gstrcapture(x, pattern, proto)
 }
 \arguments{
 \item{x}{
