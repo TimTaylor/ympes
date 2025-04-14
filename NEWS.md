@@ -1,5 +1,10 @@
 # ympes (development version)
 
+- **breaking change:** Error conditions thrown by the assertions no longer 
+  have the default class of `<ympes-error/error/condition>`. Instead they return
+  the standard `<error/condition>` condition with an optional subclass
+  (controlled via the `.subclass` argument).
+
 # ympes 1.8.0
 
 - New function `gstrcapture()`.

@@ -521,8 +521,7 @@ Should the right (upper) bound be compared inclusively (\code{>=}) or exclusive 
 \value{
 If the assertion succeeds then the input is returned invisibly.
 
-Otherwise an error of class "ympes-error" (with optional subclass if supplied
-when calling the assertion).
+Otherwise and erro (with optional subclass if supplied when calling).
 }
 \description{
 Assertions for function arguments. Motivated by \code{\link[vctrs:vec_assert]{vctrs::vec_assert()}} but

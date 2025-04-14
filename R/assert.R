@@ -45,8 +45,7 @@
 #'
 #' If the assertion succeeds then the input is returned invisibly.
 #'
-#' Otherwise an error of class "ympes-error" (with optional subclass if supplied
-#' when calling the assertion).
+#' Otherwise and erro (with optional subclass if supplied when calling).
 #'
 # -------------------------------------------------------------------------
 #' @examples
@@ -1017,8 +1016,7 @@ assert_between <- function(
 # -------------------------------------------------------------------------
 
 .stopf <- function(msg, .call = sys.call(-1L), .subclass = NULL) {
-    class <- c(.subclass, "ympes-error")
     call <- .call[1L]
-    err <- errorCondition(msg, class = class, call = call)
+    err <- errorCondition(msg, class = .subclass, call = call)
     stop(err)
 }
