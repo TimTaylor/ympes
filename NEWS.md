@@ -1,4 +1,4 @@
-# ympes (development version)
+# ympes 1.9.0
 
 - **breaking change:** Error conditions thrown by the assertions no longer 
   have the default class of `<ympes-error/error/condition>`. Instead they return
