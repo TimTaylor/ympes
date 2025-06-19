@@ -113,7 +113,7 @@ greplrows <- function(
     dat,
     pattern,
     cols = NULL,
-    ignore.case = FALSE, # nolint: object_name_linter.
+    ignore.case = FALSE,
     perl = FALSE,
     fixed = FALSE,
     invert = FALSE
@@ -143,7 +143,7 @@ grepvrows <- function(
     pattern,
     cols = NULL,
     value = TRUE,
-    ignore.case = FALSE, # nolint: object_name_linter.
+    ignore.case = FALSE,
     perl = FALSE,
     fixed = FALSE,
     invert = FALSE

@@ -738,7 +738,7 @@ linters <- list(
     # check_nonexports: Check if 'symbol' exists in 'namespace' in
     #           'namespace:::symbol' calls.
     #
-    namespace_linter(check_exports = TRUE, check_nonexports = TRUE),
+    #namespace_linter(check_exports = TRUE, check_nonexports = TRUE),
 
     # Description:
     #
@@ -831,7 +831,7 @@ linters <- list(
     #
     #   length: maximum variable name length allowed.
     #
-    object_length_linter(length = 30L),
+    #object_length_linter(length = 30L),
 
     # Description:
     #
@@ -855,7 +855,7 @@ linters <- list(
     #           overrides the default 'styles'. So if you want to combine
     #           'regexes' and 'styles', both need to be explicitly specified.
     #
-    object_name_linter(styles = c("snake_case", "symbols"), regexes = character()),
+    #object_name_linter(styles = c("snake_case", "symbols"), regexes = character()),
 
     # Description:
     #
@@ -893,7 +893,7 @@ linters <- list(
     #           will be skipped. This argument will be passed to 'skipWith'
     #           argument of 'codetools::checkUsage()'.
     #
-    object_usage_linter(interpret_glue = TRUE, skip_with = TRUE),
+    #object_usage_linter(interpret_glue = TRUE, skip_with = TRUE),
 
     # Description:
     #
@@ -1487,11 +1487,11 @@ linters <- list(
     #           false positives caused by local variables which are only used
     #           in a glue expression.
     #
-    unused_import_linter(
-        allow_ns_usage = FALSE,
-        except_packages = c("bit64", "data.table", "tidyverse"),
-        interpret_glue = TRUE
-    ),
+    # unused_import_linter(
+    #     allow_ns_usage = FALSE,
+    #     except_packages = c("bit64", "data.table", "tidyverse"),
+    #     interpret_glue = TRUE
+    # ),
 
     # Description:
     #

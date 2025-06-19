@@ -141,7 +141,7 @@ gstrcapture <- function(x, pattern, proto) {
     out
 }
 
-conformToProto <- function(mat, proto) { # nolint: object_name_linter.
+conformToProto <- function(mat, proto) {
     ans <- lapply(seq_along(proto), function(i) {
         if (isS4(proto[[i]])) {
             methods::as(mat[, i], class(proto[[i]]))
