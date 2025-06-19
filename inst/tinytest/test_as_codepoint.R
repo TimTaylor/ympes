@@ -1,0 +1,1 @@
+expect_identical(as_codepoint("a£ b"), "a\\u00a3 b") # nolint: nonportable_path_linter.
