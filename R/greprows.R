@@ -62,7 +62,7 @@ greprows <- function(
     pattern,
     cols = NULL,
     value = FALSE,
-    ignore.case = FALSE,
+    ignore.case = FALSE, # nolint: object_name_linter.
     perl = FALSE,
     fixed = FALSE,
     invert = FALSE
@@ -77,7 +77,7 @@ greprows <- function(
     } else if (is.character(cols)) {
         invalid <- cols[!cols %in% names(dat)]
         if (length(invalid)) {
-            msg <- sprintf("%s is not a valid column name.", sQuote(invalid[1]))
+            msg <- sprintf("%s is not a valid column name.", sQuote(invalid[1L]))
             stop(msg)
         }
 
@@ -103,7 +103,7 @@ greprows <- function(
     idx <- unique(Reduce(c, idx))
 
     # return the values or the index
-    if (value) dat[idx,,drop = FALSE] else idx
+    if (value) dat[idx, , drop = FALSE] else idx
 }
 
 
@@ -113,7 +113,7 @@ greplrows <- function(
     dat,
     pattern,
     cols = NULL,
-    ignore.case = FALSE,
+    ignore.case = FALSE, # nolint: object_name_linter.
     perl = FALSE,
     fixed = FALSE,
     invert = FALSE
@@ -139,14 +139,14 @@ greplrows <- function(
 #' @rdname greprows
 #' @export
 grepvrows <- function(
-        dat,
-        pattern,
-        cols = NULL,
-        value = TRUE,
-        ignore.case = FALSE,
-        perl = FALSE,
-        fixed = FALSE,
-        invert = FALSE
+    dat,
+    pattern,
+    cols = NULL,
+    value = TRUE,
+    ignore.case = FALSE, # nolint: object_name_linter.
+    perl = FALSE,
+    fixed = FALSE,
+    invert = FALSE
 ) {
     greprows(
         dat = dat,

@@ -42,4 +42,3 @@ new_name <- function(x, n = 1L) {
     possible
 
 }
-

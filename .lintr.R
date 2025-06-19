@@ -37,23 +37,35 @@ linters <- list(
 
     # Description:
     #
-    #      Check that <- is always used for assignment.
+    #      Check that the specified operator is used for assignment.
     #
     # Arguments:
     #
-    # allow_cascading_assign: Logical, default 'TRUE'. If 'FALSE', '<<-' and
-    #           ->> are not allowed.
+    # operator: Character vector of valid assignment operators. Defaults to
+    #           allowing <- and <<-; other valid options are '=', ->, ->>,
+    #           %<>%; use '"any"' to denote "allow all operators", in which
+    #           case this linter only considers 'allow_trailing' for
+    #           generating lints.
     #
-    # allow_right_assign: Logical, default 'FALSE'. If 'TRUE', -> and ->> are
-    #           allowed.
+    # allow_cascading_assign: (Deprecated) Logical, default 'TRUE'. If
+    #           'FALSE', '<<-' and ->> are not allowed.
+    #
+    # allow_right_assign: (Deprecated) Logical, default 'FALSE'. If 'TRUE',
+    #           -> and ->> are allowed.
     #
     # allow_trailing: Logical, default 'TRUE'. If 'FALSE' then assignments
     #           aren't allowed at end of lines.
     #
-    # allow_pipe_assign: Logical, default 'FALSE'. If 'TRUE', magrittr's %<>%
-    #           assignment is allowed.
+    # allow_pipe_assign: (Deprecated) Logical, default 'FALSE'. If 'TRUE',
+    #           magrittr's %<>% assignment is allowed.
     #
-    assignment_linter(allow_cascading_assign = TRUE, allow_right_assign = FALSE, allow_trailing = TRUE, allow_pipe_assign = FALSE),
+    assignment_linter(
+        operator = c("<-", "<<-"),
+        allow_cascading_assign = TRUE,
+        allow_right_assign = FALSE,
+        allow_trailing = TRUE,
+        allow_pipe_assign = FALSE
+    ),
 
     # Description:
     #
@@ -116,7 +128,37 @@ linters <- list(
     #
     #      Check that there is no commented code outside roxygen blocks.
     #
-    commented_code_linter(),
+    #commented_code_linter(),
+
+    # Description:
+    #
+    #      '!(x == y)' is more readably expressed as 'x != y'. The same is
+    #      true of other negations of simple comparisons like '!(x > y)' and
+    #      '!(x <= y)'.
+    #
+    comparison_negation_linter(),
+
+    # Description:
+    #
+    #      This linter, with the default 'display_call = FALSE', enforces the
+    #      recommendation of the tidyverse design guide regarding displaying
+    #      error calls.
+    #
+    # Arguments:
+    #
+    # display_call: Logical specifying expected behavior regarding 'call.'
+    #           argument in conditions.
+    #
+    #             • 'NA' forces providing call. = but ignores its value (this
+    #               can be used in cases where you expect a mix of 'call. =
+    #               FALSE' and 'call. = TRUE')
+    #
+    #             • 'TRUE' lints 'call. = FALSE'
+    #
+    #             • 'FALSE' forces 'call. = FALSE' (lints 'call. = TRUE' or
+    #               missing call. = value)
+    #
+    #condition_call_linter(display_call = FALSE),
 
     # Description:
     #
@@ -168,16 +210,32 @@ linters <- list(
 
     # Description:
     #
-    #      Check for overly complicated expressions. See
-    #      'cyclocomp::cyclocomp()'.
+    #      'dplyr::mutate()' accepts any number of columns, so sequences like
+    #      'DF %>% dplyr::mutate(..1) %>% dplyr::mutate(..2)' are redundant -
+    #      they can always be expressed with a single call to
+    #      'dplyr::mutate()'.
     #
     # Arguments:
     #
-    # complexity_limit: Maximum cyclomatic complexity, default 15.
-    #           Expressions more complex than this are linted. See
-    #           'cyclocomp::cyclocomp()'.
+    # invalid_backends: Character vector of packages providing dplyr backends
+    #           which may not be compatible with combining 'mutate()' calls
+    #           in all cases. Defaults to '"dbplyr"' since not all SQL
+    #           backends can handle re-using a variable defined in the same
+    #           'mutate()' expression.
     #
-    cyclocomp_linter(complexity_limit = 15L),
+    consecutive_mutate_linter(invalid_backends = "dbplyr"),
+
+    # Description:
+    #
+    #      Check for overly complicated expressions. See 'cyclocomp()'
+    #      function from '{cyclocomp}'.
+    #
+    # Arguments:
+    #
+    # complexity_limit: Maximum cyclomatic complexity, default '15'.
+    #           Expressions more complex than this are linted.
+    #
+    #cyclocomp_linter(complexity_limit = 15L),
 
     # Description:
     #
@@ -316,14 +374,6 @@ linters <- list(
 
     # Description:
     #
-    #      Check that the '[[' operator is used when extracting a single
-    #      element from an object, not '[' (subsetting) nor '$' (interactive
-    #      use).
-    #
-    extraction_operator_linter(),
-
-    # Description:
-    #
     #      Invoking a regular expression engine is overkill for cases when
     #      the search pattern only involves static patterns.
     #
@@ -386,6 +436,25 @@ linters <- list(
 
     # Description:
     #
+    #      'switch()' statements in R are used to delegate behavior based on
+    #      the value of some input scalar string, e.g. 'switch(x, a = 1, b =
+    #      3, c = 7, d = 8)' will be one of '1', '3', '7', or '8', depending
+    #      on the value of 'x'.
+    #
+    # Arguments:
+    #
+    # max_branch_lines, max_branch_expressions: Integer, default 0 indicates
+    #           "no maximum". If set any 'if'/else if/.../else chain where
+    #           any branch occupies more than this number of lines (resp.
+    #           expressions) will not be linted. The conjugate applies to
+    #           'switch()' statements - if these parameters are set, any
+    #           'switch()' statement with any overly-complicated branches
+    #           will be linted. See examples.
+    #
+    if_switch_linter(max_branch_lines = 0L, max_branch_expressions = 0L),
+
+    # Description:
+    #
     #      'ifelse(x > M, M, x)' is the same as 'pmin(x, M)', but harder to
     #      read and requires several passes over the vector.
     #
@@ -410,7 +479,11 @@ linters <- list(
     #           beginning a branch and used only within that branch, are
     #           skipped.
     #
-    implicit_assignment_linter(except = c("bquote", "expression", "expr", "quo", "quos", "quote"), allow_lazy = FALSE, allow_scoped = FALSE),
+    implicit_assignment_linter(
+        except = c("bquote", "expression", "expr", "quo", "quos", "quote"),
+        allow_lazy = FALSE,
+        allow_scoped = FALSE
+    ),
 
     # Description:
     #
@@ -423,7 +496,7 @@ linters <- list(
     #           ':' won't throw a lint regardless of whether the inputs are
     #           implicitly integers.
     #
-    #implicit_integer_linter(allow_colon = FALSE),
+    implicit_integer_linter(allow_colon = FALSE),
 
     # Description:
     #
@@ -584,7 +657,7 @@ linters <- list(
 
     # Description:
     #
-    #      Force library calls to all be at the top of the script.
+    #      This linter covers several rules related to 'library()' calls:
     #
     # Arguments:
     #
@@ -605,7 +678,15 @@ linters <- list(
     #   length: maximum line length allowed. Default is 80L (Hollerith
     #           limit).
     #
-    line_length_linter(length = 100L),
+    line_length_linter(length = 120L),
+
+    # Description:
+    #
+    #      Usage like 'lapply(x, sum) > 10' is awkward because the list must
+    #      first be coerced to a vector for comparison. A function like
+    #      'vapply()' should be preferred.
+    #
+    list_comparison_linter(),
 
     # Description:
     #
@@ -678,6 +759,26 @@ linters <- list(
 
     # Description:
     #
+    #      Nesting pipes harms readability; extract sub-steps to separate
+    #      variables, append further pipeline steps, or otherwise refactor
+    #      such usage away.
+    #
+    # Arguments:
+    #
+    # allow_inline: Logical, default 'TRUE', in which case only "inner"
+    #           pipelines which span more than one line are linted. If
+    #           'FALSE', even "inner" pipelines that fit in one line are
+    #           linted.
+    #
+    # allow_outer_calls: Character vector dictating which "outer" calls to
+    #           exempt from the requirement to unnest (see examples).
+    #           Defaults to 'try()', 'tryCatch()', and
+    #           'withCallingHandlers()'.
+    #
+    nested_pipe_linter(allow_inline = TRUE, allow_outer_calls = c("try", "tryCatch", "withCallingHandlers")),
+
+    # Description:
+    #
     #      Check that 'file.path()' is used to construct safe and portable
     #      paths.
     #
@@ -692,7 +793,18 @@ linters <- list(
     #             • contain only alphanumeric chars (including UTF-8),
     #               spaces, and win32-allowed punctuation
     #
-    #nonportable_path_linter(lax = TRUE),
+    nonportable_path_linter(lax = TRUE),
+
+    # Description:
+    #
+    #      Using 'nrow(subset(x, condition))' to count the instances where
+    #      'condition' applies inefficiently requires doing a full subset of
+    #      'x' just to count the number of rows in the resulting subset.
+    #      There are a number of equivalent expressions that don't require
+    #      the full subset, e.g. 'with(x, sum(condition))' (or, more
+    #      generically, 'with(x, sum(condition, na.rm = TRUE))').
+    #
+    nrow_subset_linter(),
 
     # Description:
     #
@@ -700,6 +812,14 @@ linters <- list(
     #      due to the small size of the '.' glyph.
     #
     numeric_leading_zero_linter(),
+
+    # Description:
+    #
+    #      'nzchar()' efficiently determines which of a vector of strings are
+    #      empty (i.e., are '""'). It should in most cases be used instead of
+    #      constructions like 'string == ""' or 'nchar(string) == 0'.
+    #
+    nzchar_linter(),
 
     # Description:
     #
@@ -711,7 +831,7 @@ linters <- list(
     #
     #   length: maximum variable name length allowed.
     #
-    #object_length_linter(length = 30L),
+    object_length_linter(length = 30L),
 
     # Description:
     #
@@ -735,7 +855,27 @@ linters <- list(
     #           overrides the default 'styles'. So if you want to combine
     #           'regexes' and 'styles', both need to be explicitly specified.
     #
-    #object_name_linter(styles = c("snake_case", "symbols"), regexes = character()),
+    object_name_linter(styles = c("snake_case", "symbols"), regexes = character()),
+
+    # Description:
+    #
+    #      Re-using existing names creates a risk of subtle error best
+    #      avoided. Avoiding this practice also encourages using better, more
+    #      descriptive names.
+    #
+    # Arguments:
+    #
+    # packages: Character vector of packages to search for names that should
+    #           be avoided. Defaults to the most common default packages:
+    #           base, stats, utils, tools, methods, graphics, and grDevices.
+    #
+    # allow_names: Character vector of object names to ignore, i.e., which
+    #           are allowed to collide with exports from 'packages'.
+    #
+    # object_overwrite_linter(
+    #     packages = c("base", "stats", "utils", "tools", "methods", "graphics", "grDevices"),
+    #     allow_names = character()
+    # ),
 
     # Description:
     #
@@ -753,11 +893,20 @@ linters <- list(
     #           will be skipped. This argument will be passed to 'skipWith'
     #           argument of 'codetools::checkUsage()'.
     #
-    #object_usage_linter(interpret_glue = TRUE, skip_with = TRUE),
+    object_usage_linter(interpret_glue = TRUE, skip_with = TRUE),
 
     # Description:
     #
-    #      'any(!x)' is logically equivalent to '!any(x)'; ditto for the
+    #      Prefer using a plain call instead of a pipe with only one call,
+    #      i.e. '1:10 %>% sum()' should instead be 'sum(1:10)'. Note that
+    #      calls in the first %>% argument count. 'rowSums(x) %>% max()' is
+    #      OK because there are two total calls ('rowSums()' and 'max()').
+    #
+    one_call_pipe_linter(),
+
+    # Description:
+    #
+    #      'any(!x)' is logically equivalent to '!all(x)'; ditto for the
     #      equivalence of 'all(!x)' and '!any(x)'. Negating after aggregation
     #      only requires inverting one logical value, and is typically more
     #      readable.
@@ -784,6 +933,29 @@ linters <- list(
     #      The following issues are linted by default by this linter (see
     #      arguments for which can be de-activated optionally):
     #
+    #        1. Block usage of 'paste()' with 'sep = ""'. 'paste0()' is a
+    #           faster, more concise alternative.
+    #
+    #        2. Block usage of 'paste()' or 'paste0()' with 'collapse = ",
+    #           "'. 'toString()' is a direct wrapper for this, and
+    #           alternatives like 'glue::glue_collapse()' might give better
+    #           messages for humans.
+    #
+    #        3. Block usage of 'paste0()' that supplies sep= - this is not a
+    #           formal argument to 'paste0', and is likely to be a mistake.
+    #
+    #        4. Block usage of 'paste()' / 'paste0()' combined with 'rep()'
+    #           that could be replaced by 'strrep()'. 'strrep()' can handle
+    #           the task of building a block of repeated strings (e.g. often
+    #           used to build "horizontal lines" for messages). This is both
+    #           more readable and skips the (likely small) overhead of
+    #           putting two strings into the global string cache when only
+    #           one is needed.
+    #
+    #           Only target scalar usages - 'strrep' can handle more
+    #           complicated cases (e.g. 'strrep(letters, 26:1)', but those
+    #           aren't as easily translated from a 'paste(collapse=)' call.
+    #
     # Arguments:
     #
     # allow_empty_sep: Logical, default 'FALSE'. If 'TRUE', usage of
@@ -806,7 +978,11 @@ linters <- list(
     #           avoid requiring empty inputs like 'file.path("", ...)' or
     #           'file.path(..., "")'.
     #
-    paste_linter(allow_empty_sep = FALSE, allow_to_string = FALSE, allow_file_path = c("double_slash", "always", "never")),
+    paste_linter(
+        allow_empty_sep = FALSE,
+        allow_to_string = FALSE,
+        allow_file_path = c("double_slash", "always", "never")
+    ),
 
     # Description:
     #
@@ -835,6 +1011,33 @@ linters <- list(
     #      pipe fits on one line.
     #
     pipe_continuation_linter(),
+
+    # Description:
+    #
+    #      'return()' inside a magrittr pipeline does not actually execute
+    #      'return()' like you'd expect: \(x) { x %>% return(); FALSE } will
+    #      return 'FALSE'! It will technically work "as expected" if this is
+    #      the final statement in the function body, but such usage is
+    #      misleading. Instead, assign the pipe outcome to a variable and
+    #      return that.
+    #
+    pipe_return_linter(),
+
+    # Description:
+    #
+    #      The default print method for character vectors is appropriate for
+    #      interactively inspecting objects, not for logging messages. Thus
+    #      checked-in usage like 'print(paste('Data has', nrow(DF),
+    #      'rows.'))' is better served by using 'cat()', e.g.
+    #      'cat(sprintf('Data has %d rows.\n', nrow(DF)))' (noting that using
+    #      'cat()' entails supplying your own line returns, and that
+    #      'glue::glue()' might be preferable to 'sprintf()' for constructing
+    #      templated strings). Lastly, note that 'message()' differs slightly
+    #      from 'cat()' in that it prints to 'stderr' by default, not
+    #      'stdout', but is still a good option to consider for logging
+    #      purposes.
+    #
+    print_linter(),
 
     # Description:
     #
@@ -886,9 +1089,57 @@ linters <- list(
 
     # Description:
     #
+    #      'rep(x, length.out = n)' calls 'rep_len(x, n)' "under the hood".
+    #      The latter is thus more direct and equally readable.
+    #
+    rep_len_linter(),
+
+    # Description:
+    #
     #      Check that while (TRUE) is not used for infinite loops.
     #
     repeat_linter(),
+
+    # Description:
+    #
+    #      This linter checks functions' 'return()' expressions.
+    #
+    # Arguments:
+    #
+    # return_style: Character string naming the return style. '"implicit"',
+    #           the default, enforces the Tidyverse guide recommendation to
+    #           leave terminal returns implicit. '"explicit"' style requires
+    #           that 'return()' always be explicitly supplied.
+    #
+    # allow_implicit_else: Logical, default 'TRUE'. If 'FALSE', functions
+    #           with a terminal 'if' clause must always have an else clause,
+    #           making the 'NULL' alternative explicit if necessary.
+    #           Similarly, functions with terminal 'switch()' statements must
+    #           have an explicit default case.
+    #
+    # return_functions: Character vector of functions that are accepted as
+    #           terminal calls when 'return_style = "explicit"'. These are in
+    #           addition to exit functions from base that are always allowed:
+    #           'stop()', 'q()', 'quit()', 'invokeRestart()',
+    #           'tryInvokeRestart()', 'UseMethod()', 'NextMethod()',
+    #           'standardGeneric()', 'callNextMethod()', '.C()', '.Call()',
+    #           '.External()', and '.Fortran()'.
+    #
+    # except, except_regex: Character vector of functions that are not
+    #           checked when 'return_style = "explicit"'. These are in
+    #           addition to namespace hook functions that are never checked:
+    #           '.onLoad()', '.onUnload()', '.onAttach()', '.onDetach()',
+    #           '.Last.lib()', '.First()' and '.Last()'. 'except' matches
+    #           function names exactly, while 'except_regex' does exclusion
+    #           by pattern matching with 'rex::re_matches()'.
+    #
+    return_linter(
+        return_style = c("implicit", "explicit"),
+        allow_implicit_else = TRUE,
+        return_functions = NULL,
+        except = NULL,
+        except_regex = NULL
+    ),
 
     # Description:
     #
@@ -898,11 +1149,24 @@ linters <- list(
 
     # Description:
     #
-    #      'vector %in% set' is appropriate for matching a vector to a set,
-    #      but if that set has size 1, '==' is more appropriate. %chin% from
-    #      '{data.table}' is matched as well.
+    #      'sample.int()' is preferable to 'sample()' for the case of
+    #      sampling numbers between 1 and 'n'. 'sample' calls 'sample.int()'
+    #      "under the hood".
     #
-    scalar_in_linter(),
+    sample_int_linter(),
+
+    # Description:
+    #
+    #      'vector %in% set' is appropriate for matching a vector to a set,
+    #      but if that set has size 1, '==' is more appropriate.
+    #
+    # Arguments:
+    #
+    # in_operators: Character vector of additional infix operators that
+    #           behave like the '%in%' operator, e.g. '{data.table}''s %chin%
+    #           operator.
+    #
+    scalar_in_linter(in_operators = NULL),
 
     # Description:
     #
@@ -960,6 +1224,14 @@ linters <- list(
 
     # Description:
     #
+    #      'stopifnot(A)' actually checks 'all(A)' "under the hood" if 'A' is
+    #      a vector, and produces a better error message than
+    #      'stopifnot(all(A))' does.
+    #
+    stopifnot_all_linter(),
+
+    # Description:
+    #
     #      'startsWith()' is used to detect fixed initial substrings; it is
     #      more readable and more efficient than equivalents using 'grepl()'
     #      or 'substr()'. c.f. 'startsWith(x, "abc")', 'grepl("^abc", x)',
@@ -993,9 +1265,19 @@ linters <- list(
 
     # Description:
     #
-    #      Avoid the symbols 'T' and 'F', and use 'TRUE' and 'FALSE' instead.
+    #      Although they can be synonyms, avoid the symbols 'T' and 'F', and
+    #      use 'TRUE' and 'FALSE', respectively, instead. 'T' and 'F' are not
+    #      reserved keywords and can be assigned to any other values.
     #
     T_and_F_symbol_linter(),
+
+    # Description:
+    #
+    #      Functions that end in 'close(x)' are almost always better written
+    #      by using 'on.exit(close(x))' close to where 'x' is defined and/or
+    #      opened.
+    #
+    terminal_close_linter(),
 
     # Description:
     #
@@ -1004,9 +1286,13 @@ linters <- list(
     #
     # Arguments:
     #
-    #     todo: Vector of strings that identify TODO comments.
+    #     todo: Vector of case-insensitive strings that identify TODO # nolint
+    #           comments.
     #
-    todo_comment_linter(todo = c("todo", "fixme")),
+    # except_regex: Vector of case-sensitive regular expressions that
+    #           identify _valid_ TODO comments.
+    #
+    todo_comment_linter(todo = c("todo", "fixme"), except_regex = NULL),
 
     # Description:
     #
@@ -1031,8 +1317,7 @@ linters <- list(
 
     # Description:
     #
-    #      Report the use of undesirable functions (e.g. 'base::return()',
-    #      'base::options()', or 'base::sapply()') and suggest an
+    #      Report the use of undesirable functions and suggest an
     #      alternative.
     #
     # Arguments:
@@ -1089,13 +1374,70 @@ linters <- list(
     #      necessary, e.g. 'lapply(DF, sum)' is the same as 'lapply(DF,
     #      function(x) sum(x))' and the former is more readable.
     #
-    unnecessary_lambda_linter(),
+    # Arguments:
+    #
+    # allow_comparison: Logical, default 'FALSE'. If 'TRUE', lambdas like
+    #           'function(x) foo(x) == 2', where 'foo' can be extracted to
+    #           the "mapping" function and '==' vectorized instead of called
+    #           repeatedly, are linted.
+    #
+    unnecessary_lambda_linter(allow_comparison = FALSE),
 
     # Description:
     #
-    #      Avoid unnecessary nested 'if' conditional statements
+    #      Excessive nesting harms readability. Use helper functions or early
+    #      returns to reduce nesting wherever possible.
     #
-    unnecessary_nested_if_linter(),
+    # Arguments:
+    #
+    # allow_assignment: Logical, default 'TRUE', in which case braced
+    #           expressions consisting only of a single assignment are
+    #           skipped. if 'FALSE', all braced expressions with only one
+    #           child expression are linted. The 'TRUE' case facilitates
+    #           interaction with 'implicit_assignment_linter()' for certain
+    #           cases where an implicit assignment is necessary, so a braced
+    #           assignment is used to further distinguish the assignment. See
+    #           examples.
+    #
+    # allow_functions: Character vector of functions which always allow
+    #           one-child braced expressions. 'testthat::test_that()' is
+    #           always allowed because testthat requires a braced expression
+    #           in its 'code' argument. The other defaults similarly compute
+    #           on expressions in a way which is worth highlighting by
+    #           em-bracing them, even if there is only one expression, while
+    #           'switch()' is allowed for its use as a control flow analogous
+    #           to 'if'/else.]
+    #
+    # branch_exit_calls: Character vector of functions which are considered
+    #           as "exiting" a branch for the purpose of recommending
+    #           removing nesting in a branch _lacking_ an exit call when the
+    #           other branch terminates with one. Calls which always
+    #           interrupt or quit the current call or R session, e.g.
+    #           'stop()' and 'q()', are always included.
+    #
+    unnecessary_nesting_linter(
+        allow_assignment = TRUE,
+        allow_functions = c(
+            "switch",
+            "try",
+            "tryCatch",
+            "withCallingHandlers",
+            "quote", "expression",
+            "bquote", "substitute",
+            "with_parameters_test_that",
+            "reactive", "observe",
+            "observeEvent",
+            "renderCachedPlot",
+            "renderDataTable",
+            "renderImage",
+            "renderPlot",
+            "renderPrint",
+            "renderTable",
+            "renderText",
+            "renderUI"
+        ),
+        branch_exit_calls = character()
+    ),
 
     # Description:
     #
@@ -1114,7 +1456,18 @@ linters <- list(
     #      ultimately be checked in. Comments meant for posterity should be
     #      placed _before_ the final 'return()'.
     #
-    unreachable_code_linter(),
+    # Arguments:
+    #
+    # allow_comment_regex: Character vector of regular expressions which
+    #           identify comments to exclude when finding unreachable
+    #           terminal comments. By default, this includes the default
+    #           "skip region" end marker for '{covr}' (option
+    #           "covr.exclude_end", or '"# nocov end"' if unset). The end
+    #           marker for '{lintr}' ('settings$exclude_end') is always
+    #           included. Note that the regexes should include the initial
+    #           comment character #.
+    #
+    unreachable_code_linter(allow_comment_regex = getOption("covr.exclude_end", "# nocov end")),
 
     # Description:
     #
@@ -1125,7 +1478,7 @@ linters <- list(
     # allow_ns_usage: Suppress lints for packages only used via namespace.
     #           This is 'FALSE' by default because 'pkg::fun()' doesn't
     #           require 'library(pkg)'. You can use requireNamespace("pkg")
-    #           to ensure a package is installed without loading it.
+    #           to ensure a package is installed without attaching it.
     #
     # except_packages: Character vector of packages that are ignored. These
     #           are usually attached for their side effects.
@@ -1134,7 +1487,11 @@ linters <- list(
     #           false positives caused by local variables which are only used
     #           in a glue expression.
     #
-    unused_import_linter(allow_ns_usage = FALSE, except_packages = c("bit64", "data.table", "tidyverse"), interpret_glue = TRUE),
+    unused_import_linter(
+        allow_ns_usage = FALSE,
+        except_packages = c("bit64", "data.table", "tidyverse"),
+        interpret_glue = TRUE
+    ),
 
     # Description:
     #
@@ -1144,6 +1501,13 @@ linters <- list(
     #      vs. '||'.
     #
     vector_logic_linter(),
+
+    # Description:
+    #
+    #      'which(grepl(pattern, x))' is the same as 'grep(pattern, x)', but
+    #      harder to read and requires two passes over the vector.
+    #
+    which_grepl_linter(),
 
     # Description:
     #

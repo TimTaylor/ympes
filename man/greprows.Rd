@@ -62,15 +62,15 @@ Should a data frame of rows be returned.
 If \code{FALSE} (defauly) row indices will be returned instead of the rows
 themselves.}
 
-\item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
+\item{ignore.case}{logical. if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
 
 \item{perl}{logical.  Should Perl-compatible regexps be used?}
 
-\item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+\item{fixed}{logical. If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
 
-\item{invert}{logical.  If \code{TRUE} return indices or values for
+\item{invert}{logical. If \code{TRUE} return indices or values for
     elements that do \emph{not} match.}
 }
 \value{

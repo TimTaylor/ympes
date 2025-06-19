@@ -41,7 +41,7 @@
 cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     assert_bool(.clip)
 
-    if(...length() == 1L && is.character(..1)) {
+    if (...length() == 1L && is.character(..1)) {
         res <- ..1
         if (length(res) == 1L) {
             res <- strsplit(trimws(res), split = "[[:space:]]+", perl = TRUE)
@@ -50,7 +50,7 @@ cc <- function(..., .clip = getOption("imp.clipboard", FALSE)) {
     } else {
         res <- substitute(list(...))
         # we use as.character rather than deparse as we simply want quoted names
-        res <- as.character(res[-1])
+        res <- as.character(res[-1L])
     }
 
     if (interactive() && .clip) {

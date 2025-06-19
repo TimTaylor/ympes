@@ -76,7 +76,7 @@ fstrcapture <- function(x, pattern, proto) {
         out <- matrix(res, length(m))
     }
     out <- conformToProto(out, proto)
-    if (all(names == ""))
+    if (all(names == "")) # nolint: nzchar_linter.
         return(out)
     names(out) <- names
     out
@@ -110,7 +110,7 @@ gstrcapture <- function(x, pattern, proto) {
             out <- matrix(res, length(m))
         }
         out <- conformToProto(out, proto)
-        if (!all(names == ""))
+        if (!all(names == "")) # nolint: nzchar_linter.
             names(out) <- names
     } else {
         id <- rep.int(seq_along(m), lengths(m))
@@ -133,7 +133,7 @@ gstrcapture <- function(x, pattern, proto) {
         })
         out <- do.call(rbind, out)
         out <- conformToProto(out, proto)
-        if (!all(names == ""))
+        if (!all(names == "")) # nolint: nzchar_linter.
             names(out) <- names
         out$string_id <- id
     }
@@ -141,7 +141,7 @@ gstrcapture <- function(x, pattern, proto) {
     out
 }
 
-conformToProto <- function(mat, proto) {
+conformToProto <- function(mat, proto) { # nolint: object_name_linter.
     ans <- lapply(seq_along(proto), function(i) {
         if (isS4(proto[[i]])) {
             methods::as(mat[, i], class(proto[[i]]))
