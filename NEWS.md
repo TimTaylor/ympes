@@ -4,6 +4,10 @@
   for whenever I encounter the 'Portable packages must use only ASCII characters
   in their R code' message from R CMD check.
 
+- New function `to_string` to concatenate a character vector. This is a simple
+  wrapper around `paste(x, collapse = ", `)` with the adaption that the last
+  comma will always be replace by 'and'.
+
 # ympes 1.9.0
 
 - **breaking change:** Error conditions thrown by the assertions no longer
