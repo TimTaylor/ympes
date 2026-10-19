@@ -23,7 +23,12 @@ reference:
 - contents:
   - starts_with("assert")
 
+- title: Conditions (Experimental)
+- contents:
+  - stopit
+
 - title: Miscellaneous
 - contents:
   - new_name
   - as_codepoint
+  - to_string
