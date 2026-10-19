@@ -89,11 +89,11 @@ assert_integer <- function(
     .subclass = NULL
 ) {
     if (!is.integer(x)) {
-        .stopf(
-            gettextf("`%s` must be an integer vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be an integer vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
-
         )
     }
     invisible(x)
@@ -114,11 +114,11 @@ assert_integer_not_na <- function(
     .subclass = NULL
 ) {
     if (!is.integer(x) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a non-missing integer vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a non-missing integer vector.",
+            domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
-
         )
     }
     invisible(x)
@@ -139,8 +139,9 @@ assert_double <- function(
     .subclass = NULL
 ) {
     if (!is.double(x)) {
-        .stopf(
-            gettextf("`%s` must be a double vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a double vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -163,8 +164,9 @@ assert_double_not_na <- function(
     .subclass = NULL
 ) {
     if (!is.double(x) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a non-missing double vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a non-missing double vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -187,8 +189,9 @@ assert_numeric <- function(
     .subclass = NULL
 ) {
     if (!is.numeric(x)) {
-        .stopf(
-            gettextf("`%s` must be a numeric vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a numeric vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -216,8 +219,9 @@ assert_numeric_not_na <- function(
     .subclass = NULL
 ) {
     if (!is.numeric(x) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a non-missing numeric vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a non-missing numeric vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -240,8 +244,9 @@ assert_logical <- function(
     .subclass = NULL
 ) {
     if (!is.logical(x)) {
-        .stopf(
-            gettextf("`%s` must be a logical vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a logical vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -264,8 +269,9 @@ assert_logical_not_na <- function(
     .subclass = NULL
 ) {
     if (!is.logical(x) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a non-missing logical vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a non-missing logical vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -288,8 +294,9 @@ assert_character <- function(
     .subclass = NULL
 ) {
     if (!is.character(x)) {
-        .stopf(
-            gettextf("`%s` must be a character vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a character vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -312,8 +319,9 @@ assert_character_not_na <- function(
     .subclass = NULL
 ) {
     if (!is.character(x) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a non-missing character vector.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a non-missing character vector.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -336,8 +344,9 @@ assert_data_frame <- function(
     .subclass = NULL
 ) {
     if (!is.data.frame(x)) {
-        .stopf(
-            gettextf("`%s` must be a data frame.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a data frame.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -355,8 +364,9 @@ assert_list <- function(
     .subclass = NULL
 ) {
     if (!is.list(x)) {
-        .stopf(
-            gettextf("`%s` must be a list.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a list.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -374,8 +384,9 @@ assert_whole <- function(
     .subclass = NULL
 ) {
     if (!.is_whole(x)) {
-        .stopf(
-            gettextf("`%s` must be integerish.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be integerish.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -399,8 +410,9 @@ assert_scalar_integer <- function(
     .subclass = NULL
 ) {
     if (!(is.integer(x) && length(x) == 1L)) {
-        .stopf(
-            gettextf("`%s` must be an integer vector of length 1.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be an integer vector of length 1.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -423,8 +435,9 @@ assert_scalar_integer_not_na <- function(
     .subclass = NULL
 ) {
     if (!(is.integer(x) && length(x) == 1L) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be an integer vector of length 1 and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be an integer vector of length 1 and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -447,8 +460,9 @@ assert_scalar_double <- function(
     .subclass = NULL
 ) {
     if (!(is.double(x) && length(x) == 1L)) {
-        .stopf(
-            gettextf("`%s` must be a double vector of length 1.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a double vector of length 1.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -471,8 +485,9 @@ assert_scalar_double_not_na <- function(
     .subclass = NULL
 ) {
     if (!(is.double(x) && length(x) == 1L) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a double vector of length 1 and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a double vector of length 1 and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -495,8 +510,9 @@ assert_scalar_numeric <- function(
     .subclass = NULL
 ) {
     if (!(is.numeric(x) && length(x) == 1L)) {
-        .stopf(
-            gettextf("`%s` must be a numeric vector of length 1.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a numeric vector of length 1.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -519,8 +535,9 @@ assert_scalar_numeric_not_na <- function(
     .subclass = NULL
 ) {
     if (!(is.numeric(x) && length(x) == 1L) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a numeric vector of length 1 and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a numeric vector of length 1 and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -543,8 +560,9 @@ assert_scalar_logical <- function(
     .subclass = NULL
 ) {
     if (!(is.logical(x) && length(x) == 1L)) {
-        .stopf(
-            gettextf("`%s` must be a logical vector of length 1.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a logical vector of length 1.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -567,8 +585,9 @@ assert_scalar_logical_not_na <- function(
     .subclass = NULL
 ) {
     if (!(is.logical(x) && length(x) == 1L) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a logical vector of length 1 and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a logical vector of length 1 and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -591,8 +610,9 @@ assert_scalar_whole <- function(
     .subclass = NULL
 ) {
     if (!.is_scalar_whole(x)) {
-        .stopf(
-            gettextf("`%s` must be integerish and of length 1.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be integerish and of length 1.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -615,8 +635,9 @@ assert_bool <- function(
     .subclass = NULL
 ) {
     if (!(is.logical(x) && length(x) == 1L) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be boolean (TRUE/FALSE).", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be boolean (TRUE/FALSE).",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -639,8 +660,9 @@ assert_scalar_character <- function(
     .subclass = NULL
 ) {
     if (!(is.character(x) && length(x) == 1L)) {
-        .stopf(
-            gettextf("`%s` must be a character vector of length 1.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a character vector of length 1.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -668,8 +690,9 @@ assert_scalar_character_not_na <- function(
     .subclass = NULL
 ) {
     if (!(is.character(x) && length(x) == 1L) || anyNA(x)) {
-        .stopf(
-            gettextf("`%s` must be a character vector of length 1 and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` must be a character vector of length 1 and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -698,8 +721,9 @@ assert_non_negative_or_na <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_non_negative_or_na(x)) {
-        .stopf(
-            gettextf("`%s` values must be non-negative or NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be non-negative or NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -718,8 +742,9 @@ assert_non_positive_or_na <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_non_positive_or_na(x)) {
-        .stopf(
-            gettextf("`%s` values must be non-positive or NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be non-positive or NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -738,8 +763,9 @@ assert_non_negative <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_non_negative(x)) {
-        .stopf(
-            gettextf("`%s` values must be non-negative and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be non-negative and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -759,8 +785,9 @@ assert_non_positive <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_non_positive(x)) {
-        .stopf(
-            gettextf("`%s` values must be non-positive and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be non-positive and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -779,8 +806,9 @@ assert_positive <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_positive(x)) {
-        .stopf(
-            gettextf("`%s` values must be positive and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be positive and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -799,8 +827,9 @@ assert_negative <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_negative(x)) {
-        .stopf(
-            gettextf("`%s` values must be negative and not NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be negative and not NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -819,8 +848,9 @@ assert_positive_or_na <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_positive_or_na(x)) {
-        .stopf(
-            gettextf("`%s` values must be positive or NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be positive or NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -839,8 +869,9 @@ assert_negative_or_na <- function(
 ) {
     assert_numeric(x, .arg = .arg, .call = .call, .subclass = .subclass)
     if (!.all_negative_or_na(x)) {
-        .stopf(
-            gettextf("`%s` values must be negative or NA.", .arg, domain = "R-ympes"),
+        stopit(
+            "`{.arg}` values must be negative or NA.",
+            .domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )
@@ -886,9 +917,10 @@ assert_between <- function(
     }
 
     if (!all(left_condition & right_condition)) {
-        condition_char <- sprintf("lower %s value %s upper", left_char, right_char)
-        .stopf(
-            gettextf("`%s` does not for all values in `%s`.", condition_char, .arg, domain = "R-ympes"),
+        condition_char <- super::glue("`lower` {left_char} value {right_char} `upper`")
+        stopit(
+            "{condition_char} does not hold for all values in `{.arg}`.",
+            domain = "R-ympes",
             .call = .call,
             .subclass = .subclass
         )

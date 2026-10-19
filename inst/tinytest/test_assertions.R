@@ -251,10 +251,10 @@ expect_identical(fun(a, 1, 1), a)
 expect_identical(fun(a, 0, 1, left = FALSE,  right = TRUE), a)
 expect_identical(fun(a, 1, 2, left =  TRUE, right = FALSE), a)
 expect_identical(fun(a, 0, 2, left = FALSE, right = FALSE), a)
-expect_fixed_error(fun(a, 2, 3, left =  TRUE, right =  TRUE), "`lower <= value <= upper` does not for all values in `q`.")
-expect_fixed_error(fun(a, 1, 1, left = FALSE, right =  TRUE), "`lower < value <= upper` does not for all values in `q`.")
-expect_fixed_error(fun(a, 1, 1, left =  TRUE, right = FALSE), "`lower <= value < upper` does not for all values in `q`.")
-expect_fixed_error(fun(a, 1, 1, left = FALSE, right = FALSE), "`lower < value < upper` does not for all values in `q`.")
+expect_fixed_error(fun(a, 2, 3, left =  TRUE, right =  TRUE), "`lower` <= value <= `upper` does not hold for all values in `q`.")
+expect_fixed_error(fun(a, 1, 1, left = FALSE, right =  TRUE), "`lower` < value <= `upper` does not hold for all values in `q`.")
+expect_fixed_error(fun(a, 1, 1, left =  TRUE, right = FALSE), "`lower` <= value < `upper` does not hold for all values in `q`.")
+expect_fixed_error(fun(a, 1, 1, left = FALSE, right = FALSE), "`lower` < value < `upper` does not hold for all values in `q`.")
 
 
 

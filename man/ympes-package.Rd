@@ -19,6 +19,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Tim Taylor \email{tim.taylor@hiddenelephants.co.uk} (\href{https://orcid.org/0000-0002-8587-7113}{ORCID}) [copyright holder]
 
+Authors:
+\itemize{
+  \item Tim Taylor \email{tim.taylor@hiddenelephants.co.uk} (\href{https://orcid.org/0000-0002-8587-7113}{ORCID}) [copyright holder]
+}
+
 Other contributors:
 \itemize{
   \item R Core Team (fstrcapture uses code from strcapture) [copyright holder]
