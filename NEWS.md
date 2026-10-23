@@ -8,9 +8,6 @@
   wrapper around `paste(x, collapse = ", `)` with the adaption that the last
   comma will always be replace by 'and'.
 
-- New experimental function `stopit()`. A `stop()` alternative with additional
-  formatting.
-
 - **breaking change:** Error conditions thrown by the assertions now have
   default class of `<ympesError/error/condition>`.
 
