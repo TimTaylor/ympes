@@ -79,11 +79,11 @@ conditionMessage.ympesError <- function(c) {
     msg <- c$message
     if (len <- length(msg)) {
         top <- msg[1L]
-        top <- strwrap(top, width = 72, exdent = 2, initial = "\n")
+        top <- strwrap(top, width = 80, exdent = 2, initial = "\n")
         top <- paste(top, collapse = "\n")
         if (len > 1L) {
             info <- msg[-1L]
-            info <- strwrap(sprintf("- %s", info), width = 72, indent = 6, exdent = 8)
+            info <- strwrap(sprintf("- %s", info), width = 80, indent = 6, exdent = 8)
             info <- paste(info, collapse = "\n")
             msg <- paste(top, info, sep = "\n")
         } else {
