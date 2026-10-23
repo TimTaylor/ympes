@@ -28,7 +28,7 @@ A character vector of unique names not already found in `x`.
 ``` r
 
 new_name(mtcars)
-#> [1] "new19de76a5d4ae"
+#> [1] "new19d237d146d0"
 new_name(mtcars, 2)
-#> [1] "new19de5c721535" "new19de3dd16331"
+#> [1] "new19d245cfaf36" "new19d278994dbc"
 ```

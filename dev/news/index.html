@@ -37,7 +37,6 @@
 <h2 class="pkg-version" data-toc-text="development version" id="ympes-development-version">ympes (development version)<a class="anchor" aria-label="anchor" href="#ympes-development-version"></a></h2>
 <ul><li><p>New function <code><a href="../reference/as_codepoint.html">as_codepoint()</a></code> which is a wrapper around <code><a href="https://rdrr.io/r/base/iconv.html" class="external-link">iconv()</a></code>. Introduced for whenever I encounter the ‘Portable packages must use only ASCII characters in their R code’ message from R CMD check.</p></li>
 <li><p>New function <code>to_string</code> to concatenate a character vector. This is a simple wrapper around <code>paste(x, collapse = ",</code>)` with the adaption that the last comma will always be replace by ‘and’.</p></li>
-<li><p>New experimental function <code><a href="../reference/stopit.html">stopit()</a></code>. A <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code> alternative with additional formatting.</p></li>
 <li><p><strong>breaking change:</strong> Error conditions thrown by the assertions now have default class of <code>&lt;ympesError/error/condition&gt;</code>.</p></li>
 </ul></div>
     <div class="section level2">

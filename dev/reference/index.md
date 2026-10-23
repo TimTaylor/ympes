@@ -83,11 +83,6 @@
   [`assert_between()`](https://timtaylor.github.io/ympes/dev/reference/assertions.md)
   : Argument assertions (Experimental)
 
-## Conditions (Experimental)
-
-- [`stopit()`](https://timtaylor.github.io/ympes/dev/reference/stopit.md)
-  : stop alternative with additional formatting (Experimental)
-
 ## Miscellaneous
 
 - [`new_name()`](https://timtaylor.github.io/ympes/dev/reference/new_name.md)

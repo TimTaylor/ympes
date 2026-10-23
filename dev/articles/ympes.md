@@ -154,7 +154,7 @@ dat <- movements(1e5)
 ```
 
     ##    user  system elapsed 
-    ##   1.462   0.044   1.507
+    ##   1.013   0.041   1.054
 
 ``` r
 
@@ -162,14 +162,14 @@ dat <- movements(1e5)
 ```
 
     ##    user  system elapsed 
-    ##   0.035   0.001   0.035
+    ##   0.031   0.000   0.031
 
 ``` r
 
 t[["elapsed"]] / t2[["elapsed"]]
 ```
 
-    ## [1] 43.05714
+    ## [1] 34
 
 As well as the improved performance you will notice two other
 differences between the two function signatures. Firstly, to make things
@@ -217,14 +217,14 @@ here we are
 new_name(mtcars)
 ```
 
-    ## [1] "new1b1f4ce8bb20"
+    ## [1] "new1afb665b2b0"
 
 ``` r
 
 new_name(mtcars, 3L)
 ```
 
-    ## [1] "new1b1f7658fdd"  "new1b1f4fc62238" "new1b1f43ce90f"
+    ## [1] "new1afb6e5394d"  "new1afb4c649c14" "new1afb44a8c000"
 
 ## Assertions (Experimental)
 

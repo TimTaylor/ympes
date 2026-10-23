@@ -13,11 +13,6 @@
   simple wrapper around `paste(x, collapse = ",`)\` with the adaption
   that the last comma will always be replace by ‘and’.
 
-- New experimental function
-  [`stopit()`](https://timtaylor.github.io/ympes/dev/reference/stopit.md).
-  A [`stop()`](https://rdrr.io/r/base/stop.html) alternative with
-  additional formatting.
-
 - **breaking change:** Error conditions thrown by the assertions now
   have default class of `<ympesError/error/condition>`.
 
